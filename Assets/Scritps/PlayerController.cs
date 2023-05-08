@@ -4,21 +4,21 @@ using UnityEngine.InputSystem.EnhancedTouch;
 using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 public class PlayerController : MonoBehaviour
 {
-    
+
     [SerializeField] private Vector2 JoystickSize = new Vector2(200, 200);
     public joyStick Joystick;
     public NavMeshAgent playerNavMeshAgent;
     private Finger MovementFinger;
     public Vector2 MovementAmount;
     public Animator playerAnimator;
-    
+
     void Start()
     {
         playerNavMeshAgent = GetComponent<NavMeshAgent>();
         playerAnimator = GetComponent<Animator>();
     }
-    
-    
+
+
     private void OnEnable()
     {
         EnhancedTouchSupport.Enable();
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         ETouch.Touch.onFingerUp -= HandleLoseFinger;
         ETouch.Touch.onFingerMove -= HandleFingerMove;
         EnhancedTouchSupport.Disable();
-    
+
     }
     private void HandleFingerMove(Finger movedFinger)
     {
@@ -61,9 +61,9 @@ public class PlayerController : MonoBehaviour
             Joystick.Knob.anchoredPosition = knobPosition;
             MovementAmount = knobPosition / maxMovement;
         }
-        
+
     }
-   
+
     private void HandleFingerDown(Finger touchedFinger)
     {
         if (MovementFinger == null && touchedFinger.screenPosition.x <= Screen.width)
@@ -75,8 +75,8 @@ public class PlayerController : MonoBehaviour
             Joystick.joyStickObj.anchoredPosition = ClampStartPosition(touchedFinger.screenPosition);
         }
     }
-    
-    
+
+
     private void HandleLoseFinger(Finger lostFinger)
     {
         if (lostFinger == MovementFinger)
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
             MovementAmount = Vector2.zero;
         }
     }
-    
+
     private Vector2 ClampStartPosition(Vector2 startPosition)
     {
         if (startPosition.x < JoystickSize.x / 2)
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
         // print("MovementAmount.x: " + MovementAmount.x);
         // print("MovementAmount.y: " + MovementAmount.y);
-        
+
         playerAnimator.SetFloat("moveX", MovementAmount.x);
         playerAnimator.SetFloat("moveZ", MovementAmount.y);
     }

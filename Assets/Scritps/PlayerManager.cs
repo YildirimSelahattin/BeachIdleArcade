@@ -35,8 +35,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.CompareTag("NewSunbed"))
         {
-            newSunbedArea[0].transform.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", 90.0f);
-            newSunbedArea[1].transform.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", 160.0f);
+            //fillAmount = givenMoney * 360) / 100;
+            //newSunbedArea[0].transform.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", fillAmount);
 
             GameDataManager.Instance.SaveData();
         }
