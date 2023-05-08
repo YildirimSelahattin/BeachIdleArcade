@@ -1,123 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.InputSystem.EnhancedTouch;
-using ETouch = UnityEngine.InputSystem.EnhancedTouch;
+
 public class PlayerManager : MonoBehaviour
 {
-    
-    [SerializeField] private Vector2 JoystickSize = new Vector2(200, 200);
-    public joyStick Joystick;
-    public NavMeshAgent playerNavMeshAgent;
-    private Finger MovementFinger;
-    public Vector2 MovementAmount;
-    public Animator playerAnimator;
-    
+    public GameObject newSunbedArea;
+
     void Start()
     {
-        playerNavMeshAgent = GetComponent<NavMeshAgent>();
-        playerAnimator = GetComponent<Animator>();
-    }
-    
-    
-    private void OnEnable()
-    {
-        EnhancedTouchSupport.Enable();
-        ETouch.Touch.onFingerDown += HandleFingerDown;
-        ETouch.Touch.onFingerUp += HandleLoseFinger;
-        ETouch.Touch.onFingerMove += HandleFingerMove;
+        newSunbedArea.transform.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", 90.0f);
     }
 
-    private void OnDisable()
-    {
-        ETouch.Touch.onFingerDown -= HandleFingerDown;
-        ETouch.Touch.onFingerUp -= HandleLoseFinger;
-        ETouch.Touch.onFingerMove -= HandleFingerMove;
-        EnhancedTouchSupport.Disable();
-    
-    }
-    private void HandleFingerMove(Finger movedFinger)
-    {
-        if (movedFinger == MovementFinger)
-        {
-            Vector2 knobPosition;
-            float maxMovement = JoystickSize.x / 2f;
-            ETouch.Touch currentTouch = movedFinger.currentTouch;
-
-            if (Vector2.Distance(
-                currentTouch.screenPosition,
-                Joystick.joyStickObj.anchoredPosition
-            ) > maxMovement)
-            {
-                knobPosition = (
-                                   currentTouch.screenPosition - Joystick.joyStickObj.anchoredPosition
-                               ).normalized
-                               * maxMovement;
-            }
-            else
-            {
-                knobPosition = currentTouch.screenPosition - Joystick.joyStickObj.anchoredPosition;
-            }
-
-            Joystick.Knob.anchoredPosition = knobPosition;
-            MovementAmount = knobPosition / maxMovement;
-        }
-        
-    }
-   
-    private void HandleFingerDown(Finger touchedFinger)
-    {
-        if (MovementFinger == null && touchedFinger.screenPosition.x <= Screen.width)
-        {
-            MovementFinger = touchedFinger;
-            MovementAmount = Vector2.zero;
-            Joystick.gameObject.SetActive(true);
-            Joystick.joyStickObj.sizeDelta = JoystickSize;
-            Joystick.joyStickObj.anchoredPosition = ClampStartPosition(touchedFinger.screenPosition);
-        }
-    }
-    
-    
-    private void HandleLoseFinger(Finger lostFinger)
-    {
-        if (lostFinger == MovementFinger)
-        {
-            MovementFinger = null;
-            Joystick.Knob.anchoredPosition = Vector2.zero;
-            Joystick.gameObject.SetActive(false);
-            MovementAmount = Vector2.zero;
-        }
-    }
-    
-    private Vector2 ClampStartPosition(Vector2 startPosition)
-    {
-        if (startPosition.x < JoystickSize.x / 2)
-        {
-            startPosition.x = JoystickSize.x / 2;
-        }
-
-        if (startPosition.y < JoystickSize.y / 2)
-        {
-            startPosition.y = JoystickSize.y / 2;
-        }
-        else if (startPosition.y > Screen.height - JoystickSize.y / 2)
-        {
-            startPosition.y = Screen.height - JoystickSize.y / 2;
-        }
-
-        return startPosition;
-    }
+    // Update is called once per frame
     void Update()
     {
-        Vector3 scaledMovement = playerNavMeshAgent.speed * Time.deltaTime * new Vector3(MovementAmount.x, 0, MovementAmount.y);
-
-        playerNavMeshAgent.Move(scaledMovement);
-
-        playerNavMeshAgent.transform.LookAt(playerNavMeshAgent.transform.position + scaledMovement, Vector3.up);
-
-        // print("MovementAmount.x: " + MovementAmount.x);
-        // print("MovementAmount.y: " + MovementAmount.y);
-        
-        playerAnimator.SetFloat("moveX", MovementAmount.x);
-        playerAnimator.SetFloat("moveZ", MovementAmount.y);
+        if (Physics.Raycast(transform.position,transform.forward,out var hit,1f))
+        {
+            Debug.DrawRay(transform.position,transform.forward * 1f,Color.green);
+            
+            if (hit.collider.CompareTag("Sunbed"))
+            {
+                Debug.Log("Sunbed");
+            }
+        }
     }
 }
