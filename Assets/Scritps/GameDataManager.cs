@@ -40,6 +40,6 @@ public class GameDataManager : MonoBehaviour
 
     public void LoadData()
     {
-        TotalMoney = PlayerPrefs.GetFloat("TotalMoney", 80);
+        TotalMoney = PlayerPrefs.GetFloat("TotalMoney", 500);
     }
 }
