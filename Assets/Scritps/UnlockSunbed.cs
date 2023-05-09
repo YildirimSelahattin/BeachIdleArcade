@@ -41,53 +41,57 @@ public class UnlockSunbed : MonoBehaviour
         GameManager.Instance.InstantateMoney((int)sunbedRemainPrice);
 
         if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0)
-            StartCoroutine(CoinMaker);
-        else
-            StopCoroutine(CoinMaker);
-/*
-        if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0)
         {
-            if (GameDataManager.Instance.TotalMoney >= sunbedPrice)
-            {
-                GameDataManager.Instance.TotalMoney -= sunbedPrice;
-                sunbedRemainPrice = 0;
-                GameDataManager.Instance.SaveData();
-                Debug.Log("ID: " + sunbedID);
-                isUnlocked = 1;
-                PlayerPrefs.SetInt("isUnlocked" + sunbedID, isUnlocked);
-            }
-            else
-            {
-                sunbedRemainPrice -= GameDataManager.Instance.TotalMoney;
-                fillAmount = CalculateFill();
-                GameDataManager.Instance.TotalMoney = 0;
-            }
-
-            gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", fillAmount);
-
-            UIManager.Instance.totalMoneyText.text = GameDataManager.Instance.TotalMoney.ToString();
-            dollarAmount.text = sunbedRemainPrice.ToString();
-
-            if (sunbedRemainPrice == 0)
-            {
-                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -5, transform.position.z)
-                    , Quaternion.Euler(0f, -90f, 0f));
-
-                desk.transform.DOScale(2.7f, 2.5f).SetEase(Ease.OutElastic);
-                desk.transform.DOScale(2.5f, 2.5f).SetDelay(1.1f).SetEase(Ease.OutElastic);
-
-                gameObject.SetActive(false);
-
-                buildNavMesh.BuildNavMesh();
-            }
+            StartCoroutine(CoinMaker);
         }
-        */
+        else
+        {
+            StopCoroutine(CoinMaker);
+        }
+
+        /*
+                if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0)
+                {
+                    if (GameDataManager.Instance.TotalMoney >= sunbedPrice)
+                    {
+                        GameDataManager.Instance.TotalMoney -= sunbedPrice;
+                        sunbedRemainPrice = 0;
+                        GameDataManager.Instance.SaveData();
+                        Debug.Log("ID: " + sunbedID);
+                        isUnlocked = 1;
+                        PlayerPrefs.SetInt("isUnlocked" + sunbedID, isUnlocked);
+                    }
+                    else
+                    {
+                        sunbedRemainPrice -= GameDataManager.Instance.TotalMoney;
+                        fillAmount = CalculateFill();
+                        GameDataManager.Instance.TotalMoney = 0;
+                    }
+
+                    gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", fillAmount);
+
+                    UIManager.Instance.totalMoneyText.text = GameDataManager.Instance.TotalMoney.ToString();
+                    dollarAmount.text = sunbedRemainPrice.ToString();
+
+                    if (sunbedRemainPrice == 0)
+                    {
+                        GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -5, transform.position.z)
+                            , Quaternion.Euler(0f, -90f, 0f));
+
+                        desk.transform.DOScale(2.7f, 2.5f).SetEase(Ease.OutElastic);
+                        desk.transform.DOScale(2.5f, 2.5f).SetDelay(1.1f).SetEase(Ease.OutElastic);
+
+                        gameObject.SetActive(false);
+
+                        buildNavMesh.BuildNavMesh();
+                    }
+                }
+                */
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) {StopCoroutine(CoinMaker);}
-
+        if (other.CompareTag("Player")) { StopCoroutine(CoinMaker); }
     }
 
     IEnumerator CountCoins(Transform player)
@@ -105,9 +109,10 @@ public class UnlockSunbed : MonoBehaviour
             }
             else
             {
+                Debug.Log("para bitti");
                 counter = 0;
             }
-            yield return new WaitForSecondsRealtime(0.1f);
+            yield return new WaitForSecondsRealtime(0.02f);
         }
     }
 
@@ -116,10 +121,31 @@ public class UnlockSunbed : MonoBehaviour
         GameDataManager.Instance.SaveData();
 
         GameDataManager.Instance.TotalMoney--;
+        sunbedRemainPrice--;
 
-        if (GameDataManager.Instance.TotalMoney == 0)
+        GameDataManager.Instance.SaveData();
+
+        fillAmount = CalculateFill();
+
+        gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", fillAmount);
+
+        UIManager.Instance.totalMoneyText.text = GameDataManager.Instance.TotalMoney.ToString();
+        dollarAmount.text = sunbedRemainPrice.ToString();
+       
+        if (sunbedRemainPrice == 0)
         {
-            Debug.Log("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+            isUnlocked = 1;
+            PlayerPrefs.SetInt("isUnlocked" + sunbedID, isUnlocked);
+        
+            GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -5, transform.position.z)
+                , Quaternion.Euler(0f, -90f, 0f));
+
+            desk.transform.DOScale(2.7f, 2.5f).SetEase(Ease.OutElastic);
+            desk.transform.DOScale(2.5f, 2.5f).SetDelay(1.1f).SetEase(Ease.OutElastic);
+
+            gameObject.SetActive(false);
+
+            buildNavMesh.BuildNavMesh();
         }
     }
 

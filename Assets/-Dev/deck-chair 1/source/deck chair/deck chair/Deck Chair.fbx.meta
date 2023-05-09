@@ -3,7 +3,12 @@ guid: 0b0cb09319a7f5d4a82ee93f832f89cd
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DeckChair
+    second: {fileID: 2100000, guid: b6ebb746403153648ab30eb56b55779a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
