@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameDataManager : MonoBehaviour
 {   
     public static GameDataManager Instance;
-    int totalMoney;
-    public int TotalMoney
+    float totalMoney;
+    public float TotalMoney
     {
         get
         {
@@ -18,7 +18,7 @@ public class GameDataManager : MonoBehaviour
             if (UIManager.Instance != null)
             {
                 UIManager.Instance.totalMoneyText.text = value.ToString() + " $";
-                PlayerPrefs.SetInt("TotalMoney", totalMoney);
+                PlayerPrefs.SetFloat("TotalMoney", totalMoney);
             }
         }
     }
@@ -35,11 +35,11 @@ public class GameDataManager : MonoBehaviour
 
     public void SaveData()
     {
-        PlayerPrefs.SetInt("TotalMoney", TotalMoney);
+        PlayerPrefs.SetFloat("TotalMoney", TotalMoney);
     }
 
     public void LoadData()
     {
-        TotalMoney = PlayerPrefs.GetInt("TotalMoney", 0);
+        TotalMoney = PlayerPrefs.GetFloat("TotalMoney", 80);
     }
 }

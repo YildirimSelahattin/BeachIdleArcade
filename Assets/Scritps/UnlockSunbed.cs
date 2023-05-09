@@ -16,52 +16,53 @@ public class UnlockSunbed : MonoBehaviour
 
     void Start()
     {
-        dollarAmount.text = sunbedPrice.ToString("C0");
+        dollarAmount.text = sunbedPrice.ToString();
         sunbedRemainPrice = sunbedPrice;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && PlayerPrefs.GetFloat("TotalMoney") > 0)
+        if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0)
         {
-            fillAmount = Mathf.Abs(1f - CalculateMoney() / sunbedPrice);
-
-            if (PlayerPrefs.GetFloat("dollar") >= sunbedPrice)
+            if (GameDataManager.Instance.TotalMoney >= sunbedPrice)
             {
-                PlayerPrefs.SetFloat("dollar", PlayerPrefs.GetFloat("dollar") - sunbedPrice);
-
+                Debug.Log("Buyed");
+                GameDataManager.Instance.TotalMoney -= sunbedPrice;
                 sunbedRemainPrice = 0;
+                GameDataManager.Instance.SaveData();
             }
             else
             {
-                sunbedRemainPrice -= PlayerPrefs.GetFloat("dollar");
-                PlayerPrefs.SetFloat("dollar", 0);
+                Debug.Log("ohhhhh");
+                sunbedRemainPrice -= GameDataManager.Instance.TotalMoney;
+                CalculateFill();
+                GameDataManager.Instance.SaveData();
             }
 
             gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", fillAmount);
 
-            UIManager.Instance.totalMoneyText.text = PlayerPrefs.GetFloat("dollar").ToString("C0");
-            dollarAmount.text = sunbedRemainPrice.ToString("C0");
+            UIManager.Instance.totalMoneyText.text = GameDataManager.Instance.TotalMoney.ToString();
+            dollarAmount.text = sunbedRemainPrice.ToString();
 
             if (sunbedRemainPrice == 0)
             {
-                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, 2.2f, transform.position.z)
+                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -5, transform.position.z)
                     , Quaternion.Euler(0f, -90f, 0f));
 
-                desk.transform.DOScale(1.1f, 1f).SetEase(Ease.OutElastic);
-                desk.transform.DOScale(1f, 1f).SetDelay(1.1f).SetEase(Ease.OutElastic);
+                desk.transform.DOScale(2.7f, 2.5f).SetEase(Ease.OutElastic);
+                desk.transform.DOScale(2.5f, 2.5f).SetDelay(1.1f).SetEase(Ease.OutElastic);
 
                 gameObject.SetActive(false);
 
                 buildNavMesh.BuildNavMesh();
             }
-
         }
     }
 
-    private float CalculateMoney()
+    private float CalculateFill()
     {
-        return (360 *  sunbedRemainPrice) / PlayerPrefs.GetFloat("TotalMoney");
+        Debug.Log("Remain Price: " + sunbedRemainPrice);
+        return (360 * sunbedRemainPrice) / sunbedPrice;
     }
 }
 
