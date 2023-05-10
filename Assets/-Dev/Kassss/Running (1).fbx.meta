@@ -3,7 +3,37 @@ guid: f4a3fb478eb217c46845a67a59241f98
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bej
+    second: {fileID: 2100000, guid: b7efe252c42cb6b418273fc521ac68c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6z_005"
+    second: {fileID: 2100000, guid: c0d7750a383617647bac1880c8dbc73e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6zbeyaz\u0131"
+    second: {fileID: 2100000, guid: 225ed64ee20a9db40908b8e57f3fda89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert6SG
+    second: {fileID: 2100000, guid: 0f91376ea7785e74baf33e05939fbb9b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "sa\xE7_6"
+    second: {fileID: 2100000, guid: 59376241c1c57194382a85161568ad6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ten_5
+    second: {fileID: 2100000, guid: 133b8d811eee4b94c81ea093abcfee1b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
