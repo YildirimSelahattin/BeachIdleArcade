@@ -650,7 +650,7 @@ PrefabInstance:
     - target: {fileID: 3937997218334418733, guid: e494bdeac58b84047a0550b0dc733c54,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.44
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3937997218334418733, guid: e494bdeac58b84047a0550b0dc733c54,
         type: 3}
@@ -1009,7 +1009,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &870135728
 BoxCollider:
@@ -1195,7 +1195,7 @@ PrefabInstance:
     - target: {fileID: 3937997218334418733, guid: e494bdeac58b84047a0550b0dc733c54,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.18
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3937997218334418733, guid: e494bdeac58b84047a0550b0dc733c54,
         type: 3}

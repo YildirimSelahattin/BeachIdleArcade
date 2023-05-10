@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     public void InstantateMoney(int moneyCount)
     {
-        for (int i = 0; i < moneyCount; i++)
+        for (int i = 0; i <= moneyCount; i++)
         {
             GameObject NewCoin = Instantiate(MoneyPrefab, Vector3.zero, Quaternion.identity);
             MoneyList.Add(NewCoin);
