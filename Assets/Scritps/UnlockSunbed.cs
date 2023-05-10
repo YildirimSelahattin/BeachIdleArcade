@@ -27,8 +27,8 @@ public class UnlockSunbed : MonoBehaviour
 
         if (isUnlocked == 1)
         {
-            GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -5, transform.position.z)
-                    , Quaternion.Euler(0f, -90f, 0f));
+            GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
+                    , Quaternion.Euler(-90f, 0f, 0f));
 
             gameObject.SetActive(false);
 
