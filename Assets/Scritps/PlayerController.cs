@@ -120,4 +120,16 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetFloat("moveX", MovementAmount.x);
         playerAnimator.SetFloat("moveZ", MovementAmount.y);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Water"))
+        {
+            playerAnimator.SetBool("IsSwim", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("IsSwim", false);
+        }
+    }
 }

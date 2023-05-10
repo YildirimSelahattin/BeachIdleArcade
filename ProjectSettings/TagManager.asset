@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Sunbed
   - NewSunbed
+  - Water
   layers:
   - Default
   - TransparentFX
