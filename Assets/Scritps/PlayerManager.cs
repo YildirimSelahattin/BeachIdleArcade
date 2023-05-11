@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public GameObject inGameCam;
+    public GameObject creamCam;
+
     void Start()
     {
 
@@ -18,6 +21,11 @@ public class PlayerManager : MonoBehaviour
             if (hit.collider.CompareTag("Sunbed"))
             {
                 Debug.Log("Sunbed");
+            }
+            if (hit.collider.CompareTag("LayingWomen"))
+            {
+                inGameCam.SetActive(false);
+                creamCam.SetActive(true);
             }
         }
     }

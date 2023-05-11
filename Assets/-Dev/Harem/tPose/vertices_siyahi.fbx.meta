@@ -3,7 +3,52 @@ guid: c911e0c07a3411c4ba671d50e3899ec1
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: B-1.005
+    second: {fileID: 2100000, guid: 721e20403790d0541a865d4113f12100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyelashes
+    second: {fileID: 2100000, guid: 4a5d7d3cefc147748b8b16556a391a23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6zbebe\u011Fi"
+    second: {fileID: 2100000, guid: a9c6a7ce04e428f45a6c5d16843879dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6zbebe\u011Fi.001"
+    second: {fileID: 2100000, guid: a203bf0ae1833db4bb41df5636de1106, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6zbeyaz\u0131"
+    second: {fileID: 2100000, guid: cb22996d7872f1e4fa296a307b1217ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mavi
+    second: {fileID: 2100000, guid: 6e91c475eb42190428e2bd92efd32430, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: renk.004
+    second: {fileID: 2100000, guid: 439a43882d67788419c1f8bcd56e1c01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "sa\xE7_7"
+    second: {fileID: 2100000, guid: bbb1fdc800bf266439d9de391dfa2e83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: twn rwngi.007
+    second: {fileID: 2100000, guid: 9ae955810b4030b4fa03f0e3412f0729, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
