@@ -6,11 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public GameObject inGameCam;
     public GameObject creamCam;
-
-    void Start()
-    {
-
-    }
+    public GameObject Canvas;
 
     void Update()
     {
@@ -26,6 +22,8 @@ public class PlayerManager : MonoBehaviour
             {
                 inGameCam.SetActive(false);
                 creamCam.SetActive(true);
+                gameObject.SetActive(false);
+                Canvas.SetActive(false);
             }
         }
     }
