@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 453739054836584193}
   - component: {fileID: 2425458938696793035}
   - component: {fileID: 1502519937557225166}
+  - component: {fileID: 1465578123}
   m_Layer: 0
   m_Name: whiteSunbed
   m_TagString: Sunbed
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 19900770a208a2748895c08b023e11ac, type: 3}
+  - {fileID: 2100000, guid: a4021be9444d00d4e9e1737a3fd68387, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,6 +86,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &1502519937557225166
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4226639786250525214}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.11853951, y: 0.33251333, z: 0.08239217}
+  m_Center: {x: 0, y: -1.6024402e-16, z: 0.021958124}
+--- !u!65 &1465578123
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

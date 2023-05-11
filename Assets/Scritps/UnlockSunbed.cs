@@ -108,7 +108,7 @@ public class UnlockSunbed : MonoBehaviour
             {
                 newCoin.transform.position = player.position;
                 newCoin.SetActive(true);
-                newCoin.transform.DOJump(transform.position, 3f, 1, 0.3f).SetEase(Ease.OutSine);
+                newCoin.transform.DOJump(transform.position, 3f, 1, 0.3f).SetEase(Ease.OutSine).OnComplete(()=>Destroy(newCoin));
                 SellTheLand();
             }
             else
@@ -146,11 +146,11 @@ public class UnlockSunbed : MonoBehaviour
             isUnlocked = 1;
             PlayerPrefs.SetInt("isUnlocked" + sunbedID, isUnlocked);
 
-            GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -5, transform.position.z)
-                , Quaternion.Euler(0f, -90f, 0f));
+            GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
+                , Quaternion.Euler(-90f, 0f, 0f));
 
-            desk.transform.DOScale(2.7f, 2.5f).SetEase(Ease.OutElastic);
-            desk.transform.DOScale(2.5f, 2.5f).SetDelay(1.1f).SetEase(Ease.OutElastic);
+            desk.transform.DOScale(10.2f, 10f).SetEase(Ease.OutElastic);
+            desk.transform.DOScale(10f, 10f).SetDelay(1.1f).SetEase(Ease.OutElastic);
 
             gameObject.SetActive(false);
 

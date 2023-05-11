@@ -3,7 +3,52 @@ guid: 1a0c683f1bb133e4e80ac5c02cc2a88f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyelashes
+    second: {fileID: 2100000, guid: f183da76e113e5541a4796e942e2db10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6z_3"
+    second: {fileID: 2100000, guid: f3668fcaf66f7724c96e1c2b5d7c7010, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6zbebe\u011Fi.001"
+    second: {fileID: 2100000, guid: d740a2d80761d3d42bd896a19ffa5a02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6zbeyaz\u0131"
+    second: {fileID: 2100000, guid: c404545ec01f06d45a186df852be3f44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert6SG
+    second: {fileID: 2100000, guid: afed1cbae793c524d8df92e161e86c1f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ruj_3
+    second: {fileID: 2100000, guid: baf8eb951a4ad494ca7280a6d69829e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "sa\xE7_3"
+    second: {fileID: 2100000, guid: 6f0d104b3a0e8d7419cf8ad5b084898e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ten_001
+    second: {fileID: 2100000, guid: 05ddb9e14a0fc7943bb4aed9cdaf323f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "ye\u015Fil.001"
+    second: {fileID: 2100000, guid: a4b8482895aa7e64f99337c1c7f18596, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

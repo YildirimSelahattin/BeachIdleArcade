@@ -4,18 +4,9 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public GameObject[] newSunbedArea;
-
     void Start()
     {
-        foreach (GameObject sunbed in newSunbedArea)
-        {
-            Material radialFillCloneMat = new Material(Shader.Find("Custom/RadialFill"));
-            radialFillCloneMat.SetFloat("_Angle", 270);
-            radialFillCloneMat.SetFloat("_Arc1", 0);
-            radialFillCloneMat.SetFloat("_Arc2", 360);
-            sunbed.transform.GetChild(1).GetComponent<SpriteRenderer>().material = radialFillCloneMat;
-        }
+
     }
 
     void Update()

@@ -363,6 +363,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2425458938696793035, guid: d03aa98d2400d8542a3e49dcedab21fd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a4021be9444d00d4e9e1737a3fd68387, type: 2}
     - target: {fileID: 3594957520739664036, guid: d03aa98d2400d8542a3e49dcedab21fd,
         type: 3}
       propertyPath: m_RootOrder
@@ -1196,11 +1201,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: whiteSunbed (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 4226639786250525214, guid: d03aa98d2400d8542a3e49dcedab21fd,
-        type: 3}
-      propertyPath: m_TagString
-      value: Sunbed
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d03aa98d2400d8542a3e49dcedab21fd, type: 3}
 --- !u!1 &1153498416
@@ -1376,25 +1376,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6, y: 1, z: 2.6}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1465578122 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4226639786250525214, guid: d03aa98d2400d8542a3e49dcedab21fd,
-    type: 3}
-  m_PrefabInstance: {fileID: 1035439711}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1465578123
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465578122}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.11853951, y: 0.33251333, z: 0.08239217}
-  m_Center: {x: 0, y: -1.6024402e-16, z: 0.021958124}
 --- !u!1 &1593939975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,41 +1633,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: -30, y: 180, z: 0}
---- !u!1 &919132147571214760 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9208410939722826298, guid: a369f55d250f92340a5d3149e8fc3390,
-    type: 3}
-  m_PrefabInstance: {fileID: 8289914322946083730}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &919132147571214761
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132147571214760}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 50, y: 10, z: 25}
-  m_Center: {x: -5, y: 5, z: 3}
---- !u!208 &919132147571214762
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132147571214760}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &919132147866999293 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2066690749605798212, guid: 1c5197ac30ce593468bd5b7119e3a83a,
@@ -1724,54 +1670,7 @@ MonoBehaviour:
   MoneyPrefab: {fileID: 2549810110833014764, guid: b96c627dc85b719408dd7fce2d3faa6e,
     type: 3}
   MoneyList: []
---- !u!1 &919132148094503438 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2842200206473949724, guid: 4b37b0fa083044c48a6eb28399c68fe9,
-    type: 3}
-  m_PrefabInstance: {fileID: 3148279845486295058}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &919132148094503439
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148094503438}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 50, y: 10, z: 25}
-  m_Center: {x: -5, y: 5, z: 3}
---- !u!65 &919132148094503440
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148094503438}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!208 &919132148094503441
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148094503438}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
+  newSunbedArea: []
 --- !u!1001 &1184224157757864121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1981,7 +1880,7 @@ PrefabInstance:
     - target: {fileID: 3186954982748039334, guid: 4b37b0fa083044c48a6eb28399c68fe9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.87
+      value: -1.96
       objectReference: {fileID: 0}
     - target: {fileID: 3186954982748039334, guid: 4b37b0fa083044c48a6eb28399c68fe9,
         type: 3}
@@ -2112,6 +2011,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2425458938696793035, guid: d03aa98d2400d8542a3e49dcedab21fd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a4021be9444d00d4e9e1737a3fd68387, type: 2}
     - target: {fileID: 3594957520739664036, guid: d03aa98d2400d8542a3e49dcedab21fd,
         type: 3}
       propertyPath: m_RootOrder
@@ -2456,6 +2360,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerMan
       objectReference: {fileID: 0}
+    - target: {fileID: 4800713947278847465, guid: 7304fdc9d73f2a143b36a1aac6fac9e0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5319981834709366611, guid: 7304fdc9d73f2a143b36a1aac6fac9e0,
         type: 3}
       propertyPath: m_RootOrder
@@ -2522,6 +2431,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1420590663}
     - target: {fileID: 5319981834709366612, guid: 7304fdc9d73f2a143b36a1aac6fac9e0,
+        type: 3}
+      propertyPath: newSunbedArea.Array.data[2]
+      value: 
+      objectReference: {fileID: 755276741}
+    - target: {fileID: 5319981834709366613, guid: 7304fdc9d73f2a143b36a1aac6fac9e0,
+        type: 3}
+      propertyPath: newSunbedArea.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5319981834709366613, guid: 7304fdc9d73f2a143b36a1aac6fac9e0,
+        type: 3}
+      propertyPath: newSunbedArea.Array.data[0]
+      value: 
+      objectReference: {fileID: 1022533306}
+    - target: {fileID: 5319981834709366613, guid: 7304fdc9d73f2a143b36a1aac6fac9e0,
+        type: 3}
+      propertyPath: newSunbedArea.Array.data[1]
+      value: 
+      objectReference: {fileID: 1420590663}
+    - target: {fileID: 5319981834709366613, guid: 7304fdc9d73f2a143b36a1aac6fac9e0,
         type: 3}
       propertyPath: newSunbedArea.Array.data[2]
       value: 
@@ -2765,11 +2694,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bellydancing (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 9208410939722826298, guid: a369f55d250f92340a5d3149e8fc3390,
-        type: 3}
-      propertyPath: m_TagString
-      value: LayingWomen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a369f55d250f92340a5d3149e8fc3390, type: 3}
