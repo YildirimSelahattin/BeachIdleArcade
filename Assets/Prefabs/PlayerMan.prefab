@@ -750,7 +750,7 @@ GameObject:
   - component: {fileID: 5319981834709366616}
   m_Layer: 0
   m_Name: PlayerMan
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -836,10 +836,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3593f00c3d979c64b88cfc9d43984b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newSunbedArea:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &5319981834709366613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,6 +851,10 @@ MonoBehaviour:
   MoneyPrefab: {fileID: 2549810110833014764, guid: b96c627dc85b719408dd7fce2d3faa6e,
     type: 3}
   MoneyList: []
+  newSunbedArea:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!95 &5319981834709366610
 Animator:
   serializedVersion: 5
