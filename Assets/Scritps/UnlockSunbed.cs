@@ -27,8 +27,17 @@ public class UnlockSunbed : MonoBehaviour
 
         if (isUnlocked == 1)
         {
-            GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
+            if (sunbedID < 100)
+            {
+                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
                     , Quaternion.Euler(-90f, 0f, 0f));
+            }
+            else
+            {
+                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.7f, -8.8f, transform.position.z + 0.8f)
+                    , Quaternion.Euler(0f, 0f, 0f));
+            }
+
 
             gameObject.SetActive(false);
 
@@ -108,7 +117,7 @@ public class UnlockSunbed : MonoBehaviour
             {
                 newCoin.transform.position = player.position;
                 newCoin.SetActive(true);
-                newCoin.transform.DOJump(transform.position, 3f, 1, 0.3f).SetEase(Ease.OutSine).OnComplete(()=>Destroy(newCoin));
+                newCoin.transform.DOJump(transform.position, 3f, 1, 0.3f).SetEase(Ease.OutSine).OnComplete(() => Destroy(newCoin));
                 SellTheLand();
             }
             else
@@ -142,19 +151,30 @@ public class UnlockSunbed : MonoBehaviour
 
         if (sunbedRemainPrice == 0)
         {
-            Debug.Log("2");
             isUnlocked = 1;
             PlayerPrefs.SetInt("isUnlocked" + sunbedID, isUnlocked);
 
-            GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
+            if (sunbedID < 100)
+            {
+                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.7f, -8.8f, transform.position.z + 0.8f)
                 , Quaternion.Euler(-90f, 0f, 0f));
 
-            desk.transform.DOScale(10.2f, 10f).SetEase(Ease.OutElastic);
-            desk.transform.DOScale(10f, 10f).SetDelay(1.1f).SetEase(Ease.OutElastic);
+                desk.transform.DOScale(10.2f, 10f).SetEase(Ease.OutElastic);
+                desk.transform.DOScale(10f, 10f).SetDelay(1.1f).SetEase(Ease.OutElastic);
+            }
+            else
+            {
+                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -8.82f, transform.position.z)
+            , Quaternion.Euler(0f, 0f, 0f));
+
+                desk.transform.DOScale(1.2f, 1f).SetEase(Ease.OutElastic);
+                desk.transform.DOScale(1f, 1f).SetDelay(1.1f).SetEase(Ease.OutElastic);
+            }
+
 
             gameObject.SetActive(false);
 
-            buildNavMesh.BuildNavMesh();
+            //buildNavMesh.BuildNavMesh();
         }
         GameDataManager.Instance.SaveData();
     }
