@@ -29,15 +29,4 @@ public class PlayerManager : MonoBehaviour
             */
         }
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("NewSunbed"))
-        {
-            //fillAmount = givenMoney * 360) / 100;
-            //newSunbedArea[0].transform.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", fillAmount);
-
-            GameDataManager.Instance.SaveData();
-        }
-    }
 }

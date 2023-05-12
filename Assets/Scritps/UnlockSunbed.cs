@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class UnlockSunbed : MonoBehaviour
 {
-    public int sunbedID;
+    public int itemID;
     public int isUnlocked;
     [SerializeField] private GameObject newSunbed;
     [SerializeField] private TextMeshPro dollarAmount;
@@ -22,12 +22,12 @@ public class UnlockSunbed : MonoBehaviour
     {
         dollarAmount.text = sunbedPrice.ToString();
         sunbedRemainPrice = sunbedPrice;
-        isUnlocked = PlayerPrefs.GetInt("isUnlocked" + sunbedID, 0);
+        isUnlocked = PlayerPrefs.GetInt("isUnlocked" + itemID, 0);
         CoinMaker = CountCoins(GameManager.Instance.transform);
 
         if (isUnlocked == 1)
         {
-            if (sunbedID < 100)
+            if (itemID < 100)
             {
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
                     , Quaternion.Euler(-90f, 0f, 0f));
@@ -37,7 +37,6 @@ public class UnlockSunbed : MonoBehaviour
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.7f, -8.8f, transform.position.z + 0.8f)
                     , Quaternion.Euler(0f, 0f, 0f));
             }
-
 
             gameObject.SetActive(false);
 
@@ -57,45 +56,6 @@ public class UnlockSunbed : MonoBehaviour
         {
             StopCoroutine(CoinMaker);
         }
-
-        /*
-                if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0)
-                {
-                    if (GameDataManager.Instance.TotalMoney >= sunbedPrice)
-                    {
-                        GameDataManager.Instance.TotalMoney -= sunbedPrice;
-                        sunbedRemainPrice = 0;
-                        GameDataManager.Instance.SaveData();
-                        Debug.Log("ID: " + sunbedID);
-                        isUnlocked = 1;
-                        PlayerPrefs.SetInt("isUnlocked" + sunbedID, isUnlocked);
-                    }
-                    else
-                    {
-                        sunbedRemainPrice -= GameDataManager.Instance.TotalMoney;
-                        fillAmount = CalculateFill();
-                        GameDataManager.Instance.TotalMoney = 0;
-                    }
-
-                    gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", fillAmount);
-
-                    UIManager.Instance.totalMoneyText.text = GameDataManager.Instance.TotalMoney.ToString();
-                    dollarAmount.text = sunbedRemainPrice.ToString();
-
-                    if (sunbedRemainPrice == 0)
-                    {
-                        GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -5, transform.position.z)
-                            , Quaternion.Euler(0f, -90f, 0f));
-
-                        desk.transform.DOScale(2.7f, 2.5f).SetEase(Ease.OutElastic);
-                        desk.transform.DOScale(2.5f, 2.5f).SetDelay(1.1f).SetEase(Ease.OutElastic);
-
-                        gameObject.SetActive(false);
-
-                        buildNavMesh.BuildNavMesh();
-                    }
-                }
-                */
     }
 
     private void OnTriggerExit(Collider other)
@@ -117,7 +77,11 @@ public class UnlockSunbed : MonoBehaviour
             {
                 newCoin.transform.position = player.position;
                 newCoin.SetActive(true);
-                newCoin.transform.DOJump(transform.position, 3f, 1, 0.3f).SetEase(Ease.OutSine).OnComplete(() => Destroy(newCoin));
+                newCoin.transform.DOJump(transform.position, 3f, 1, 0.3f).SetEase(Ease.OutSine).OnComplete(() =>
+                {
+                    if (newCoin != null)
+                        newCoin.transform.localPosition = Vector3.zero;
+                });
                 SellTheLand();
             }
             else
@@ -126,6 +90,7 @@ public class UnlockSunbed : MonoBehaviour
             }
             yield return new WaitForSecondsRealtime(0.1f);
         }
+        GameManager.Instance.MoneyList.Clear();
     }
 
     private void SellTheLand()
@@ -152,9 +117,9 @@ public class UnlockSunbed : MonoBehaviour
         if (sunbedRemainPrice == 0)
         {
             isUnlocked = 1;
-            PlayerPrefs.SetInt("isUnlocked" + sunbedID, isUnlocked);
+            PlayerPrefs.SetInt("isUnlocked" + itemID, isUnlocked);
 
-            if (sunbedID < 100)
+            if (itemID < 100)
             {
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.7f, -8.8f, transform.position.z + 0.8f)
                 , Quaternion.Euler(-90f, 0f, 0f));
