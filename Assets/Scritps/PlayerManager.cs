@@ -18,7 +18,7 @@ public class PlayerManager : MonoBehaviour
             {
                 Debug.Log("Sunbed");
             }
-            /*
+            
             if (hit.collider.CompareTag("LayingWomen"))
             {
                 inGameCam.SetActive(false);
@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
                 gameObject.SetActive(false);
                 Canvas.SetActive(false);
             }
-            */
+            
         }
     }
 }
