@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject MoneyPrefab;
     public List<GameObject> MoneyList = new List<GameObject>();
     public GameObject[] newSunbedArea;
+    public GameObject moneyParent;
 
     void Awake()
     {
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i <= moneyCount; i++)
             {
-                GameObject NewCoin = Instantiate(MoneyPrefab, Vector3.zero, Quaternion.identity);
+                GameObject NewCoin = Instantiate(MoneyPrefab, Vector3.zero, Quaternion.identity, moneyParent.transform);
                 MoneyList.Add(NewCoin);
             }
         }

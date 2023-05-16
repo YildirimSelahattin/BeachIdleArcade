@@ -6,7 +6,8 @@ public class PlayerManager : MonoBehaviour
 {
     public GameObject inGameCam;
     public GameObject creamCam;
-    public GameObject Canvas;
+    public GameObject inGameCanvas;
+    public GameObject creamingCamvas;
 
     void Update()
     {
@@ -18,15 +19,31 @@ public class PlayerManager : MonoBehaviour
             {
                 Debug.Log("Sunbed");
             }
-            
+
             if (hit.collider.CompareTag("LayingWomen"))
             {
                 inGameCam.SetActive(false);
                 creamCam.SetActive(true);
-                gameObject.SetActive(false);
-                Canvas.SetActive(false);
+                inGameCanvas.SetActive(false);
+
+                StartCoroutine(Deeeeeeee());
+                
             }
-            
         }
     }
+    public void OnClickDoneCream()
+    {
+        inGameCam.SetActive(true);
+        creamCam.SetActive(false);
+        inGameCanvas.SetActive(true);
+        creamingCamvas.SetActive(false);
+    }
+
+    IEnumerator Deeeeeeee()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        creamingCamvas.SetActive(true);
+        CustomerRequestsManager.Instance.request.SetActive(false);
+    }
+
 }

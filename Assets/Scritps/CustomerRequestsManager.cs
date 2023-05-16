@@ -49,5 +49,26 @@ public class CustomerRequestsManager : MonoBehaviour
     }
     */
 
-    
+    public GameObject request;
+    public static CustomerRequestsManager Instance;
+
+        void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
+
+    private void Start() 
+    {
+        StartCoroutine(ResponseToRequests());
+    }
+
+    IEnumerator ResponseToRequests()
+    {
+        yield return new WaitForSecondsRealtime(25f);
+        request.SetActive(true);
+    }
 }
