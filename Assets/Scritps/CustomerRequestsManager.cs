@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CustomerRequestsManager : MonoBehaviour
 {
+    /*
     public bool requestDrink = false;
     public bool requestMassage = false;
     public int requestNumber;
@@ -46,4 +47,7 @@ public class CustomerRequestsManager : MonoBehaviour
     {
         return Random.Range(0,2);
     }
+    */
+
+    
 }
