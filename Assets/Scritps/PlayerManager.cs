@@ -41,7 +41,7 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator Deeeeeeee()
     {
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(10);
         creamingCamvas.SetActive(true);
         CustomerRequestsManager.Instance.request.SetActive(false);
     }
