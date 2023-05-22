@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         if (movedFinger == MovementFinger)
         {
             Vector2 knobPosition;
-            float maxMovement = JoystickSize.x / 1f;
+            float maxMovement = JoystickSize.x / 2f;
             ETouch.Touch currentTouch = movedFinger.currentTouch;
 
             if (Vector2.Distance(

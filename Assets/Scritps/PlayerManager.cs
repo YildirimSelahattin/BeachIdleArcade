@@ -27,7 +27,6 @@ public class PlayerManager : MonoBehaviour
                 inGameCanvas.SetActive(false);
 
                 StartCoroutine(Deeeeeeee());
-                
             }
         }
     }
