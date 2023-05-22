@@ -23,7 +23,7 @@ public class UnlockSunbed : MonoBehaviour
         dollarAmount.text = sunbedPrice.ToString();
         sunbedRemainPrice = sunbedPrice;
         isUnlocked = PlayerPrefs.GetInt("isUnlocked" + itemID, 0);
-        CoinMaker = CountCoins(GameManager.Instance.transform);
+        //CoinMaker = CountCoins(GameManager.Instance.transform);
 
         if (isUnlocked == 1)
         {
@@ -40,7 +40,7 @@ public class UnlockSunbed : MonoBehaviour
 
             gameObject.SetActive(false);
 
-            buildNavMesh.BuildNavMesh();
+            //buildNavMesh.BuildNavMesh();
         }
     }
 

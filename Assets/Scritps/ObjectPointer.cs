@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class ObjectPointer : MonoBehaviour
 {
     public Image img;
     public Transform target;
     public Vector3 offset;
+    public Camera cam;
 
     void Update()
     {
@@ -16,9 +18,9 @@ public class ObjectPointer : MonoBehaviour
         float maxX = Screen.width - minX;
 
         float minY = img.GetPixelAdjustedRect().width / 2;
-        float maxY = Screen.width - minY;
+        float maxY = Screen.height - minY;
 
-        Vector3 pos = Camera.main.WorldToScreenPoint(target.position + offset);
+        Vector3 pos = cam.WorldToScreenPoint(target.position + offset);
 
         if(Vector3.Dot((target.position - transform.position), transform.forward) < 0)
         {
@@ -32,7 +34,7 @@ public class ObjectPointer : MonoBehaviour
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
 
-        float angle = Mathf.Atan2(target.position.x - transform.position.x, target.position.z - target.position.z) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(target.position.x - transform.position.x, target.position.z - transform.position.z) * Mathf.Rad2Deg;
 
         img.transform.position = pos;
         img.transform.rotation = Quaternion.Euler(0,0,angle);
