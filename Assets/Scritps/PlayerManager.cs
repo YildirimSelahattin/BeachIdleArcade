@@ -27,7 +27,15 @@ public class PlayerManager : MonoBehaviour
                 inGameCanvas.SetActive(false);
 
                 StartCoroutine(Deeeeeeee());
-                
+            }
+
+            if (hit.collider.CompareTag("DrowningWoman"))
+            {
+                inGameCam.SetActive(false);
+                creamCam.SetActive(true);
+                inGameCanvas.SetActive(false);
+
+                StartCoroutine(Deeeeeeee());
             }
         }
     }

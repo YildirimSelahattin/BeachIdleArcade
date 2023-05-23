@@ -7,10 +7,20 @@ using Cinemachine;
 
 public class ObjectPointer : MonoBehaviour
 {
+    public static ObjectPointer Instance;
     public Image img;
     public Transform target;
     public Vector3 offset;
     public Camera cam;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
 
     void Update()
     {
