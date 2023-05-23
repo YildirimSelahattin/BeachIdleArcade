@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     public TextMeshProUGUI totalMoneyText;
-
+    
     void Awake()
     {
         if (Instance == null)

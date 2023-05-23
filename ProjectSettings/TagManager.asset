@@ -8,6 +8,7 @@ TagManager:
   - NewSunbed
   - Water
   - LayingWomen
+  - Coin
   layers:
   - Default
   - TransparentFX
