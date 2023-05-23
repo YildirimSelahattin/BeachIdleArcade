@@ -1932,8 +1932,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99fd70613628c948ad62cb752017419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paintedImg: {fileID: 0}
+  paintedImg: {fileID: 478777317}
   pTexture: {fileID: 0}
+  pixels: []
 --- !u!1 &494877487
 GameObject:
   m_ObjectHideFlags: 0
@@ -5415,7 +5416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1279482920
 Transform:
   m_ObjectHideFlags: 0
@@ -5549,6 +5550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paintedImg: {fileID: 478777317}
   pTexture: {fileID: 0}
+  pixels: []
 --- !u!1 &1295634950
 GameObject:
   m_ObjectHideFlags: 0
@@ -5585,8 +5587,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 700}
-  m_SizeDelta: {x: 585.3862, y: 247.6633}
+  m_AnchoredPosition: {x: 0, y: 300}
+  m_SizeDelta: {x: 300, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1295634952
 MonoBehaviour:
@@ -5634,7 +5636,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 478777324}
         m_TargetAssemblyTypeName: PaintControl, Assembly-CSharp
-        m_MethodName: OnClickControl
+        m_MethodName: OnClickDebug
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6265,7 +6267,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: dfeddfea96423a747a7a713a8cc110d1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.867
+      value: -7.295
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dfeddfea96423a747a7a713a8cc110d1,
         type: 3}
@@ -11336,7 +11338,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 125.00003, y: 125}
-  m_SizeDelta: {x: 250, y: 250}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5928746115736765299
 GameObject:
@@ -11475,7 +11477,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5928746116557743783
 CanvasRenderer:
