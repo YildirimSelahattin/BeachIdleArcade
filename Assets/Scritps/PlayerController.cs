@@ -4,13 +4,22 @@ using UnityEngine.InputSystem.EnhancedTouch;
 using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 public class PlayerController : MonoBehaviour
 {
-
+    public static PlayerController Instance;
     [SerializeField] private Vector2 JoystickSize = new Vector2(200, 200);
     public joyStick Joystick;
     public NavMeshAgent playerNavMeshAgent;
     private Finger MovementFinger;
     public Vector2 MovementAmount;
     public Animator playerAnimator;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
 
     void Start()
     {

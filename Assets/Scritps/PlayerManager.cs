@@ -31,11 +31,8 @@ public class PlayerManager : MonoBehaviour
 
             if (hit.collider.CompareTag("DrowningWoman"))
             {
-                inGameCam.SetActive(false);
-                creamCam.SetActive(true);
-                inGameCanvas.SetActive(false);
-
-                StartCoroutine(Deeeeeeee());
+                PlayerController.Instance.playerAnimator.SetLayerWeight(1, 1);
+                //Destroy(hit.collider.gameObject);
             }
         }
     }
