@@ -1060,7 +1060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &330585544
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1932,7 +1932,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99fd70613628c948ad62cb752017419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texture: {fileID: 2800000, guid: 41e7d10f6209c7048bf5ee8220d763f6, type: 3}
+  paintedImg: {fileID: 0}
+  pTexture: {fileID: 0}
 --- !u!1 &494877487
 GameObject:
   m_ObjectHideFlags: 0
@@ -5407,6 +5408,7 @@ GameObject:
   - component: {fileID: 1279482921}
   - component: {fileID: 1279482923}
   - component: {fileID: 1279482922}
+  - component: {fileID: 1279482924}
   m_Layer: 0
   m_Name: CM vcam2
   m_TagString: Untagged
@@ -5533,6 +5535,20 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1279482924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279482918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a99fd70613628c948ad62cb752017419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paintedImg: {fileID: 478777317}
+  pTexture: {fileID: 0}
 --- !u!1 &1295634950
 GameObject:
   m_ObjectHideFlags: 0
@@ -6299,12 +6315,12 @@ PrefabInstance:
     - target: {fileID: 3299181987523722925, guid: dfeddfea96423a747a7a713a8cc110d1,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 55.454777
+      value: 57.534332
       objectReference: {fileID: 0}
     - target: {fileID: 3299181987523722925, guid: dfeddfea96423a747a7a713a8cc110d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.037
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 5148863306409724982, guid: dfeddfea96423a747a7a713a8cc110d1,
         type: 3}
@@ -12085,7 +12101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &7297832484666922971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12746,7 +12762,7 @@ PrefabInstance:
     - target: {fileID: 8656374238250300666, guid: 41864a57edf410243816639c1bae205d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8656374238250300667, guid: 41864a57edf410243816639c1bae205d,
         type: 3}

@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class PaintControl : MonoBehaviour
 {
-    public Texture2D texture;
+    public GameObject paintedImg;
+    public Texture pTexture;
     int paintedPixelCount = 0;
 
-    public void OnClickControl()
+    void Start()
     {
-        Color32[] pixels = texture.GetPixels32();
+        pTexture = paintedImg.GetComponent<MeshRenderer>().material.mainTexture;
+    }
+
+    public void Update()
+    {
+        Color32[] pixels = ((Texture2D)(pTexture)).GetPixels32();
 
         for (int i = 0; i < pixels.Length; i++)
         {
-            // Burada, bir pikselin boyanıp boyanmadığını belirlemek için bir eşik değer kullanıyorum.
-            // Bu eşik değeri, projenize bağlı olarak değiştirilebilir.
+    
             if (pixels[i].r > 220 )
             {
                 paintedPixelCount++;
