@@ -22,12 +22,12 @@ public class ObjectPointer : MonoBehaviour
 
         Vector3 pos = cam.WorldToScreenPoint(target.position + offset);
 
-        if(Vector3.Dot((target.position - transform.position), transform.forward) < 0)
+        if (Vector3.Dot((target.position - transform.position), transform.forward) < 0)
         {
-            if(pos.y < Screen.height / 2) pos.y = maxY;
+            if (pos.y < Screen.height / 2) pos.y = maxY;
             else pos.y = minY;
 
-            if(pos.x < Screen.height / 2) pos.x = maxX;
+            if (pos.x < Screen.height / 2) pos.x = maxX;
             else pos.x = minX;
         }
 
@@ -37,6 +37,6 @@ public class ObjectPointer : MonoBehaviour
         float angle = Mathf.Atan2(target.position.x - transform.position.x, target.position.z - transform.position.z) * Mathf.Rad2Deg;
 
         img.transform.position = pos;
-        img.transform.rotation = Quaternion.Euler(0,0,angle);
+        img.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 }
