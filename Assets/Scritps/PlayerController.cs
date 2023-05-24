@@ -2,15 +2,27 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem.EnhancedTouch;
 using ETouch = UnityEngine.InputSystem.EnhancedTouch;
+using DG.Tweening;
+
+
 public class PlayerController : MonoBehaviour
 {
-
+    public static PlayerController Instance;
     [SerializeField] private Vector2 JoystickSize = new Vector2(200, 200);
     public joyStick Joystick;
     public NavMeshAgent playerNavMeshAgent;
     private Finger MovementFinger;
     public Vector2 MovementAmount;
     public Animator playerAnimator;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
 
     void Start()
     {
@@ -121,15 +133,21 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetFloat("moveZ", MovementAmount.y);
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Water"))
         {
             playerAnimator.SetBool("IsSwim", true);
+            Debug.Log("Water");
+            gameObject.GetComponent<NavMeshAgent>().baseOffset = -22f;
+            gameObject.GetComponent<NavMeshAgent>().speed = 3.5f;
         }
-        else
+        if(other.CompareTag("Walk"))
         {
             playerAnimator.SetBool("IsSwim", false);
+            Debug.Log("NotWater");
+            gameObject.GetComponent<NavMeshAgent>().baseOffset = 0f;
+            gameObject.GetComponent<NavMeshAgent>().speed = 6f;
         }
     }
 }

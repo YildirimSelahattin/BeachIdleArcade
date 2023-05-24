@@ -8,7 +8,9 @@ TagManager:
   - NewSunbed
   - Water
   - LayingWomen
-  - Coin
+  - DrowningWoman
+  - Walk
+  - Emergency
   layers:
   - Default
   - TransparentFX
