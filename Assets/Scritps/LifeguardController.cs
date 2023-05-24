@@ -11,7 +11,7 @@ public class LifeguardController : MonoBehaviour
     void Start()
     {
         ObjectPointer.Instance.img.enabled = false;
-        StartCoroutine(RandomSpawnDrownedWoman(5));
+        StartCoroutine(RandomSpawnDrownedWoman(2));
     }
 
     Vector3 GetRandomPositionInSpawnArea()
@@ -37,6 +37,7 @@ public class LifeguardController : MonoBehaviour
         DrownedWoman = Instantiate(objectPrefab, randomPosition, Quaternion.Euler(new Vector3(-70,180,0)));
         ObjectPointer.Instance.img.enabled = true;
         ObjectPointer.Instance.target = DrownedWoman.transform;
-        StartCoroutine(RandomSpawnDrownedWoman(30));
+        //if(kurtarıldıysa coroutine girsin)
+        StartCoroutine(RandomSpawnDrownedWoman(200));
     }
 }
