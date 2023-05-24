@@ -9,7 +9,7 @@ public class CoinPickup : MonoBehaviour
 {
     public int scoreIncrement = 10; // Amount to increment the score
     public float moveDuration = 1f; // Duration of the movement animation
-    
+    public Ease ease;
     private int currentScore = 0; // Current score value
    
     
@@ -41,7 +41,7 @@ public class CoinPickup : MonoBehaviour
           
             // Animate and move the collected money
             
-            image.transform.DOMove(UIManager.Instance.totalMoneyText.transform.position, 5f);
+            image.transform.DOMove(UIManager.Instance.totalMoneyText.transform.position, moveDuration).SetEase(ease).OnComplete((() => Destroy(image.gameObject)));
             
             
             
