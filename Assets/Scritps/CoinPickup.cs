@@ -10,7 +10,7 @@ public class CoinPickup : MonoBehaviour
     public int scoreIncrement = 10; // Amount to increment the score
     public float moveDuration = 1f; // Duration of the movement animation
     public Ease ease;
-    private int currentScore = 0; // Current score value
+    
    
     
     private Vector3 targetPosition; // Target position for the money in UI space
@@ -30,10 +30,10 @@ public class CoinPickup : MonoBehaviour
         {
             
             // Increase the score
-            currentScore += scoreIncrement;
+            GameDataManager.Instance.TotalMoney += scoreIncrement;
 
             // Update the score display
-            UIManager.Instance.totalMoneyText.text = currentScore.ToString();
+            UIManager.Instance.totalMoneyText.text =  GameDataManager.Instance.TotalMoney.ToString();
 
             Image image = Instantiate(imagePrefab,Canvas.transform.position,quaternion.identity,Canvas.transform.parent);
             Destroy(other.gameObject);
