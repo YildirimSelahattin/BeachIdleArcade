@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class LifeguardController : MonoBehaviour
 {
+    public static LifeguardController Instance;
     public GameObject objectPrefab;
     public Transform spawnArea;
     public GameObject DrownedWoman;
 
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
+
     void Start()
     {
-        ObjectPointer.Instance.img.enabled = false;
-        StartCoroutine(RandomSpawnDrownedWoman(2));
+        Pointer.Instance.img.enabled = false;
+        Pointer.Instance.img.material.color = Color.red;
+        StartCoroutine(RandomSpawnDrownedWoman(10));
     }
 
     Vector3 GetRandomPositionInSpawnArea()
@@ -30,14 +41,12 @@ public class LifeguardController : MonoBehaviour
         return new Vector3(randomX, randomY, randomZ);
     }
 
-    IEnumerator RandomSpawnDrownedWoman(int spawnTime)
+    public IEnumerator RandomSpawnDrownedWoman(int spawnTime)
     {
         yield return new WaitForSeconds(spawnTime);
         Vector3 randomPosition = GetRandomPositionInSpawnArea();
-        DrownedWoman = Instantiate(objectPrefab, randomPosition, Quaternion.Euler(new Vector3(-70,180,0)));
-        ObjectPointer.Instance.img.enabled = true;
-        ObjectPointer.Instance.target = DrownedWoman.transform;
-        //if(kurtarıldıysa coroutine girsin)
-        StartCoroutine(RandomSpawnDrownedWoman(200));
+        DrownedWoman = Instantiate(objectPrefab, randomPosition, Quaternion.Euler(new Vector3(-70, 180, 0)));
+        Pointer.Instance.img.enabled = true;
+        Pointer.Instance.target = DrownedWoman.transform;
     }
 }

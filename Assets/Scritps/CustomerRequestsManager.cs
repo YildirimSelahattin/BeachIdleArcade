@@ -52,7 +52,7 @@ public class CustomerRequestsManager : MonoBehaviour
     public GameObject request;
     public static CustomerRequestsManager Instance;
 
-        void Awake()
+    void Awake()
     {
         if (Instance == null)
         {
@@ -61,14 +61,17 @@ public class CustomerRequestsManager : MonoBehaviour
         }
     }
 
-    private void Start() 
+    private void Start()
     {
         StartCoroutine(ResponseToRequests());
     }
 
     IEnumerator ResponseToRequests()
     {
-        yield return new WaitForSecondsRealtime(25f);
+        yield return new WaitForSecondsRealtime(40f);
+        Pointer.Instance.img.enabled = true;
+        Pointer.Instance.target = gameObject.transform;
         request.SetActive(true);
+        Pointer.Instance.img.material.color = Color.blue;
     }
 }

@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject carryParrent;
     public GameObject emergency;
     public bool isCarry = false;
+    public bool isSafe = false;
 
     void Update()
     {
@@ -30,6 +31,7 @@ public class PlayerManager : MonoBehaviour
                 inGameCam.SetActive(false);
                 creamCam.SetActive(true);
                 inGameCanvas.SetActive(false);
+                hit.collider.GetComponent<BoxCollider>().enabled = false;
 
                 StartCoroutine(Deeeeeeee());
             }
@@ -39,12 +41,12 @@ public class PlayerManager : MonoBehaviour
                 PlayerController.Instance.playerAnimator.SetLayerWeight(1, 1);
                 hit.collider.gameObject.GetComponent<Animator>().SetBool("isCarry", true);
                 isCarry = true;
-                ObjectPointer.Instance.target = emergency.transform;
-                ObjectPointer.Instance.offset = new Vector3(-8,4,9);
+                Pointer.Instance.target = emergency.transform;
                 hit.collider.gameObject.transform.parent = carryParrent.transform;
                 //Destroy(hit.collider.gameObject);
                 hit.collider.gameObject.transform.DOLocalMove(Vector3.zero, 0.2f);
                 hit.collider.gameObject.transform.DOLocalRotate(Vector3.zero, 0.2f);
+                Pointer.Instance.img.material.color = Color.green;
             }
 
             if(hit.collider.CompareTag("Emergency"))
@@ -54,9 +56,10 @@ public class PlayerManager : MonoBehaviour
                     Destroy(gameObject.transform.GetChild(2).transform.GetChild(0).gameObject);
                     PlayerController.Instance.playerAnimator.SetLayerWeight(1, 0);
                     isCarry = false;
-                    ObjectPointer.Instance.img.enabled = false;
-                     ObjectPointer.Instance.offset = new Vector3(0,4,0);
-
+                    Pointer.Instance.img.enabled = false;
+                    Pointer.Instance.img.material.color = Color.red;
+                    LifeguardController.Instance.StartCoroutine(LifeguardController.Instance.RandomSpawnDrownedWoman(60));
+                    CoinPickup.Instance.StartCoroutine(CoinPickup.Instance.UIMoneySpawner());
                 }
             }
         }
@@ -67,6 +70,7 @@ public class PlayerManager : MonoBehaviour
         creamCam.SetActive(false);
         inGameCanvas.SetActive(true);
         creamingCamvas.SetActive(false);
+        CoinPickup.Instance.StartCoroutine(CoinPickup.Instance.UIMoneySpawner());
     }
 
     IEnumerator Deeeeeeee()

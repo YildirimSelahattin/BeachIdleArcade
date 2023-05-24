@@ -19,6 +19,6 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        totalMoneyText.text = GameDataManager.Instance.TotalMoney.ToString() + " $";
+        totalMoneyText.text = GameDataManager.Instance.TotalMoney.ToString();
     }
 }
