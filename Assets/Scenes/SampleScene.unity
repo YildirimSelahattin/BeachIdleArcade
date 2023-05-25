@@ -952,7 +952,6 @@ GameObject:
   - component: {fileID: 262606264}
   - component: {fileID: 262606263}
   - component: {fileID: 262606262}
-  - component: {fileID: 262606261}
   - component: {fileID: 262606260}
   m_Layer: 0
   m_Name: POINTER
@@ -975,20 +974,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 382297668}
   img: {fileID: 0}
---- !u!64 &262606261
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262606259}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &262606262
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12835,6 +12820,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422003226502200050, guid: 41864a57edf410243816639c1bae205d,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422003226502200050, guid: 41864a57edf410243816639c1bae205d,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
         type: 3}
