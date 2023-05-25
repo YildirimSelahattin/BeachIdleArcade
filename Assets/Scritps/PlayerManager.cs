@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject emergency;
     public bool isCarry = false;
     public bool isSafe = false;
+    public ParticleSystem heartParticle;
 
     void Update()
     {
@@ -54,6 +55,7 @@ public class PlayerManager : MonoBehaviour
                 if(isCarry == true)
                 {
                     Destroy(gameObject.transform.GetChild(2).transform.GetChild(0).gameObject);
+                    heartParticle.Play();
                     PlayerController.Instance.playerAnimator.SetLayerWeight(1, 0);
                     isCarry = false;
                     Pointer.Instance.img.enabled = false;

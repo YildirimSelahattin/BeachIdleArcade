@@ -121,12 +121,12 @@ public class UnlockSunbed : MonoBehaviour
 
             if (itemID < 100)
             {
-                
+
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
                     , Quaternion.Euler(-90f, 0f, 0f));
 
-                desk.transform.DOScale(10.5f, 10f).SetEase(Ease.OutElastic);
-                desk.transform.DOScale(10f, 10f).SetDelay(1.1f).SetEase(Ease.OutElastic);
+                desk.transform.localScale = Vector3.zero;
+                desk.transform.DOScale(10.5f, 1f).SetEase(Ease.OutElastic);
             }
             else
             {
@@ -134,7 +134,6 @@ public class UnlockSunbed : MonoBehaviour
                     , Quaternion.Euler(0f, 0f, 0f));
 
                 desk.transform.DOScale(1.08f, 1f).SetEase(Ease.OutElastic);
-                desk.transform.DOScale(1f, 1f).SetDelay(1.1f).SetEase(Ease.OutElastic);
             }
 
 
