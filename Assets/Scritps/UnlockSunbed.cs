@@ -17,6 +17,8 @@ public class UnlockSunbed : MonoBehaviour
     public GameObject dollarPrefab;
     public GameObject player;
     private IEnumerator CoinMaker;
+    public float timeRemaining = 2;
+    public bool willBuy;
 
     void Start()
     {
@@ -44,13 +46,31 @@ public class UnlockSunbed : MonoBehaviour
         }
     }
 
+    
+    void Update()
+    {
+        if (timeRemaining > 0 && willBuy == true)
+        {
+            timeRemaining -= Time.deltaTime;
+            willBuy = true;
+        }
+        else
+        {
+            willBuy = false;
+        }
+        Debug.Log("Time:" + timeRemaining);
+        Debug.Log("Booool" + willBuy);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         GameManager.Instance.InstantateMoney((int)sunbedRemainPrice);
 
-        if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0)
+        if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0 && willBuy == false)
         {
-            StartCoroutine(CoinMaker);
+            willBuy = true;
+            if(timeRemaining < 0.1f)
+                StartCoroutine(CoinMaker);
         }
         else
         {
@@ -58,11 +78,23 @@ public class UnlockSunbed : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0 && willBuy == false)
+        {
+            willBuy = true;
+            if(timeRemaining < 0.1f)
+                StartCoroutine(CoinMaker);
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            willBuy = false;
             StopCoroutine(CoinMaker);
+            timeRemaining = 2;
         }
     }
 
