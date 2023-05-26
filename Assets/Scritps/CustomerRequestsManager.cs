@@ -63,12 +63,13 @@ public class CustomerRequestsManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(ResponseToRequests());
+        StartCoroutine(ResponseToRequests(40));
     }
 
-    IEnumerator ResponseToRequests()
+    IEnumerator ResponseToRequests(int time)
     {
-        yield return new WaitForSecondsRealtime(40f);
+        yield return new WaitForSecondsRealtime(time);
+        gameObject.transform.GetChild(2).GetComponent<BoxCollider>().enabled = true;
         Pointer.Instance.img.enabled = true;
         Pointer.Instance.target = gameObject.transform;
         request.SetActive(true);

@@ -6,15 +6,27 @@ using UnityEngine.AI;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager Instance;
     public GameObject inGameCam;
     public GameObject creamCam;
+    public GameObject paintManager;
+    public GameObject paintedTexture;
     public GameObject inGameCanvas;
-    public GameObject creamingCamvas;
+    public GameObject creamingDoneButton;
     public GameObject carryParrent;
     public GameObject emergency;
     public bool isCarry = false;
     public bool isSafe = false;
     public ParticleSystem heartParticle;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
 
     void Update()
     {
@@ -22,19 +34,10 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.DrawRay(transform.position, transform.forward * 1f, Color.green);
 
-            if (hit.collider.CompareTag("Sunbed"))
-            {
-                Debug.Log("Sunbed");
-            }
-
             if (hit.collider.CompareTag("LayingWomen"))
             {
-                inGameCam.SetActive(false);
-                creamCam.SetActive(true);
-                inGameCanvas.SetActive(false);
                 hit.collider.GetComponent<BoxCollider>().enabled = false;
-
-                StartCoroutine(Deeeeeeee());
+                CreamSceneOpen();
             }
 
             if (hit.collider.CompareTag("DrowningWoman"))
@@ -50,9 +53,9 @@ public class PlayerManager : MonoBehaviour
                 Pointer.Instance.img.material.color = Color.green;
             }
 
-            if(hit.collider.CompareTag("Emergency"))
+            if (hit.collider.CompareTag("Emergency"))
             {
-                if(isCarry == true)
+                if (isCarry == true)
                 {
                     Destroy(gameObject.transform.GetChild(2).transform.GetChild(0).gameObject);
                     heartParticle.Play();
@@ -68,18 +71,28 @@ public class PlayerManager : MonoBehaviour
     }
     public void OnClickDoneCream()
     {
-        inGameCam.SetActive(true);
-        creamCam.SetActive(false);
-        inGameCanvas.SetActive(true);
-        creamingCamvas.SetActive(false);
+        CreamSceneClose();
         CoinPickup.Instance.StartCoroutine(CoinPickup.Instance.UIMoneySpawner());
     }
 
-    IEnumerator Deeeeeeee()
+    public void CreamSceneOpen()
     {
-        yield return new WaitForSecondsRealtime(10);
-        creamingCamvas.SetActive(true);
-        CustomerRequestsManager.Instance.request.SetActive(false);
+        inGameCam.SetActive(false);
+        creamCam.SetActive(true);
+        inGameCanvas.SetActive(false);
+        gameObject.GetComponent<PlayerController>().enabled = false;
+        paintManager.SetActive(true);
+        (paintedTexture.GetComponent<Paintable>() as MonoBehaviour).enabled = true;
     }
 
+    public void CreamSceneClose()
+    {
+        inGameCam.SetActive(true);
+        creamCam.SetActive(false);
+        inGameCanvas.SetActive(true);
+        creamingDoneButton.SetActive(false);
+        paintManager.SetActive(false);
+        gameObject.GetComponent<PlayerController>().enabled = true;
+        (paintedTexture.GetComponent<Paintable>() as MonoBehaviour).enabled = false;
+    }
 }

@@ -74,6 +74,8 @@ MonoBehaviour:
   dollarPrefab: {fileID: 2549810110833014764, guid: b96c627dc85b719408dd7fce2d3faa6e,
     type: 3}
   player: {fileID: 0}
+  timeRemaining: 2
+  willBuy: 0
 --- !u!1 &3937997218406809722
 GameObject:
   m_ObjectHideFlags: 0
