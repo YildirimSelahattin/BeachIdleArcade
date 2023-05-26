@@ -22,11 +22,6 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.DrawRay(transform.position, transform.forward * 1f, Color.green);
 
-            if (hit.collider.CompareTag("Sunbed"))
-            {
-                Debug.Log("Sunbed");
-            }
-
             if (hit.collider.CompareTag("LayingWomen"))
             {
                 inGameCam.SetActive(false);

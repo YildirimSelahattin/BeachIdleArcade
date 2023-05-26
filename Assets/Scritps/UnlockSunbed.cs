@@ -46,45 +46,17 @@ public class UnlockSunbed : MonoBehaviour
         }
     }
 
-    
-    void Update()
-    {
-        if (timeRemaining > 0 && willBuy == true)
-        {
-            timeRemaining -= Time.deltaTime;
-            willBuy = true;
-        }
-        else
-        {
-            willBuy = false;
-        }
-        Debug.Log("Time:" + timeRemaining);
-        Debug.Log("Booool" + willBuy);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         GameManager.Instance.InstantateMoney((int)sunbedRemainPrice);
 
         if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0 && willBuy == false)
         {
-            willBuy = true;
-            if(timeRemaining < 0.1f)
-                StartCoroutine(CoinMaker);
+            StartCoroutine(CoinMaker);
         }
         else
         {
             StopCoroutine(CoinMaker);
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0 && willBuy == false)
-        {
-            willBuy = true;
-            if(timeRemaining < 0.1f)
-                StartCoroutine(CoinMaker);
         }
     }
 
@@ -92,17 +64,13 @@ public class UnlockSunbed : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            willBuy = false;
             StopCoroutine(CoinMaker);
-            timeRemaining = 2;
         }
     }
 
     IEnumerator CountCoins(Transform player)
     {
-        timeRemaining = 2;
-        willBuy = false;
-        
+        yield return new WaitForSeconds(1f);
         float tempSunbedPrice = sunbedRemainPrice;
         for (int counter = 0; counter <= (int)tempSunbedPrice; counter++)
         {
@@ -161,14 +129,14 @@ public class UnlockSunbed : MonoBehaviour
                     , Quaternion.Euler(-90f, 0f, 0f));
 
                 desk.transform.localScale = Vector3.zero;
-                desk.transform.DOScale(10.5f, 1f).SetEase(Ease.OutElastic);
+                desk.transform.DOScale(10f, 1f).SetEase(Ease.OutElastic);
             }
             else
             {
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.4f, -8.8f, transform.position.z + 0.8f)
                     , Quaternion.Euler(0f, 0f, 0f));
-
-                desk.transform.DOScale(1.08f, 1f).SetEase(Ease.OutElastic);
+                desk.transform.DOScale(0.5f, 0.01f);
+                desk.transform.DOScale(1f, 1f).SetEase(Ease.OutElastic);
             }
 
 
