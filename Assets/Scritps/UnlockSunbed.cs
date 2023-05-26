@@ -17,6 +17,8 @@ public class UnlockSunbed : MonoBehaviour
     public GameObject dollarPrefab;
     public GameObject player;
     private IEnumerator CoinMaker;
+    public float timeRemaining = 2;
+    public bool willBuy;
 
     void Start()
     {
@@ -44,13 +46,31 @@ public class UnlockSunbed : MonoBehaviour
         }
     }
 
+    
+    void Update()
+    {
+        if (timeRemaining > 0 && willBuy == true)
+        {
+            timeRemaining -= Time.deltaTime;
+            willBuy = true;
+        }
+        else
+        {
+            willBuy = false;
+        }
+        Debug.Log("Time:" + timeRemaining);
+        Debug.Log("Booool" + willBuy);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         GameManager.Instance.InstantateMoney((int)sunbedRemainPrice);
 
-        if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0)
+        if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0 && willBuy == false)
         {
-            StartCoroutine(CoinMaker);
+            willBuy = true;
+            if(timeRemaining < 0.1f)
+                StartCoroutine(CoinMaker);
         }
         else
         {
@@ -58,16 +78,31 @@ public class UnlockSunbed : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0 && willBuy == false)
+        {
+            willBuy = true;
+            if(timeRemaining < 0.1f)
+                StartCoroutine(CoinMaker);
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            willBuy = false;
             StopCoroutine(CoinMaker);
+            timeRemaining = 2;
         }
     }
 
     IEnumerator CountCoins(Transform player)
     {
+        timeRemaining = 2;
+        willBuy = false;
+        
         float tempSunbedPrice = sunbedRemainPrice;
         for (int counter = 0; counter <= (int)tempSunbedPrice; counter++)
         {
@@ -121,12 +156,12 @@ public class UnlockSunbed : MonoBehaviour
 
             if (itemID < 100)
             {
-                
+
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
                     , Quaternion.Euler(-90f, 0f, 0f));
 
-                desk.transform.DOScale(10.5f, 10f).SetEase(Ease.OutElastic);
-                desk.transform.DOScale(10f, 10f).SetDelay(1.1f).SetEase(Ease.OutElastic);
+                desk.transform.localScale = Vector3.zero;
+                desk.transform.DOScale(10.5f, 1f).SetEase(Ease.OutElastic);
             }
             else
             {
@@ -134,7 +169,6 @@ public class UnlockSunbed : MonoBehaviour
                     , Quaternion.Euler(0f, 0f, 0f));
 
                 desk.transform.DOScale(1.08f, 1f).SetEase(Ease.OutElastic);
-                desk.transform.DOScale(1f, 1f).SetDelay(1.1f).SetEase(Ease.OutElastic);
             }
 
 
