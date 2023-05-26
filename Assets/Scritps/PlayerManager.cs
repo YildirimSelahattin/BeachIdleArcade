@@ -6,18 +6,27 @@ using UnityEngine.AI;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager Instance;
     public GameObject inGameCam;
     public GameObject creamCam;
     public GameObject paintManager;
     public GameObject paintedTexture;
     public GameObject inGameCanvas;
-    public GameObject creamingCamvas;
+    public GameObject creamingDoneButton;
     public GameObject carryParrent;
     public GameObject emergency;
     public bool isCarry = false;
     public bool isSafe = false;
     public ParticleSystem heartParticle;
 
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
 
     void Update()
     {
@@ -29,7 +38,6 @@ public class PlayerManager : MonoBehaviour
             {
                 hit.collider.GetComponent<BoxCollider>().enabled = false;
                 CreamSceneOpen();
-                StartCoroutine(Deeeeeeee());
             }
 
             if (hit.collider.CompareTag("DrowningWoman"))
@@ -67,13 +75,6 @@ public class PlayerManager : MonoBehaviour
         CoinPickup.Instance.StartCoroutine(CoinPickup.Instance.UIMoneySpawner());
     }
 
-    IEnumerator Deeeeeeee()
-    {
-        yield return new WaitForSecondsRealtime(10);
-        creamingCamvas.SetActive(true);
-        CustomerRequestsManager.Instance.request.SetActive(false);
-    }
-
     public void CreamSceneOpen()
     {
         inGameCam.SetActive(false);
@@ -89,7 +90,7 @@ public class PlayerManager : MonoBehaviour
         inGameCam.SetActive(true);
         creamCam.SetActive(false);
         inGameCanvas.SetActive(true);
-        creamingCamvas.SetActive(false);
+        creamingDoneButton.SetActive(false);
         paintManager.SetActive(false);
         gameObject.GetComponent<PlayerController>().enabled = true;
         (paintedTexture.GetComponent<Paintable>() as MonoBehaviour).enabled = false;
