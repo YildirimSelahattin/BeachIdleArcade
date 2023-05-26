@@ -36,7 +36,7 @@ public class UnlockSunbed : MonoBehaviour
             }
             else
             {
-                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.4f, -8.8f, transform.position.z + 0.8f)
+                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.7f, -8.8f, transform.position.z + 0.88f)
                     , Quaternion.Euler(0f, 0f, 0f));
             }
 
@@ -133,7 +133,7 @@ public class UnlockSunbed : MonoBehaviour
             }
             else
             {
-                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.4f, -8.8f, transform.position.z + 0.8f)
+                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.7f, -8.8f, transform.position.z + 0.88f)
                     , Quaternion.Euler(0f, 0f, 0f));
                 desk.transform.DOScale(0.5f, 0.01f);
                 desk.transform.DOScale(1f, 1f).SetEase(Ease.OutElastic);
