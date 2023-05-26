@@ -100,6 +100,9 @@ public class UnlockSunbed : MonoBehaviour
 
     IEnumerator CountCoins(Transform player)
     {
+        timeRemaining = 2;
+        willBuy = false;
+        
         float tempSunbedPrice = sunbedRemainPrice;
         for (int counter = 0; counter <= (int)tempSunbedPrice; counter++)
         {
