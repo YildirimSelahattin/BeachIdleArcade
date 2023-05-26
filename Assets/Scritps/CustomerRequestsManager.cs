@@ -68,7 +68,8 @@ public class CustomerRequestsManager : MonoBehaviour
 
     IEnumerator ResponseToRequests()
     {
-        yield return new WaitForSecondsRealtime(40f);
+        gameObject.GetComponent<BoxCollider>().enabled = true;
+        yield return new WaitForSecondsRealtime(4f);
         Pointer.Instance.img.enabled = true;
         Pointer.Instance.target = gameObject.transform;
         request.SetActive(true);

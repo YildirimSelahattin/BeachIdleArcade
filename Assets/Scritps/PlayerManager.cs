@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviour
 {
     public GameObject inGameCam;
     public GameObject creamCam;
+    public GameObject paintManager;
+    public GameObject paintedTexture;
     public GameObject inGameCanvas;
     public GameObject creamingCamvas;
     public GameObject carryParrent;
@@ -15,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     public bool isCarry = false;
     public bool isSafe = false;
     public ParticleSystem heartParticle;
+
 
     void Update()
     {
@@ -24,11 +27,8 @@ public class PlayerManager : MonoBehaviour
 
             if (hit.collider.CompareTag("LayingWomen"))
             {
-                inGameCam.SetActive(false);
-                creamCam.SetActive(true);
-                inGameCanvas.SetActive(false);
                 hit.collider.GetComponent<BoxCollider>().enabled = false;
-
+                CreamSceneOpen();
                 StartCoroutine(Deeeeeeee());
             }
 
@@ -45,9 +45,9 @@ public class PlayerManager : MonoBehaviour
                 Pointer.Instance.img.material.color = Color.green;
             }
 
-            if(hit.collider.CompareTag("Emergency"))
+            if (hit.collider.CompareTag("Emergency"))
             {
-                if(isCarry == true)
+                if (isCarry == true)
                 {
                     Destroy(gameObject.transform.GetChild(2).transform.GetChild(0).gameObject);
                     heartParticle.Play();
@@ -63,10 +63,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void OnClickDoneCream()
     {
-        inGameCam.SetActive(true);
-        creamCam.SetActive(false);
-        inGameCanvas.SetActive(true);
-        creamingCamvas.SetActive(false);
+        CreamSceneClose();
         CoinPickup.Instance.StartCoroutine(CoinPickup.Instance.UIMoneySpawner());
     }
 
@@ -77,4 +74,24 @@ public class PlayerManager : MonoBehaviour
         CustomerRequestsManager.Instance.request.SetActive(false);
     }
 
+    public void CreamSceneOpen()
+    {
+        inGameCam.SetActive(false);
+        creamCam.SetActive(true);
+        inGameCanvas.SetActive(false);
+        gameObject.GetComponent<PlayerController>().enabled = false;
+        paintManager.SetActive(true);
+        (paintedTexture.GetComponent<Paintable>() as MonoBehaviour).enabled = true;
+    }
+
+    public void CreamSceneClose()
+    {
+        inGameCam.SetActive(true);
+        creamCam.SetActive(false);
+        inGameCanvas.SetActive(true);
+        creamingCamvas.SetActive(false);
+        paintManager.SetActive(false);
+        gameObject.GetComponent<PlayerController>().enabled = true;
+        (paintedTexture.GetComponent<Paintable>() as MonoBehaviour).enabled = false;
+    }
 }
