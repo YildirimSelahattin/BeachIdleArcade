@@ -109,6 +109,7 @@ public class UnlockSunbed : MonoBehaviour
 
     private void SellTheLand()
     {
+        
         if (GameDataManager.Instance.TotalMoney >= sunbedRemainPrice)
         {
             GameDataManager.Instance.TotalMoney--;
@@ -130,6 +131,7 @@ public class UnlockSunbed : MonoBehaviour
 
         if (sunbedRemainPrice == 0)
         {
+            CancelInvoke("TimeCounter");
             isUnlocked = 1;
             PlayerPrefs.SetInt("isUnlocked" + itemID, isUnlocked);
 
@@ -172,7 +174,6 @@ public class UnlockSunbed : MonoBehaviour
         {
             gameObject.transform.GetChild(4).gameObject.SetActive(false);
             StartCoroutine(CoinMaker);
-            CancelInvoke("timeFillAmount");
         }
 
     }
