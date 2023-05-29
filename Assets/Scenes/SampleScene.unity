@@ -17662,6 +17662,11 @@ PrefabInstance:
       propertyPath: creamingDoneButton
       value: 
       objectReference: {fileID: 1151610684}
+    - target: {fileID: 8422003226502200053, guid: 41864a57edf410243816639c1bae205d,
+        type: 3}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8656374238250300666, guid: 41864a57edf410243816639c1bae205d,
         type: 3}
       propertyPath: m_Name
