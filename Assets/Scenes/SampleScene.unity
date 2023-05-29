@@ -4244,6 +4244,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2114830319}
     m_Modifications:
+    - target: {fileID: 796347005, guid: e494bdeac58b84047a0550b0dc733c54, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1022533310, guid: e494bdeac58b84047a0550b0dc733c54, type: 3}
       propertyPath: itemID
       value: 2
@@ -4639,6 +4643,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 836074601}
     m_Modifications:
+    - target: {fileID: 796347005, guid: e494bdeac58b84047a0550b0dc733c54, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1022533310, guid: e494bdeac58b84047a0550b0dc733c54, type: 3}
       propertyPath: itemID
       value: 3
@@ -5239,6 +5247,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2114830319}
     m_Modifications:
+    - target: {fileID: 420041944479439659, guid: c0fdb559642aa90419196572315cf022,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8813543594624949250, guid: c0fdb559642aa90419196572315cf022,
         type: 3}
       propertyPath: player
@@ -8749,6 +8762,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2114830319}
     m_Modifications:
+    - target: {fileID: 796347005, guid: e494bdeac58b84047a0550b0dc733c54, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1022533310, guid: e494bdeac58b84047a0550b0dc733c54, type: 3}
       propertyPath: itemID
       value: 1
@@ -16782,6 +16799,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2114830319}
     m_Modifications:
+    - target: {fileID: 420041944479439659, guid: c0fdb559642aa90419196572315cf022,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8813543594624949250, guid: c0fdb559642aa90419196572315cf022,
         type: 3}
       propertyPath: itemID
