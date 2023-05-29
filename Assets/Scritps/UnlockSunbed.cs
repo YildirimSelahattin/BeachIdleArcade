@@ -17,17 +17,18 @@ public class UnlockSunbed : MonoBehaviour
     public GameObject dollarPrefab;
     public GameObject player;
     private IEnumerator CoinMaker;
+    private IEnumerator Timer;
     public bool willBuy;
     float tempSunbedPrice;
-
+    public float timeFillAmount;
 
     void Start()
     {
-        timerIsRunning = true;
         dollarAmount.text = sunbedPrice.ToString();
         sunbedRemainPrice = sunbedPrice;
         isUnlocked = PlayerPrefs.GetInt("isUnlocked" + itemID, 0);
         CoinMaker = CountCoins(GameManager.Instance.transform);
+        Timer = TimeCounter(20);
 
         if (isUnlocked == 1)
         {
@@ -48,37 +49,18 @@ public class UnlockSunbed : MonoBehaviour
         }
     }
 
-    public float timeRemaining = 10;
-    public bool timerIsRunning = false;
-
-    void Update()
-    {
-        if (timerIsRunning)
-        {
-            if (timeRemaining > 0)
-            {
-                timeRemaining -= Time.deltaTime;
-            }
-            else
-            {
-                Debug.Log("Time has run out!");
-                timeRemaining = 0;
-                timerIsRunning = false;
-            }
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         GameManager.Instance.InstantateMoney((int)sunbedRemainPrice);
 
         if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0 && willBuy == false)
         {
-            StartCoroutine(CoinMaker);
+            StartCoroutine(Timer);
         }
         else
         {
             StopCoroutine(CoinMaker);
+            //StopCoroutine(Timer);
         }
     }
 
@@ -87,17 +69,18 @@ public class UnlockSunbed : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             StopCoroutine(CoinMaker);
+            //StopCoroutine(Timer);
+            //timeFillAmount = 0;
         }
     }
 
     IEnumerator CountCoins(Transform player)
     {
-        Debug.Log("1");
-        yield return new WaitForSeconds(1f);
+        timeFillAmount = 0;
+
         tempSunbedPrice = sunbedRemainPrice;
         for (int counter = 0; counter <= (int)tempSunbedPrice; counter++)
         {
-            Debug.Log("2");
             var newCoin = GameManager.Instance.MoneyList[counter];
 
             if (GameDataManager.Instance.TotalMoney > 0 && sunbedRemainPrice > 0)
@@ -114,11 +97,9 @@ public class UnlockSunbed : MonoBehaviour
             }
             else
             {
-                Debug.Log("3");
                 counter = 0;
             }
             yield return new WaitForSecondsRealtime(0.1f);
-            Debug.Log("4");
         }
         GameManager.Instance.MoneyList.Clear();
         Debug.Log("5");
@@ -177,6 +158,25 @@ public class UnlockSunbed : MonoBehaviour
     private float CalculateFill()
     {
         return (360 * sunbedRemainPrice) / sunbedPrice;
+    }
+    
+    IEnumerator TimeCounter(int cooldown)
+    {
+        gameObject.transform.GetChild(4).gameObject.SetActive(true);
+        for (int counter = 1; counter <= cooldown; counter++)
+        {
+            timeFillAmount += 360/cooldown;
+            gameObject.transform.GetChild(4).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc1", timeFillAmount);
+            yield return new WaitForSecondsRealtime(0.05f);
+
+            if(counter == cooldown)
+            {
+                gameObject.transform.GetChild(4).gameObject.SetActive(false);
+                cooldown = 20;
+                StartCoroutine(CoinMaker);
+                break;
+            }
+        }
     }
 }
 
