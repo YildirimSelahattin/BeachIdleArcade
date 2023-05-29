@@ -5135,7 +5135,7 @@ GameObject:
   - component: {fileID: 870135728}
   - component: {fileID: 870135732}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: DrownSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17677,6 +17677,11 @@ PrefabInstance:
       propertyPath: foam
       value: 
       objectReference: {fileID: 1016682174}
+    - target: {fileID: 8656374238250300667, guid: 41864a57edf410243816639c1bae205d,
+        type: 3}
+      propertyPath: navMesh
+      value: 
+      objectReference: {fileID: 1131388171}
     - target: {fileID: 8656374238250300667, guid: 41864a57edf410243816639c1bae205d,
         type: 3}
       propertyPath: Joystick

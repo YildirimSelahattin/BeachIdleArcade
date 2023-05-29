@@ -41,10 +41,8 @@ public class UnlockSunbed : MonoBehaviour
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.7f, -8.8f, transform.position.z + 0.88f)
                     , Quaternion.Euler(0f, 0f, 0f));
             }
-
+            buildNavMesh.BuildNavMesh();
             gameObject.SetActive(false);
-
-            //buildNavMesh.BuildNavMesh();
         }
     }
 
@@ -152,7 +150,7 @@ public class UnlockSunbed : MonoBehaviour
                 desk.transform.DOScale(1f, 1f).SetEase(Ease.OutElastic);
             }
 
-            //buildNavMesh.BuildNavMesh();
+            buildNavMesh.BuildNavMesh();
             GameDataManager.Instance.SaveData();
             gameObject.SetActive(false);
         }
