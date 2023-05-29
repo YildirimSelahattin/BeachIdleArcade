@@ -17,11 +17,13 @@ public class UnlockSunbed : MonoBehaviour
     public GameObject dollarPrefab;
     public GameObject player;
     private IEnumerator CoinMaker;
-    public float timeRemaining = 2;
     public bool willBuy;
+    float tempSunbedPrice;
+
 
     void Start()
     {
+        timerIsRunning = true;
         dollarAmount.text = sunbedPrice.ToString();
         sunbedRemainPrice = sunbedPrice;
         isUnlocked = PlayerPrefs.GetInt("isUnlocked" + itemID, 0);
@@ -42,7 +44,27 @@ public class UnlockSunbed : MonoBehaviour
 
             gameObject.SetActive(false);
 
-            buildNavMesh.BuildNavMesh();
+            //buildNavMesh.BuildNavMesh();
+        }
+    }
+
+    public float timeRemaining = 10;
+    public bool timerIsRunning = false;
+
+    void Update()
+    {
+        if (timerIsRunning)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+            }
+            else
+            {
+                Debug.Log("Time has run out!");
+                timeRemaining = 0;
+                timerIsRunning = false;
+            }
         }
     }
 
@@ -70,10 +92,12 @@ public class UnlockSunbed : MonoBehaviour
 
     IEnumerator CountCoins(Transform player)
     {
+        Debug.Log("1");
         yield return new WaitForSeconds(1f);
-        float tempSunbedPrice = sunbedRemainPrice;
+        tempSunbedPrice = sunbedRemainPrice;
         for (int counter = 0; counter <= (int)tempSunbedPrice; counter++)
         {
+            Debug.Log("2");
             var newCoin = GameManager.Instance.MoneyList[counter];
 
             if (GameDataManager.Instance.TotalMoney > 0 && sunbedRemainPrice > 0)
@@ -85,15 +109,19 @@ public class UnlockSunbed : MonoBehaviour
                     if (newCoin != null)
                         newCoin.transform.localPosition = Vector3.zero;
                 });
+
                 SellTheLand();
             }
             else
             {
+                Debug.Log("3");
                 counter = 0;
             }
             yield return new WaitForSecondsRealtime(0.1f);
+            Debug.Log("4");
         }
         GameManager.Instance.MoneyList.Clear();
+        Debug.Log("5");
     }
 
     private void SellTheLand()
@@ -139,10 +167,9 @@ public class UnlockSunbed : MonoBehaviour
                 desk.transform.DOScale(1f, 1f).SetEase(Ease.OutElastic);
             }
 
-
+            //buildNavMesh.BuildNavMesh();
+            GameDataManager.Instance.SaveData();
             gameObject.SetActive(false);
-
-            buildNavMesh.BuildNavMesh();
         }
         GameDataManager.Instance.SaveData();
     }

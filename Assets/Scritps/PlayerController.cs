@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Finger MovementFinger;
     public Vector2 MovementAmount;
     public Animator playerAnimator;
+    public GameObject foam;
 
     void Awake()
     {
@@ -137,6 +138,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Water"))
         {
+            foam.SetActive(true);
             playerAnimator.SetBool("IsSwim", true);
             Debug.Log("Water");
             gameObject.GetComponent<NavMeshAgent>().baseOffset = -22f;
@@ -144,6 +146,7 @@ public class PlayerController : MonoBehaviour
         }
         if(other.CompareTag("Walk"))
         {
+            foam.SetActive(false);
             playerAnimator.SetBool("IsSwim", false);
             Debug.Log("NotWater");
             gameObject.GetComponent<NavMeshAgent>().baseOffset = 0f;
