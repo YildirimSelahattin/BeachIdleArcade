@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     public bool isCarry = false;
     public bool isSafe = false;
     public ParticleSystem heartParticle;
+    NavMeshAgent playerNavMesh;
 
     void Awake()
     {
@@ -31,6 +32,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         paintManager.SetActive(false);
+        playerNavMesh = gameObject.GetComponent<NavMeshAgent>();
     }
 
     void Update()
@@ -85,20 +87,21 @@ public class PlayerManager : MonoBehaviour
         inGameCam.SetActive(false);
         creamCam.SetActive(true);
         inGameCanvas.SetActive(false);
-        gameObject.GetComponent<PlayerController>().MovementAmount = Vector2.zero;
-        gameObject.GetComponent<PlayerController>().enabled = false;
+        playerNavMesh.speed = 0;
+        //gameObject.GetComponent<PlayerController>().enabled = false;
         paintManager.SetActive(true);
         (paintedTexture.GetComponent<Paintable>() as MonoBehaviour).enabled = true;
     }
 
     public void CreamSceneClose()
     {
+        playerNavMesh.speed = 5.5f;
         inGameCam.SetActive(true);
         creamCam.SetActive(false);
         inGameCanvas.SetActive(true);
         creamingDoneButton.SetActive(false);
         paintManager.SetActive(false);
-        gameObject.GetComponent<PlayerController>().enabled = true;
+        //gameObject.GetComponent<PlayerController>().enabled = true;
         (paintedTexture.GetComponent<Paintable>() as MonoBehaviour).enabled = false;
     }
 }

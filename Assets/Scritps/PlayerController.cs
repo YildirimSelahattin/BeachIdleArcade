@@ -25,13 +25,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        playerNavMeshAgent = GetComponent<NavMeshAgent>();
-        playerAnimator = GetComponent<Animator>();
-    }
-
-
     private void OnEnable()
     {
         EnhancedTouchSupport.Enable();
