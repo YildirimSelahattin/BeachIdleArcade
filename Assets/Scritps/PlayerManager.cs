@@ -28,6 +28,11 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        paintManager.SetActive(false);
+    }
+
     void Update()
     {
         if (Physics.Raycast(transform.position, transform.forward, out var hit, 1f))
@@ -80,6 +85,7 @@ public class PlayerManager : MonoBehaviour
         inGameCam.SetActive(false);
         creamCam.SetActive(true);
         inGameCanvas.SetActive(false);
+        gameObject.GetComponent<PlayerController>().MovementAmount = Vector2.zero;
         gameObject.GetComponent<PlayerController>().enabled = false;
         paintManager.SetActive(true);
         (paintedTexture.GetComponent<Paintable>() as MonoBehaviour).enabled = true;

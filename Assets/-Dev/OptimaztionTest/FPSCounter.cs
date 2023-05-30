@@ -4,32 +4,36 @@ using UnityEngine;
 
 public class FPSCounter : MonoBehaviour
 {
-	string label = "";
-	float count;
-	private GUIStyle guiStyle = new GUIStyle();
+    string label = "";
+    float count;
+    private GUIStyle guiStyle = new GUIStyle();
 
-	IEnumerator Start()
-	{
-		GUI.depth = 50;
-		while (true)
-		{
-			if (Time.timeScale == 1)
-			{
-				yield return new WaitForSeconds(0.1f);
-				count = (1 / Time.deltaTime);
-				label = "FPS :" + (Mathf.Round(count));
-			}
-			else
-			{
-				label = "Pause";
-			}
-			yield return new WaitForSeconds(0.5f);
-		}
-	}
+    IEnumerator Start()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 30;
 
-	void OnGUI()
-	{
-		guiStyle.fontSize = 50;
-		GUI.Label(new Rect(30, 500, 400, 200), label, guiStyle);
-	}
+        GUI.depth = 50;
+        while (true)
+        {
+            if (Time.timeScale == 1)
+            {
+                yield return new WaitForSeconds(0.1f);
+                count = (1 / Time.deltaTime);
+                label = "FPS :" + (Mathf.Round(count));
+            }
+            else
+            {
+                label = "Pause";
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
+
+    }
+
+    void OnGUI()
+    {
+        guiStyle.fontSize = 50;
+        GUI.Label(new Rect(30, 500, 400, 200), label, guiStyle);
+    }
 }

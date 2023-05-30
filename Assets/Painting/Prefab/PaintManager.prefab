@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3256907897213885242}
   - component: {fileID: 3256907897213885241}
+  - component: {fileID: 1445417002}
   m_Layer: 0
   m_Name: PaintManager
   m_TagString: Untagged
@@ -46,3 +47,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texturePaint: {fileID: 4800000, guid: 9472ed3696ab33d4ab23fb2a11915e0c, type: 3}
   extendIslands: {fileID: 4800000, guid: 30512f6167fa0784ab310b688406279d, type: 3}
+--- !u!114 &1445417002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3256907897213885240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1abde833d7186b14285c3eb5913989ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  mouseSingleClick: 0
+  paintColor: {r: 0.12156861, g: 0.8477082, b: 0.9529412, a: 1}
+  radius: 0.03
+  strength: 0.5
+  hardness: 0.1

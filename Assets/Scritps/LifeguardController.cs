@@ -7,7 +7,7 @@ public class LifeguardController : MonoBehaviour
     public static LifeguardController Instance;
     public GameObject objectPrefab;
     public Transform spawnArea;
-    public GameObject DrownedWoman;
+    GameObject DrownedWoman;
 
     void Awake()
     {
@@ -20,6 +20,7 @@ public class LifeguardController : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("dasdasdasdasdasd");
         Pointer.Instance.img.enabled = false;
         Pointer.Instance.img.material.color = Color.red;
         StartCoroutine(RandomSpawnDrownedWoman(10));
@@ -46,6 +47,7 @@ public class LifeguardController : MonoBehaviour
         yield return new WaitForSeconds(spawnTime);
         Vector3 randomPosition = GetRandomPositionInSpawnArea();
         DrownedWoman = Instantiate(objectPrefab, randomPosition, Quaternion.Euler(new Vector3(-70, 180, 0)));
+        Debug.Log("Intantiate Drown Woman");
         Pointer.Instance.img.enabled = true;
         Pointer.Instance.target = DrownedWoman.transform;
     }

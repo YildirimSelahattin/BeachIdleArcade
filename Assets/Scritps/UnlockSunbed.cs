@@ -17,8 +17,10 @@ public class UnlockSunbed : MonoBehaviour
     public GameObject dollarPrefab;
     public GameObject player;
     private IEnumerator CoinMaker;
-    public float timeRemaining = 2;
+    private IEnumerator Timer;
     public bool willBuy;
+    float tempSunbedPrice;
+    public float timeFillAmount;
 
     void Start()
     {
@@ -39,10 +41,8 @@ public class UnlockSunbed : MonoBehaviour
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.7f, -8.8f, transform.position.z + 0.88f)
                     , Quaternion.Euler(0f, 0f, 0f));
             }
-
-            gameObject.SetActive(false);
-
             buildNavMesh.BuildNavMesh();
+            gameObject.SetActive(false);
         }
     }
 
@@ -52,10 +52,14 @@ public class UnlockSunbed : MonoBehaviour
 
         if (other.CompareTag("Player") && GameDataManager.Instance.TotalMoney > 0 && willBuy == false)
         {
-            StartCoroutine(CoinMaker);
+            gameObject.transform.GetChild(4).gameObject.SetActive(true);
+            InvokeRepeating("TimeCounter", 0f, 0.05f);
+            //gameObject.GetComponent<BoxCollider>().enabled = false;
         }
         else
         {
+            gameObject.transform.GetChild(4).gameObject.SetActive(false);
+            CancelInvoke("TimeCounter");
             StopCoroutine(CoinMaker);
         }
     }
@@ -64,14 +68,19 @@ public class UnlockSunbed : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            gameObject.transform.GetChild(4).gameObject.SetActive(false);
+            CancelInvoke("TimeCounter");
             StopCoroutine(CoinMaker);
+            timeFillAmount = 0;
         }
     }
 
     IEnumerator CountCoins(Transform player)
     {
-        yield return new WaitForSeconds(1f);
-        float tempSunbedPrice = sunbedRemainPrice;
+        CancelInvoke("TimeCounter");
+        gameObject.transform.GetChild(4).gameObject.SetActive(false);
+
+        tempSunbedPrice = sunbedRemainPrice;
         for (int counter = 0; counter <= (int)tempSunbedPrice; counter++)
         {
             var newCoin = GameManager.Instance.MoneyList[counter];
@@ -85,6 +94,7 @@ public class UnlockSunbed : MonoBehaviour
                     if (newCoin != null)
                         newCoin.transform.localPosition = Vector3.zero;
                 });
+
                 SellTheLand();
             }
             else
@@ -119,6 +129,7 @@ public class UnlockSunbed : MonoBehaviour
 
         if (sunbedRemainPrice == 0)
         {
+            CancelInvoke("TimeCounter");
             isUnlocked = 1;
             PlayerPrefs.SetInt("isUnlocked" + itemID, isUnlocked);
 
@@ -139,10 +150,9 @@ public class UnlockSunbed : MonoBehaviour
                 desk.transform.DOScale(1f, 1f).SetEase(Ease.OutElastic);
             }
 
-
-            gameObject.SetActive(false);
-
             buildNavMesh.BuildNavMesh();
+            GameDataManager.Instance.SaveData();
+            gameObject.SetActive(false);
         }
         GameDataManager.Instance.SaveData();
     }
@@ -150,6 +160,19 @@ public class UnlockSunbed : MonoBehaviour
     private float CalculateFill()
     {
         return (360 * sunbedRemainPrice) / sunbedPrice;
+    }
+
+    public void TimeCounter()
+    {
+        Debug.Log("Invokeeee: " + timeFillAmount);
+        timeFillAmount += 18;
+        gameObject.transform.GetChild(4).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc1", timeFillAmount);
+
+        if (340 < timeFillAmount)
+        {
+            StartCoroutine(CoinMaker);
+        }
+
     }
 }
 
