@@ -133,7 +133,6 @@ public class PlayerController : MonoBehaviour
         {
             foam.SetActive(true);
             playerAnimator.SetBool("IsSwim", true);
-            Debug.Log("Water");
             gameObject.GetComponent<NavMeshAgent>().baseOffset = -22f;
             gameObject.GetComponent<NavMeshAgent>().speed = 3.5f;
         }
@@ -141,7 +140,6 @@ public class PlayerController : MonoBehaviour
         {
             foam.SetActive(false);
             playerAnimator.SetBool("IsSwim", false);
-            Debug.Log("NotWater");
             gameObject.GetComponent<NavMeshAgent>().baseOffset = 0f;
             gameObject.GetComponent<NavMeshAgent>().speed = 6f;
         }

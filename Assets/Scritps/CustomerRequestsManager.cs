@@ -57,7 +57,6 @@ public class CustomerRequestsManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this);
         }
     }
 

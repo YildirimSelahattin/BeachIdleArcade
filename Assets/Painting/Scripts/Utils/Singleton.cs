@@ -34,8 +34,9 @@ public class Singleton<T> : MonoBehaviour where T: MonoBehaviour{
 
         _instance = GetComponent<T>();
         
-        if(keepAlive){
-            DontDestroyOnLoad(gameObject);
+        if(keepAlive)
+        {
+            //DontDestroyOnLoad(gameObject);
         }
         
         if (_instance == null){

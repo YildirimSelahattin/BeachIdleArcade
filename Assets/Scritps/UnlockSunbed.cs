@@ -164,7 +164,6 @@ public class UnlockSunbed : MonoBehaviour
 
     public void TimeCounter()
     {
-        Debug.Log("Invokeeee: " + timeFillAmount);
         timeFillAmount += 18;
         gameObject.transform.GetChild(4).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc1", timeFillAmount);
 

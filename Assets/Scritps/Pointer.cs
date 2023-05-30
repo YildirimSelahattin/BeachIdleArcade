@@ -14,7 +14,6 @@ public class Pointer : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this);
         }
     }
 
