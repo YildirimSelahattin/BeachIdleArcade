@@ -15,7 +15,9 @@ public class MousePainter : MonoBehaviour
     void Update()
     {
         bool click;
+        bool ended;
         click = Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved;
+        ended = Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended;
 
         if (click)
         {
@@ -37,7 +39,7 @@ public class MousePainter : MonoBehaviour
             }
         }
 
-        if (Input.GetTouch(0).phase == TouchPhase.Ended)
+        if (ended)
         {
             Paintable.Instance.OnClickDebug();
         }
