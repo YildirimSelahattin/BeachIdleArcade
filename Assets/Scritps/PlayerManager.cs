@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.AI;
 
@@ -19,6 +20,7 @@ public class PlayerManager : MonoBehaviour
     public bool isSafe = false;
     public ParticleSystem heartParticle;
     NavMeshAgent playerNavMesh;
+    public Image timeFill;
 
     void Awake()
     {

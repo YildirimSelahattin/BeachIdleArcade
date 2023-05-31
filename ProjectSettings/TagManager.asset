@@ -12,11 +12,12 @@ TagManager:
   - Walk
   - Emergency
   - Coin
+  - PlayerInside
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Collectables
