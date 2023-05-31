@@ -45,6 +45,7 @@ public class PlayerManager : MonoBehaviour
 
             if (hit.collider.CompareTag("LayingWomen"))
             {
+                Debug.Log("Cream");
                 hit.collider.GetComponent<BoxCollider>().enabled = false;
                 CreamSceneOpen();
             }

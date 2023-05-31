@@ -20,10 +20,9 @@ public class LifeguardController : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("dasdasdasdasdasd");
         Pointer.Instance.img.enabled = false;
         Pointer.Instance.img.material.color = Color.red;
-        StartCoroutine(RandomSpawnDrownedWoman(10));
+        StartCoroutine(RandomSpawnDrownedWoman(50));
     }
 
     Vector3 GetRandomPositionInSpawnArea()

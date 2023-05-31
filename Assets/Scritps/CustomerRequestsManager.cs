@@ -62,7 +62,7 @@ public class CustomerRequestsManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(ResponseToRequests(40));
+        StartCoroutine(ResponseToRequests(15));
     }
 
     IEnumerator ResponseToRequests(int time)

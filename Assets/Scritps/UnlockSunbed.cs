@@ -47,7 +47,7 @@ public class UnlockSunbed : MonoBehaviour
 
             gameObject.SetActive(false);
 
-            //buildNavMesh.BuildNavMesh();
+            buildNavMesh.BuildNavMesh();
         }
     }
 
@@ -82,19 +82,9 @@ public class UnlockSunbed : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (inside == true)
-        {
-            timer += Time.deltaTime;
-
-            
-        }
-    }
-
     IEnumerator CountCoins(Transform player)
     {
-        timeFillAmount = 0;
+        yield return new WaitForSeconds(1);
 
         tempSunbedPrice = sunbedRemainPrice;
         for (int counter = 0; counter <= (int)tempSunbedPrice; counter++)
@@ -166,7 +156,7 @@ public class UnlockSunbed : MonoBehaviour
                 desk.transform.DOScale(1f, 1f).SetEase(Ease.OutElastic);
             }
 
-            //buildNavMesh.BuildNavMesh();
+            buildNavMesh.BuildNavMesh();
             GameDataManager.Instance.SaveData();
             gameObject.SetActive(false);
         }
