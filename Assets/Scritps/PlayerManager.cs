@@ -27,7 +27,6 @@ public class PlayerManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this);
         }
     }
 
@@ -87,13 +86,14 @@ public class PlayerManager : MonoBehaviour
 
     public void CreamSceneOpen()
     {
+        Paintable.Instance.AgainStart();
         inGameCam.SetActive(false);
         creamCam.SetActive(true);
         inGameCanvas.SetActive(false);
         playerNavMesh.speed = 0;
+        paintManager.SetActive(true);
         //gameObject.GetComponent<PlayerController>().enabled = false;
         paintManager.SetActive(true);
-        (paintedTexture.GetComponent<Paintable>() as MonoBehaviour).enabled = true;
     }
 
     public void CreamSceneClose()
@@ -105,6 +105,6 @@ public class PlayerManager : MonoBehaviour
         creamingDoneButton.SetActive(false);
         paintManager.SetActive(false);
         //gameObject.GetComponent<PlayerController>().enabled = true;
-        (paintedTexture.GetComponent<Paintable>() as MonoBehaviour).enabled = false;
+        Paintable.Instance.AgainStart();
     }
 }

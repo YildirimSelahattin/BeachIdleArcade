@@ -43,6 +43,27 @@ public class Paintable : MonoBehaviour
         supportTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
         supportTexture.filterMode = FilterMode.Bilinear;
 
+
+        rend = GetComponent<Renderer>();
+        rend.material.SetTexture(maskTextureID, extendIslandsRenderTexture);
+
+        PaintManager.instance.initTextures(this);
+    }
+
+    public void AgainStart()
+    {
+        maskRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
+        maskRenderTexture.filterMode = FilterMode.Bilinear;
+
+        extendIslandsRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
+        extendIslandsRenderTexture.filterMode = FilterMode.Bilinear;
+
+        uvIslandsRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
+        uvIslandsRenderTexture.filterMode = FilterMode.Bilinear;
+
+        supportTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
+        supportTexture.filterMode = FilterMode.Bilinear;
+
         rend = GetComponent<Renderer>();
         rend.material.SetTexture(maskTextureID, extendIslandsRenderTexture);
 
@@ -95,7 +116,7 @@ public class Paintable : MonoBehaviour
         Debug.Log(paintedPixelCount);
         Debug.Log(paintedPercentage);
 
-        if(paintedPercentage >= 5)
+        if (paintedPercentage >= 5)
         {
             PlayerManager.Instance.creamingDoneButton.SetActive(true);
         }

@@ -16,13 +16,13 @@ public class WomanSpawnerManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this);
         }
     }
 
     void Start()
     {
-        StartCoroutine(RandomSpawnDrownedWoman(3));
+        StartCoroutine(RandomSpawnWoman(3));
+        StartCoroutine(RandomSpawnWoman2(10));
     }
 
     Vector3 GetRandomPositionInSpawnArea()
@@ -38,10 +38,17 @@ public class WomanSpawnerManager : MonoBehaviour
         return new Vector3(randomX, -5.15f, randomZ);
     }
 
-    public IEnumerator RandomSpawnDrownedWoman(int spawnTime)
+    public IEnumerator RandomSpawnWoman(int spawnTime)
     {
         yield return new WaitForSeconds(spawnTime);
         Vector3 randomPosition = GetRandomPositionInSpawnArea();
         DrownedWoman = Instantiate(womanPrefabs[0], randomPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
+    }
+
+    public IEnumerator RandomSpawnWoman2(int spawnTime)
+    {
+        yield return new WaitForSeconds(spawnTime);
+        Vector3 randomPosition = GetRandomPositionInSpawnArea();
+        DrownedWoman = Instantiate(womanPrefabs[1], randomPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
     }
 }
