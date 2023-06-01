@@ -11923,8 +11923,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   womanPrefabs:
+  - {fileID: 287857091219699781, guid: cada09a61f5e1be4ab27a99cb62a6232, type: 3}
+  - {fileID: 7671002034315088014, guid: d160b76e69d53804380ece1260d0b2e6, type: 3}
+  - {fileID: 3354844870597924234, guid: c0e0f0680eeb81a4581af9ef44edf65a, type: 3}
   - {fileID: 8014358437071648957, guid: 75dba142f44436949928ff65bbf5b1e1, type: 3}
-  - {fileID: 8014358437071648957, guid: 58b593ea37169ad44bfdaf66fd6725c2, type: 3}
+  - {fileID: 4106689772571436740, guid: cabdf6af12cc40d42a15e1d8c2eccb2b, type: 3}
+  - {fileID: 2002949599850760508, guid: 8ff68c84742a87a48882be0ddf2d0d93, type: 3}
+  - {fileID: 499428778532998715, guid: d499b0f8439511c41b5f18decf57459b, type: 3}
   targetPos:
   - {fileID: 1022533306}
   - {fileID: 1420590663}

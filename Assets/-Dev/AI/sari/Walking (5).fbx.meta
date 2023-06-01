@@ -3,7 +3,42 @@ guid: e8edc07f31d8bb44a9e0f17c63ee8a1f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6z_4.002"
+    second: {fileID: 2100000, guid: 754aac665888fb44f856f80f242255cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6zbeyaz\u0131.002"
+    second: {fileID: 2100000, guid: 483f689b63ef128419db1beb7e452f02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ruj_4.002
+    second: {fileID: 2100000, guid: 20f4acfd83e50cf4b837326b247e182d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "sar\u0131.001"
+    second: {fileID: 2100000, guid: 47f2e4e18747294488d50bdbe365b2c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "sa\xE7_6.001"
+    second: {fileID: 2100000, guid: 663c29987ec6eff45ac9bf3e33573ef5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: siyah
+    second: {fileID: 2100000, guid: d0540c40bd38fcb46a325e4dcebebf66, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: twn rwngi.004
+    second: {fileID: 2100000, guid: c4db3fb5ca8b62747bc9915768017bfa, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -31,8 +66,37 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
-    isReadable: 0
+    clipAnimations:
+    - serializedVersion: 16
+      name: mixamo.com
+      takeName: mixamo.com
+      internalID: -203655887218126122
+      firstFrame: 0
+      lastFrame: 41
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1

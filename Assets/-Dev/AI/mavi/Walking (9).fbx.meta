@@ -3,7 +3,42 @@ guid: 74ce544cb8a953649aa534f53c6bb725
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6zbeyaz\u0131.002"
+    second: {fileID: 2100000, guid: 1b39c33c938c496479e99bce7aced4b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mor.001
+    second: {fileID: 2100000, guid: 5de9188ba38d51d43987f5ef1fab2ecc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ruj_002.001
+    second: {fileID: 2100000, guid: bf706322aa25a404f9f8cea5be8141e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "sa\xE7_2.002"
+    second: {fileID: 2100000, guid: 5a08f5c787f0bf4479957d6b541bc6c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "sa\xE7_7.001"
+    second: {fileID: 2100000, guid: 7e063684a64ad6c4cb88381c9d494068, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: siyah
+    second: {fileID: 2100000, guid: 9e865c588a10a694f9369e0bf24a1018, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ten_001.002
+    second: {fileID: 2100000, guid: 4256cc12d1430164ea14bc935a6bf06a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -31,8 +66,37 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
-    isReadable: 0
+    clipAnimations:
+    - serializedVersion: 16
+      name: mixamo.com
+      takeName: mixamo.com
+      internalID: -203655887218126122
+      firstFrame: 0
+      lastFrame: 41
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1

@@ -3,7 +3,47 @@ guid: 3db75df741066914e97514e1a0b3620b
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6z_3.001"
+    second: {fileID: 2100000, guid: f3450333aae7bfb4aa0afbd13280fe38, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6zbebe\u011Fi.001"
+    second: {fileID: 2100000, guid: 307d85e228201004a82b00f9ec7ad5f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6zbeyaz\u0131.002"
+    second: {fileID: 2100000, guid: 7e47cdcf6e3e18148a2ae73b63935a7a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ruj_3.001
+    second: {fileID: 2100000, guid: 9939ba1604ab5ba468b4e23b6fbfdaa3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "sa\xE7_3.001"
+    second: {fileID: 2100000, guid: 7d3e400f9957ea340b697911ce4ca9cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: siyah
+    second: {fileID: 2100000, guid: 70a2f49478c4c0b42b99ae83d46b4a2a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ten_001.002
+    second: {fileID: 2100000, guid: 825b4438adc73df4e92454015876a53f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "ye\u015Fil.002"
+    second: {fileID: 2100000, guid: ce77ea7c4a4b97b4daab42b72a290f27, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -31,8 +71,37 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
-    isReadable: 0
+    clipAnimations:
+    - serializedVersion: 16
+      name: mixamo.com
+      takeName: mixamo.com
+      internalID: -203655887218126122
+      firstFrame: 0
+      lastFrame: 41
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1

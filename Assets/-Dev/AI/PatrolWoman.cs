@@ -18,6 +18,7 @@ public class PatrolWoman : MonoBehaviour
         _animator = gameObject.GetComponent<Animator>();
         _targetCol = WomanSpawnerManager.Instance.targetPos[targetIndex].GetComponent<Collider>();
         _navAgent.SetDestination(WomanSpawnerManager.Instance.targetPos[targetIndex].transform.position);
+        Debug.Log("WomanSpawnerManager: " + WomanSpawnerManager.Instance.targetPos[targetIndex]);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,11 +26,11 @@ public class PatrolWoman : MonoBehaviour
         if (other == _targetCol)
         {
             _animator.SetBool("sit", true);
-            gameObject.transform.DORotate(Vector3.zero, .1f);
             gameObject.transform.DOMoveY(-4.5f, .1f);
-            gameObject.transform.DOMoveZ(WomanSpawnerManager.Instance.targetPos[targetIndex].transform.position.z - 1.5f, 0.5f).OnComplete((() =>
+            gameObject.transform.DOMoveZ(WomanSpawnerManager.Instance.targetPos[targetIndex].transform.position.z - .8f, 0.5f).OnComplete((() =>
             {
                 _navAgent.isStopped = true;
+                gameObject.transform.DORotate(Vector3.zero, .1f);
                 gameObject.GetComponent<BoxCollider>().enabled = false;
             }));
         }

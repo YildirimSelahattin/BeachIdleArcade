@@ -3,7 +3,47 @@ guid: fdc4885a0eb7fac43b746bbb653dc42e
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: B-1.002
+    second: {fileID: 2100000, guid: f7cf0a384254a8f408805d0bc138f139, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6zbeyaz\u0131.002"
+    second: {fileID: 2100000, guid: 26132cc3ff4098241873cd715ed3e3d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "k\u0131rm\u0131z\u0131.002"
+    second: {fileID: 2100000, guid: 53e7930fa243f1f45a472ff8d0b88dc5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ruj_4.002
+    second: {fileID: 2100000, guid: d457e90d5b67d2f46934a7b9163472ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "sa\xE7_1.002"
+    second: {fileID: 2100000, guid: cec60da7a5a37b04a99cef8098d5fa4c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "sa\xE7_2.002"
+    second: {fileID: 2100000, guid: 5acd0568c516eae4a81b04ace06e9873, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: siyah
+    second: {fileID: 2100000, guid: c8a4fde328e9a5e4e88020d27f433d71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ten_001.002
+    second: {fileID: 2100000, guid: 6c288b0ff49ec03408ac0daaa02238c2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -31,8 +71,37 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
-    isReadable: 0
+    clipAnimations:
+    - serializedVersion: 16
+      name: mixamo.com
+      takeName: mixamo.com
+      internalID: -203655887218126122
+      firstFrame: 0
+      lastFrame: 41
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1

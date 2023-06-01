@@ -23,14 +23,14 @@ public class WomanSpawnerManager : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i <= targetPos.Length; i++)
+        for (int i = 0; i < targetPos.Length; i++)
         {
             if (targetPos[i].gameObject.GetComponent<UnlockSunbed>().isUnlocked == 1)
             {
+                int randomNumber = Random.Range(0, 7);
                 tempTargetIndex = targetPos[i].gameObject.GetComponent<UnlockSunbed>().itemID;
-                Debug.Log("WomanSpawnerIndex: " + tempTargetIndex);
                 Vector3 randomPosition = GetRandomPositionInSpawnArea();
-                DrownedWoman = Instantiate(womanPrefabs[0], randomPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
+                DrownedWoman = Instantiate(womanPrefabs[randomNumber], randomPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
                 DrownedWoman.GetComponent<PatrolWoman>().targetIndex = tempTargetIndex;
             }
         }
@@ -51,9 +51,10 @@ public class WomanSpawnerManager : MonoBehaviour
 
     public IEnumerator RandomSpawnWoman(int ItemID)
     {
+        int randomNumber = Random.Range(0, 7);
         yield return new WaitForSeconds(0.1f);
-        tempTargetIndex = ItemID;
         Vector3 randomPosition = GetRandomPositionInSpawnArea();
-        DrownedWoman = Instantiate(womanPrefabs[0], randomPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
+        DrownedWoman = Instantiate(womanPrefabs[randomNumber], randomPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
+        DrownedWoman.GetComponent<PatrolWoman>().targetIndex = ItemID;
     }
 }

@@ -72,7 +72,7 @@ public class UnlockSunbed : MonoBehaviour
             //if (inside == false) inside = true;
 
             //if (GameDataManager.Instance.TotalMoney > 0 && timer > 2)
-            if (GameDataManager.Instance.TotalMoney > 0)
+            if (GameDataManager.Instance.TotalMoney > 0 && isUnlocked == 0)
             {
                 StartCoroutine(CoinMaker);
                 timer = 0;
