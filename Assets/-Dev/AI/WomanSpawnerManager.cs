@@ -10,6 +10,7 @@ public class WomanSpawnerManager : MonoBehaviour
     public GameObject[] targetPos;
     public Transform spawnArea;
     GameObject DrownedWoman;
+    public int tempTargetIndex;
 
     void Awake()
     {
@@ -21,8 +22,7 @@ public class WomanSpawnerManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(RandomSpawnWoman(3));
-        StartCoroutine(RandomSpawnWoman2(10));
+        //StartCoroutine(RandomSpawnWoman2(10));
     }
 
     Vector3 GetRandomPositionInSpawnArea()
@@ -38,17 +38,11 @@ public class WomanSpawnerManager : MonoBehaviour
         return new Vector3(randomX, -5.15f, randomZ);
     }
 
-    public IEnumerator RandomSpawnWoman(int spawnTime)
+    public IEnumerator RandomSpawnWoman(int ItemID)
     {
-        yield return new WaitForSeconds(spawnTime);
+        yield return new WaitForSeconds(0.1f);
+        tempTargetIndex = ItemID;
         Vector3 randomPosition = GetRandomPositionInSpawnArea();
         DrownedWoman = Instantiate(womanPrefabs[0], randomPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
-    }
-
-    public IEnumerator RandomSpawnWoman2(int spawnTime)
-    {
-        yield return new WaitForSeconds(spawnTime);
-        Vector3 randomPosition = GetRandomPositionInSpawnArea();
-        DrownedWoman = Instantiate(womanPrefabs[1], randomPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
     }
 }

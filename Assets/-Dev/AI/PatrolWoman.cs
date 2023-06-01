@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class PatrolWoman : MonoBehaviour
 
     void Start()
     {
+        targetIndex = WomanSpawnerManager.Instance.tempTargetIndex;
         _navAgent = gameObject.GetComponent<NavMeshAgent>();
         _animator = gameObject.GetComponent<Animator>();
         _targetCol = WomanSpawnerManager.Instance.targetPos[targetIndex].GetComponent<Collider>();

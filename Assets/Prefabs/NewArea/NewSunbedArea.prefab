@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 3937997218334418733}
   - component: {fileID: 1022533309}
   - component: {fileID: 1022533310}
+  - component: {fileID: 3636819048446462087}
   m_Layer: 7
   m_Name: NewSunbedArea
   m_TagString: Untagged
@@ -162,7 +163,24 @@ MonoBehaviour:
   player: {fileID: 0}
   willBuy: 0
   timeFillAmount: 0
-  isInside: 0
+  timer: 0
+  inside: 0
+--- !u!54 &3636819048446462087
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3937997218334418732}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &3937997218406809722
 GameObject:
   m_ObjectHideFlags: 0

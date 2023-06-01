@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ using DG.Tweening;
 
 public class UnlockSunbed : MonoBehaviour
 {
+    public static UnlockSunbed Instance;
     public int itemID;
     public int isUnlocked;
     [SerializeField] private GameObject newSunbed;
@@ -24,6 +26,14 @@ public class UnlockSunbed : MonoBehaviour
     public float timer;
     public bool inside = false;
 
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
     void Start()
     {
         dollarAmount.text = sunbedPrice.ToString();
@@ -38,6 +48,8 @@ public class UnlockSunbed : MonoBehaviour
             {
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
                     , Quaternion.Euler(-90f, 0f, 0f));
+                Debug.Log(itemID);
+                StartCoroutine(WomanSpawnerManager.Instance.RandomSpawnWoman(itemID));
             }
             else
             {
@@ -45,11 +57,13 @@ public class UnlockSunbed : MonoBehaviour
                     , Quaternion.Euler(0f, 0f, 0f));
             }
 
-            gameObject.SetActive(false);
+            StartCoroutine(CloseArea());
 
             buildNavMesh.BuildNavMesh();
         }
     }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -110,7 +124,6 @@ public class UnlockSunbed : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.1f);
         }
         GameManager.Instance.MoneyList.Clear();
-        Debug.Log("5");
     }
 
     private void SellTheLand()
@@ -141,7 +154,7 @@ public class UnlockSunbed : MonoBehaviour
 
             if (itemID < 100)
             {
-
+                StartCoroutine(WomanSpawnerManager.Instance.RandomSpawnWoman(itemID));
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
                     , Quaternion.Euler(-90f, 0f, 0f));
 
@@ -156,11 +169,23 @@ public class UnlockSunbed : MonoBehaviour
                 desk.transform.DOScale(1f, 1f).SetEase(Ease.OutElastic);
             }
 
-            buildNavMesh.BuildNavMesh();
+
             GameDataManager.Instance.SaveData();
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            StartCoroutine(CloseArea());
         }
         GameDataManager.Instance.SaveData();
+    }
+
+    public IEnumerator CloseArea()
+    {
+        yield return new WaitForSeconds(0.2f);
+        //buildNavMesh.BuildNavMesh();
+        //gameObject.SetActive(false);
+        for (int i = 0; i < 5; i++)
+        {
+            gameObject.transform.GetChild(i).gameObject.SetActive(false);
+        }
     }
 
     private float CalculateFill()
@@ -173,7 +198,6 @@ public class UnlockSunbed : MonoBehaviour
         gameObject.transform.GetChild(4).gameObject.SetActive(true);
         for (int counter = 1; counter <= cooldown; counter++)
         {
-            Debug.Log("4");
             timeFillAmount += 18;
             gameObject.transform.GetChild(4).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc1", timeFillAmount);
             yield return new WaitForSecondsRealtime(0.05f);
