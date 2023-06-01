@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.ComTypes;
 using System.Security.Cryptography;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ public class WomanSpawnerManager : MonoBehaviour
     public static WomanSpawnerManager Instance;
     public GameObject[] womanPrefabs;
     public GameObject[] targetPos;
+    public GameObject[] umbrella;
     public Transform spawnArea;
     GameObject DrownedWoman;
     public int tempTargetIndex;
@@ -27,6 +29,7 @@ public class WomanSpawnerManager : MonoBehaviour
         {
             if (targetPos[i].gameObject.GetComponent<UnlockSunbed>().isUnlocked == 1)
             {
+                Debug.Log("fsdfasdfsdasfasdfsdfsfd");
                 int randomNumber = Random.Range(0, 7);
                 tempTargetIndex = targetPos[i].gameObject.GetComponent<UnlockSunbed>().itemID;
                 Vector3 randomPosition = GetRandomPositionInSpawnArea();

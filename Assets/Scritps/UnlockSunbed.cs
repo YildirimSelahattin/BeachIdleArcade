@@ -46,13 +46,19 @@ public class UnlockSunbed : MonoBehaviour
         {
             if (itemID < 100)
             {
+                /*
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
                     , Quaternion.Euler(-90f, 0f, 0f));
+                */
+                gameObject.transform.GetChild(5).gameObject.SetActive(true);
             }
             else
             {
+                /*
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.7f, -8.8f, transform.position.z + 0.88f)
                     , Quaternion.Euler(0f, 0f, 0f));
+                */
+                gameObject.transform.GetChild(5).gameObject.SetActive(true);
             }
 
             StartCoroutine(CloseArea());
@@ -153,18 +159,24 @@ public class UnlockSunbed : MonoBehaviour
             if (itemID < 100)
             {
                 StartCoroutine(WomanSpawnerManager.Instance.RandomSpawnWoman(itemID));
+                /*
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
                     , Quaternion.Euler(-90f, 0f, 0f));
 
                 desk.transform.localScale = Vector3.zero;
                 desk.transform.DOScale(10f, 1f).SetEase(Ease.OutElastic);
+                */
+                gameObject.transform.GetChild(5).gameObject.SetActive(true);
             }
             else
             {
+                /*
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.7f, -8.8f, transform.position.z + 0.88f)
                     , Quaternion.Euler(0f, 0f, 0f));
                 desk.transform.DOScale(0.5f, 0.01f);
                 desk.transform.DOScale(1f, 1f).SetEase(Ease.OutElastic);
+                */
+                gameObject.transform.GetChild(5).gameObject.SetActive(true);
             }
 
 
