@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +23,17 @@ public class WomanSpawnerManager : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine(RandomSpawnWoman2(10));
+        for (int i = 0; i <= targetPos.Length; i++)
+        {
+            if (targetPos[i].gameObject.GetComponent<UnlockSunbed>().isUnlocked == 1)
+            {
+                tempTargetIndex = targetPos[i].gameObject.GetComponent<UnlockSunbed>().itemID;
+                Debug.Log("WomanSpawnerIndex: " + tempTargetIndex);
+                Vector3 randomPosition = GetRandomPositionInSpawnArea();
+                DrownedWoman = Instantiate(womanPrefabs[0], randomPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
+                DrownedWoman.GetComponent<PatrolWoman>().targetIndex = tempTargetIndex;
+            }
+        }
     }
 
     Vector3 GetRandomPositionInSpawnArea()

@@ -48,8 +48,6 @@ public class UnlockSunbed : MonoBehaviour
             {
                 GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
                     , Quaternion.Euler(-90f, 0f, 0f));
-                Debug.Log(itemID);
-                StartCoroutine(WomanSpawnerManager.Instance.RandomSpawnWoman(itemID));
             }
             else
             {

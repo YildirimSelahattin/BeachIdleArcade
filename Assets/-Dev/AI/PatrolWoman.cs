@@ -14,7 +14,6 @@ public class PatrolWoman : MonoBehaviour
 
     void Start()
     {
-        targetIndex = WomanSpawnerManager.Instance.tempTargetIndex;
         _navAgent = gameObject.GetComponent<NavMeshAgent>();
         _animator = gameObject.GetComponent<Animator>();
         _targetCol = WomanSpawnerManager.Instance.targetPos[targetIndex].GetComponent<Collider>();
@@ -24,10 +23,10 @@ public class PatrolWoman : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other == _targetCol)
-        {                                                           
+        {
             _animator.SetBool("sit", true);
             gameObject.transform.DORotate(Vector3.zero, .1f);
-            gameObject.transform.DOMoveY(-4.5f, .1f);                                  
+            gameObject.transform.DOMoveY(-4.5f, .1f);
             gameObject.transform.DOMoveZ(WomanSpawnerManager.Instance.targetPos[targetIndex].transform.position.z - 1.5f, 0.5f).OnComplete((() =>
             {
                 _navAgent.isStopped = true;
