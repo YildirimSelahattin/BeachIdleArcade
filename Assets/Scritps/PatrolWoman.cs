@@ -7,8 +7,8 @@ using DG.Tweening;
 
 public class PatrolWoman : MonoBehaviour
 {
-    Animator _animator;
-    NavMeshAgent _navAgent;
+    public Animator _animator;
+    public NavMeshAgent _navAgent;
     Collider _targetCol;
     public int targetIndex;
 
@@ -31,6 +31,7 @@ public class PatrolWoman : MonoBehaviour
                 _navAgent.isStopped = true;
                 gameObject.transform.DORotate(Vector3.zero, .1f);
                 gameObject.GetComponent<BoxCollider>().enabled = false;
+                other.GetComponent<BoxCollider>().enabled = false;
 
                 switch (targetIndex)
                 {
@@ -86,6 +87,16 @@ public class PatrolWoman : MonoBehaviour
                         break;
                 }
             }));
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Water"))
+        {
+            _animator.SetBool("swim", true);
+            _navAgent.baseOffset = -34;
+            _navAgent.speed = 1f;
         }
     }
 }

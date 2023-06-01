@@ -20,7 +20,8 @@ public class PlayerManager : MonoBehaviour
     public bool isSafe = false;
     public ParticleSystem heartParticle;
     NavMeshAgent playerNavMesh;
-    public Image timeFill;
+    GameObject creamGirl;
+    public Transform swimArea;
 
     void Awake()
     {
@@ -46,6 +47,7 @@ public class PlayerManager : MonoBehaviour
             {
                 Debug.Log("Cream");
                 hit.collider.GetComponent<BoxCollider>().enabled = false;
+                creamGirl = hit.collider.transform.parent.gameObject;
                 CreamSceneOpen();
             }
 
@@ -106,5 +108,31 @@ public class PlayerManager : MonoBehaviour
         paintManager.SetActive(false);
         //gameObject.GetComponent<PlayerController>().enabled = true;
         Paintable.Instance.AgainStart();
+
+        creamGirl.transform.GetChild(3).gameObject.SetActive(false);
+        creamGirl.GetComponent<PatrolWoman>()._animator.SetBool("sit", false);
+        creamGirl.GetComponent<PatrolWoman>()._navAgent.isStopped = false;
+        Vector3 randomPosition = GetRandomPositionInSpawnArea();
+        creamGirl.GetComponent<PatrolWoman>()._navAgent.SetDestination(randomPosition);
+        StartCoroutine(OpenCollider());
+    }
+
+    public IEnumerator OpenCollider()
+    {
+        yield return new WaitForSeconds(3f);
+        creamGirl.GetComponent<BoxCollider>().enabled = true;
+    }
+
+    Vector3 GetRandomPositionInSpawnArea()
+    {
+        float minX = swimArea.position.x - swimArea.localScale.x / 2f;
+        float maxX = swimArea.position.x + swimArea.localScale.x / 2f;
+        float minZ = swimArea.position.z - swimArea.localScale.z / 2f;
+        float maxZ = swimArea.position.z + swimArea.localScale.z / 2f;
+
+        float randomX = Random.Range(minX, maxX);
+        float randomZ = Random.Range(minZ, maxZ);
+
+        return new Vector3(randomX, -6.85f, randomZ);
     }
 }
