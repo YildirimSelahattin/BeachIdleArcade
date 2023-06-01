@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e178baff5f360468805521a4a3a6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 102
+  itemID: 101
   isUnlocked: 0
   newSunbed: {fileID: 8994486212221037789, guid: d8da1bacf2a355b4bbd0c5425774b7fd,
     type: 3}
@@ -605,22 +605,22 @@ PrefabInstance:
     - target: {fileID: 4545744214100200750, guid: d8da1bacf2a355b4bbd0c5425774b7fd,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4545744214100200750, guid: d8da1bacf2a355b4bbd0c5425774b7fd,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4545744214100200750, guid: d8da1bacf2a355b4bbd0c5425774b7fd,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4545744214100200750, guid: d8da1bacf2a355b4bbd0c5425774b7fd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4545744214100200750, guid: d8da1bacf2a355b4bbd0c5425774b7fd,
         type: 3}
@@ -666,6 +666,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516910526691374949, guid: d8da1bacf2a355b4bbd0c5425774b7fd,
+        type: 3}
+      propertyPath: scale
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8994486212221037789, guid: d8da1bacf2a355b4bbd0c5425774b7fd,
         type: 3}
