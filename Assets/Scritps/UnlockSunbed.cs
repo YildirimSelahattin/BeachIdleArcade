@@ -32,6 +32,7 @@ public class UnlockSunbed : MonoBehaviour
         {
             Instance = this;
         }
+        PlayerPrefs.SetInt("isUnlocked" + 0, 1);
     }
 
     void Start()

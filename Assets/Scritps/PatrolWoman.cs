@@ -12,6 +12,7 @@ public class PatrolWoman : MonoBehaviour
     public NavMeshAgent _navAgent;
     Collider _targetCol;
     public int targetIndex;
+    public bool isSwim = false;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class PatrolWoman : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("2");
         _navAgent = gameObject.GetComponent<NavMeshAgent>();
         _animator = gameObject.GetComponent<Animator>();
         _targetCol = WomanSpawnerManager.Instance.targetPos[targetIndex].GetComponent<Collider>();
@@ -33,6 +35,8 @@ public class PatrolWoman : MonoBehaviour
     {
         if (other == _targetCol)
         {
+            PlayerManager.Instance.reqCream = false;
+            isSwim = false;
             _animator.SetBool("sit", true);
             gameObject.transform.DOMoveY(-4.5f, .1f);
             gameObject.transform.DOMoveZ(WomanSpawnerManager.Instance.targetPos[targetIndex].transform.position.z - .8f, 0.5f).OnComplete((() =>

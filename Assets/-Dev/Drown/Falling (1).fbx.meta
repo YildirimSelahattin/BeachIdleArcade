@@ -3,7 +3,47 @@ guid: fc4ea744278228740a64a77a8414d8e5
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6z_4.002"
+    second: {fileID: 2100000, guid: b8cfeafce49e170468bf35abe5da11d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "g\xF6zbeyaz\u0131.002"
+    second: {fileID: 2100000, guid: 3fa662d8f058d1640b245b43ec884cca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pembe.001
+    second: {fileID: 2100000, guid: 88995b718ccf00546919b5bcaf295de9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ruj_4.002
+    second: {fileID: 2100000, guid: e70e7e51784b44d41ba83edadf257b98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "sa\xE7_2.002"
+    second: {fileID: 2100000, guid: 55971c4d521fa504195b2a0a765656b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "sa\xE7_4.001"
+    second: {fileID: 2100000, guid: 9bd19b0f6da297141b456deabb8e3fbd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: siyah
+    second: {fileID: 2100000, guid: 9e801f784ab00fa40969ec5e5f84601f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ten_4.001
+    second: {fileID: 2100000, guid: aacdc721fa8a2fc4080bd86972338e2d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

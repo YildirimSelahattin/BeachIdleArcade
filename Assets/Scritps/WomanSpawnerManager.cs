@@ -14,6 +14,7 @@ public class WomanSpawnerManager : MonoBehaviour
     public Transform spawnArea;
     GameObject DrownedWoman;
     public int tempTargetIndex;
+    public List<GameObject> spawnedWomen;
 
     void Awake()
     {
@@ -34,6 +35,7 @@ public class WomanSpawnerManager : MonoBehaviour
                 Vector3 randomPosition = GetRandomPositionInSpawnArea();
                 DrownedWoman = Instantiate(womanPrefabs[randomNumber], randomPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
                 DrownedWoman.GetComponent<PatrolWoman>().targetIndex = tempTargetIndex;
+                spawnedWomen.Add(DrownedWoman);
             }
         }
     }
@@ -58,5 +60,6 @@ public class WomanSpawnerManager : MonoBehaviour
         Vector3 randomPosition = GetRandomPositionInSpawnArea();
         DrownedWoman = Instantiate(womanPrefabs[randomNumber], randomPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
         DrownedWoman.GetComponent<PatrolWoman>().targetIndex = ItemID;
+        spawnedWomen.Add(DrownedWoman);
     }
 }

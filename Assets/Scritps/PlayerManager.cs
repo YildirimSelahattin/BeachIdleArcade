@@ -17,11 +17,15 @@ public class PlayerManager : MonoBehaviour
     public GameObject carryParrent;
     public GameObject emergency;
     public bool isCarry = false;
-    public bool isSafe = false;
     public ParticleSystem heartParticle;
     NavMeshAgent playerNavMesh;
     GameObject creamGirl;
     public Transform swimArea;
+    public bool reqCream;
+    public bool reqDrown;
+    public GameObject UpBikini;
+    public GameObject DownBikini;
+
 
     void Awake()
     {
@@ -45,6 +49,8 @@ public class PlayerManager : MonoBehaviour
 
             if (hit.collider.CompareTag("LayingWomen"))
             {
+                UpBikini.GetComponent<MeshRenderer>().material.color = hit.collider.transform.parent.GetChild(0).GetComponent<SkinnedMeshRenderer>().materials[1].color;
+                DownBikini.GetComponent<MeshRenderer>().material.color = hit.collider.transform.parent.GetChild(0).GetComponent<SkinnedMeshRenderer>().materials[1].color;
                 Debug.Log("Cream");
                 hit.collider.GetComponent<BoxCollider>().enabled = false;
                 creamGirl = hit.collider.transform.parent.gameObject;
@@ -68,6 +74,8 @@ public class PlayerManager : MonoBehaviour
             {
                 if (isCarry == true)
                 {
+                    reqDrown = false;
+                    Debug.LogError("ReqDrown: " + reqDrown);
                     Destroy(gameObject.transform.GetChild(2).transform.GetChild(0).gameObject);
                     heartParticle.Play();
                     PlayerController.Instance.playerAnimator.SetLayerWeight(1, 0);
@@ -80,6 +88,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
+
     public void OnClickDoneCream()
     {
         CreamSceneClose();
@@ -100,6 +109,8 @@ public class PlayerManager : MonoBehaviour
 
     public void CreamSceneClose()
     {
+        reqCream = false;
+        Pointer.Instance.img.enabled = false;
         playerNavMesh.speed = 5.5f;
         inGameCam.SetActive(true);
         creamCam.SetActive(false);
@@ -114,15 +125,15 @@ public class PlayerManager : MonoBehaviour
         creamGirl.GetComponent<PatrolWoman>()._navAgent.isStopped = false;
         Vector3 randomPosition = GetRandomPositionInSpawnArea();
         creamGirl.GetComponent<PatrolWoman>()._navAgent.SetDestination(randomPosition);
+        creamGirl.GetComponent<PatrolWoman>().isSwim = true;
         StartCoroutine(OpenCollider());
     }
 
     public IEnumerator OpenCollider()
     {
-        Debug.Log("OpenCollider");
         yield return new WaitForSeconds(3f);
-        Debug.Log("OpenCollider-3");
         creamGirl.GetComponent<BoxCollider>().enabled = true;
+        Debug.LogError("OpenCollider");
         StartCoroutine(ComeAgain());
     }
 
@@ -141,10 +152,11 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator ComeAgain()
     {
-        Debug.Log("ComeAgain");
+        Transform temp = WomanSpawnerManager.Instance.targetPos[creamGirl.GetComponent<PatrolWoman>().targetIndex].transform;
+        Debug.LogError("Again-25");
         yield return new WaitForSeconds(25);
-        Debug.Log("ComeAgain-25");
-        creamGirl.GetComponent<PatrolWoman>()._navAgent.SetDestination(WomanSpawnerManager.Instance.targetPos[creamGirl.GetComponent<PatrolWoman>().targetIndex].transform.position);
+        Debug.LogError("Comeeeee");
+        creamGirl.GetComponent<PatrolWoman>()._navAgent.SetDestination(temp.position);
         WomanSpawnerManager.Instance.targetPos[creamGirl.GetComponent<PatrolWoman>().targetIndex].GetComponent<BoxCollider>().enabled = true;
         creamGirl.GetComponent<PatrolWoman>().GetComponent<BoxCollider>().enabled = true;
     }

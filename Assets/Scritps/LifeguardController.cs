@@ -21,7 +21,8 @@ public class LifeguardController : MonoBehaviour
     {
         Pointer.Instance.img.enabled = false;
         Pointer.Instance.img.material.color = Color.red;
-        StartCoroutine(RandomSpawnDrownedWoman(50));
+
+        StartCoroutine(ResponseToRequests(30));
     }
 
     Vector3 GetRandomPositionInSpawnArea()
@@ -42,11 +43,77 @@ public class LifeguardController : MonoBehaviour
 
     public IEnumerator RandomSpawnDrownedWoman(int spawnTime)
     {
-        yield return new WaitForSeconds(spawnTime);
-        Vector3 randomPosition = GetRandomPositionInSpawnArea();
-        DrownedWoman = Instantiate(objectPrefab, randomPosition, Quaternion.Euler(new Vector3(-70, 180, 0)));
-        //Debug.Log("Intantiate Drown Woman");
-        Pointer.Instance.img.enabled = true;
-        Pointer.Instance.target = DrownedWoman.transform;
+        Debug.Log("Drown");
+
+        if (PlayerManager.Instance.reqCream == true)
+        {
+            StartCoroutine(AgainRequest());
+        }
+        else
+        {
+            Debug.Log("Boguluyoooooom");
+            PlayerManager.Instance.reqDrown = true;
+            yield return new WaitForSeconds(spawnTime);
+            Vector3 randomPosition = GetRandomPositionInSpawnArea();
+            DrownedWoman = Instantiate(objectPrefab, randomPosition, Quaternion.Euler(new Vector3(-70, 180, 0)));
+            
+            Pointer.Instance.img.enabled = true;
+            Pointer.Instance.img.material.color = Color.red;
+            Pointer.Instance.target = DrownedWoman.transform;
+
+            StartCoroutine(AgainRequest());
+        }
+    }
+
+    IEnumerator ResponseToRequests(int time)
+    {
+        yield return new WaitForSecondsRealtime(8);
+        Debug.Log("Cream " + WomanSpawnerManager.Instance.spawnedWomen.Count);
+        int tempIndex = Random.Range(0, WomanSpawnerManager.Instance.spawnedWomen.Count);
+
+        if (WomanSpawnerManager.Instance.spawnedWomen[tempIndex].gameObject.GetComponent<PatrolWoman>().isSwim == true)
+        {
+            Debug.Log("IF - Index: " + WomanSpawnerManager.Instance.spawnedWomen[tempIndex].gameObject.GetComponent<PatrolWoman>().targetIndex
+             + "Swim: " + WomanSpawnerManager.Instance.spawnedWomen[tempIndex].gameObject.GetComponent<PatrolWoman>().isSwim);
+            StartCoroutine(AgainRequest());
+        }
+        else
+        {
+            Debug.Log("ELSE - Index: " + WomanSpawnerManager.Instance.spawnedWomen[tempIndex].gameObject.GetComponent<PatrolWoman>().targetIndex
+             + "Swim: " + WomanSpawnerManager.Instance.spawnedWomen[tempIndex].gameObject.GetComponent<PatrolWoman>().isSwim);
+
+            PlayerManager.Instance.reqCream = true;
+            yield return new WaitForSecondsRealtime(time);
+            WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform.GetChild(2).GetComponent<BoxCollider>().enabled = true;
+            WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform.GetChild(3).gameObject.SetActive(true);
+            Pointer.Instance.img.enabled = true;
+            Pointer.Instance.target = WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform;
+            Pointer.Instance.img.material.color = Color.blue;
+
+            StartCoroutine(AgainRequest());
+        }
+    }
+
+    public IEnumerator AgainRequest()
+    {
+        Debug.Log("Again");
+        Debug.Log("reqDrown : " + PlayerManager.Instance.reqDrown + "--- reqCream : " + PlayerManager.Instance.reqCream);
+        int rnd = Random.Range(0, 2);
+
+        if (PlayerManager.Instance.reqDrown == false && PlayerManager.Instance.reqCream == false && rnd == 1)
+        {
+            Debug.Log(" > Drown");
+            StartCoroutine(RandomSpawnDrownedWoman(41));
+        }
+        else if (PlayerManager.Instance.reqDrown == false && PlayerManager.Instance.reqCream == false && rnd == 0 || rnd == 1)
+        {
+            Debug.Log(" > Cream");
+            StartCoroutine(ResponseToRequests(29));
+        }
+        else
+        {
+            yield return new WaitForSeconds(5);
+            StartCoroutine(AgainRequest());
+        }
     }
 }
