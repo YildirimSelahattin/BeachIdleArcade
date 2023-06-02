@@ -29,7 +29,6 @@ public class WomanSpawnerManager : MonoBehaviour
         {
             if (targetPos[i].gameObject.GetComponent<UnlockSunbed>().isUnlocked == 1)
             {
-                Debug.Log("fsdfasdfsdasfasdfsdfsfd");
                 int randomNumber = Random.Range(0, 7);
                 tempTargetIndex = targetPos[i].gameObject.GetComponent<UnlockSunbed>().itemID;
                 Vector3 randomPosition = GetRandomPositionInSpawnArea();

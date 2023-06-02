@@ -119,8 +119,11 @@ public class PlayerManager : MonoBehaviour
 
     public IEnumerator OpenCollider()
     {
+        Debug.Log("OpenCollider");
         yield return new WaitForSeconds(3f);
+        Debug.Log("OpenCollider-3");
         creamGirl.GetComponent<BoxCollider>().enabled = true;
+        StartCoroutine(ComeAgain());
     }
 
     Vector3 GetRandomPositionInSpawnArea()
@@ -134,5 +137,15 @@ public class PlayerManager : MonoBehaviour
         float randomZ = Random.Range(minZ, maxZ);
 
         return new Vector3(randomX, -6.85f, randomZ);
+    }
+
+    IEnumerator ComeAgain()
+    {
+        Debug.Log("ComeAgain");
+        yield return new WaitForSeconds(25);
+        Debug.Log("ComeAgain-25");
+        creamGirl.GetComponent<PatrolWoman>()._navAgent.SetDestination(WomanSpawnerManager.Instance.targetPos[creamGirl.GetComponent<PatrolWoman>().targetIndex].transform.position);
+        WomanSpawnerManager.Instance.targetPos[creamGirl.GetComponent<PatrolWoman>().targetIndex].GetComponent<BoxCollider>().enabled = true;
+        creamGirl.GetComponent<PatrolWoman>().GetComponent<BoxCollider>().enabled = true;
     }
 }

@@ -113,8 +113,8 @@ public class Paintable : MonoBehaviour
         }
 
         paintedPercentage = ((float)paintedPixelCount / pixels.Length) * 100f;
-        Debug.Log(paintedPixelCount);
-        Debug.Log(paintedPercentage);
+        //Debug.Log(paintedPixelCount);
+        //Debug.Log(paintedPercentage);
 
         if (paintedPercentage >= 5)
         {

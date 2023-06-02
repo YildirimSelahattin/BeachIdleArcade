@@ -7,10 +7,19 @@ using DG.Tweening;
 
 public class PatrolWoman : MonoBehaviour
 {
+    public static PatrolWoman Instance;
     public Animator _animator;
     public NavMeshAgent _navAgent;
     Collider _targetCol;
     public int targetIndex;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     void Start()
     {
@@ -97,6 +106,13 @@ public class PatrolWoman : MonoBehaviour
             _animator.SetBool("swim", true);
             _navAgent.baseOffset = -34;
             _navAgent.speed = 1f;
+        }
+
+        if (other.CompareTag("Walk"))
+        {
+            _animator.SetBool("swim", false);
+            _navAgent.baseOffset = 0;
+            _navAgent.speed = 2.5f;
         }
     }
 }
