@@ -1,9 +1,6 @@
-using System.Runtime.InteropServices.ComTypes;
-using System.Security.Cryptography;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class WomanSpawnerManager : MonoBehaviour
 {

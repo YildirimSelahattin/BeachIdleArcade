@@ -1,7 +1,5 @@
 using DG.Tweening;
-using TMPro;
 using UnityEngine;
-using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine.UI;
 using System.Collections;

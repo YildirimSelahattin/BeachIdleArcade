@@ -1,6 +1,4 @@
-using System.Security.Cryptography;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.AI;
@@ -16,15 +14,9 @@ public class UnlockSunbed : MonoBehaviour
     [SerializeField] private float sunbedPrice, sunbedRemainPrice;
     [SerializeField] private float fillAmount;
     public NavMeshSurface buildNavMesh;
-    public GameObject dollarPrefab;
-    public GameObject player;
     private IEnumerator CoinMaker;
-    private IEnumerator Timer;
-    public bool willBuy;
     float tempSunbedPrice;
     public float timeFillAmount;
-    public float timer;
-    public bool inside = false;
 
     void Awake()
     {
@@ -41,7 +33,6 @@ public class UnlockSunbed : MonoBehaviour
         sunbedRemainPrice = sunbedPrice;
         isUnlocked = PlayerPrefs.GetInt("isUnlocked" + itemID, 0);
         CoinMaker = CountCoins(GameManager.Instance.transform);
-        Timer = TimeCounter(20);
 
         if (isUnlocked == 1)
         {
@@ -63,8 +54,6 @@ public class UnlockSunbed : MonoBehaviour
             }
 
             StartCoroutine(CloseArea());
-
-            buildNavMesh.BuildNavMesh();
         }
     }
 
@@ -82,7 +71,6 @@ public class UnlockSunbed : MonoBehaviour
             if (GameDataManager.Instance.TotalMoney > 0 && isUnlocked == 0)
             {
                 StartCoroutine(CoinMaker);
-                timer = 0;
             }
             else
             {
@@ -96,8 +84,6 @@ public class UnlockSunbed : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             StopCoroutine(CoinMaker);
-            inside = false;
-            timer = 0;
         }
     }
 
@@ -180,7 +166,7 @@ public class UnlockSunbed : MonoBehaviour
                 gameObject.transform.GetChild(5).gameObject.SetActive(true);
             }
 
-
+            buildNavMesh.BuildNavMesh();
             GameDataManager.Instance.SaveData();
             //gameObject.SetActive(false);
             StartCoroutine(CloseArea());

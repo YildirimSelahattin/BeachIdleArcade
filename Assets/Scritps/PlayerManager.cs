@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.AI;
 
@@ -11,7 +9,6 @@ public class PlayerManager : MonoBehaviour
     public GameObject inGameCam;
     public GameObject creamCam;
     public GameObject paintManager;
-    public GameObject paintedTexture;
     public GameObject inGameCanvas;
     public GameObject creamingDoneButton;
     public GameObject carryParrent;

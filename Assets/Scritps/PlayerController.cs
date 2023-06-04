@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem.EnhancedTouch;
 using ETouch = UnityEngine.InputSystem.EnhancedTouch;
-using DG.Tweening;
-
 
 public class PlayerController : MonoBehaviour
 {

@@ -10,8 +10,8 @@ public class FPSCounter : MonoBehaviour
 
     IEnumerator Start()
     {
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 30;
+        //QualitySettings.vSyncCount = 0;
+        //Application.targetFrameRate = 30;
 
         GUI.depth = 50;
         while (true)
