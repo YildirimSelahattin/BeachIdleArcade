@@ -94,14 +94,14 @@ public class PlayerManager : MonoBehaviour
 
     public void CreamSceneOpen()
     {
-        Paintable.Instance.AgainStart();
+        //Paintable.Instance.AgainStart();
         inGameCam.SetActive(false);
         creamCam.SetActive(true);
         inGameCanvas.SetActive(false);
         playerNavMesh.speed = 0;
-        paintManager.SetActive(true);
+        //paintManager.SetActive(true);
         //gameObject.GetComponent<PlayerController>().enabled = false;
-        paintManager.SetActive(true);
+        //paintManager.SetActive(true);
     }
 
     public void CreamSceneClose()
