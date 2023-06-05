@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> MoneyList = new List<GameObject>();
     public GameObject[] newSunbedArea;
     public GameObject moneyParent;
+    public NavMeshSurface buildNavMesh;
 
     void Awake()
     {
@@ -29,6 +31,14 @@ public class GameManager : MonoBehaviour
             radialFillCloneMat.SetFloat("_Arc2", 360);
             sunbed.transform.GetChild(1).GetComponent<SpriteRenderer>().material = radialFillCloneMat;
         }
+
+        StartCoroutine(BuildNav());
+    }
+
+    IEnumerator BuildNav()
+    {
+        yield return new WaitForSeconds(1);
+        buildNavMesh.BuildNavMesh();
     }
 
     public void InstantateMoney(int moneyCount)

@@ -63,8 +63,6 @@ public class UnlockSunbed : MonoBehaviour
             }
 
             StartCoroutine(CloseArea());
-
-            buildNavMesh.BuildNavMesh();
         }
     }
 
@@ -180,10 +178,11 @@ public class UnlockSunbed : MonoBehaviour
                 gameObject.transform.GetChild(5).gameObject.SetActive(true);
             }
 
-
+            
             GameDataManager.Instance.SaveData();
             //gameObject.SetActive(false);
             StartCoroutine(CloseArea());
+            buildNavMesh.BuildNavMesh();
         }
         GameDataManager.Instance.SaveData();
     }

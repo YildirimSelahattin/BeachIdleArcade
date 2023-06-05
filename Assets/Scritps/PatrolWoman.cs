@@ -40,7 +40,7 @@ public class PatrolWoman : MonoBehaviour
             gameObject.transform.DOMoveZ(WomanSpawnerManager.Instance.targetPos[targetIndex].transform.position.z - .8f, 0.5f).OnComplete((() =>
             {
                 _animator.SetBool("sit", true);
-                //_navAgent.isStopped = true;
+                _navAgent.isStopped = true;
                 gameObject.transform.DORotate(Vector3.zero, .1f);
                 gameObject.GetComponent<BoxCollider>().enabled = false;
                 other.GetComponent<BoxCollider>().enabled = false;
