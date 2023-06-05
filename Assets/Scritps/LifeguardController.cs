@@ -22,7 +22,13 @@ public class LifeguardController : MonoBehaviour
         Pointer.Instance.img.enabled = false;
         Pointer.Instance.img.material.color = Color.red;
 
-        StartCoroutine(ResponseToRequests(30));
+        StartCoroutine(Delay());
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(3);
+        ResponseToRequests(15);
     }
 
     Vector3 GetRandomPositionInSpawnArea()
@@ -41,7 +47,7 @@ public class LifeguardController : MonoBehaviour
         return new Vector3(randomX, randomY, randomZ);
     }
 
-    public IEnumerator RandomSpawnDrownedWoman(int spawnTime)
+    public void RandomSpawnDrownedWoman(int spawnTime)
     {
         Debug.Log("Drown");
 
@@ -51,64 +57,68 @@ public class LifeguardController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Boguluyoooooom");
-            PlayerManager.Instance.reqDrown = true;
-            yield return new WaitForSeconds(spawnTime);
-            Vector3 randomPosition = GetRandomPositionInSpawnArea();
-            DrownedWoman = Instantiate(objectPrefab, randomPosition, Quaternion.Euler(new Vector3(-70, 180, 0)));
-            
-            Pointer.Instance.img.enabled = true;
-            Pointer.Instance.img.material.color = Color.red;
-            Pointer.Instance.target = DrownedWoman.transform;
-
-            StartCoroutine(AgainRequest());
+            StartCoroutine(DrownWoman(spawnTime));
         }
     }
 
-    IEnumerator ResponseToRequests(int time)
+    IEnumerator DrownWoman(int spawnTime)
     {
-        yield return new WaitForSecondsRealtime(8);
+        PlayerManager.Instance.reqDrown = true;
+        yield return new WaitForSeconds(spawnTime);
+        Vector3 randomPosition = GetRandomPositionInSpawnArea();
+        DrownedWoman = Instantiate(objectPrefab, randomPosition, Quaternion.Euler(new Vector3(-70, 180, 0)));
+
+        Pointer.Instance.img.enabled = true;
+        Pointer.Instance.img.material.color = Color.red;
+        Pointer.Instance.target = DrownedWoman.transform;
+
+        StartCoroutine(AgainRequest());
+    }
+
+    public void ResponseToRequests(int spawnTime)
+    {
+
         Debug.Log("Cream " + WomanSpawnerManager.Instance.spawnedWomen.Count);
         int tempIndex = Random.Range(0, WomanSpawnerManager.Instance.spawnedWomen.Count);
 
         if (WomanSpawnerManager.Instance.spawnedWomen[tempIndex].gameObject.GetComponent<PatrolWoman>().isSwim == true)
         {
-            Debug.Log("IF - Index: " + WomanSpawnerManager.Instance.spawnedWomen[tempIndex].gameObject.GetComponent<PatrolWoman>().targetIndex
-             + "Swim: " + WomanSpawnerManager.Instance.spawnedWomen[tempIndex].gameObject.GetComponent<PatrolWoman>().isSwim);
             StartCoroutine(AgainRequest());
         }
         else
         {
-            Debug.Log("ELSE - Index: " + WomanSpawnerManager.Instance.spawnedWomen[tempIndex].gameObject.GetComponent<PatrolWoman>().targetIndex
-             + "Swim: " + WomanSpawnerManager.Instance.spawnedWomen[tempIndex].gameObject.GetComponent<PatrolWoman>().isSwim);
-
-            PlayerManager.Instance.reqCream = true;
-            yield return new WaitForSecondsRealtime(time);
-            WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform.GetChild(2).GetComponent<BoxCollider>().enabled = true;
-            WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform.GetChild(3).gameObject.SetActive(true);
-            Pointer.Instance.img.enabled = true;
-            Pointer.Instance.target = WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform;
-            Pointer.Instance.img.material.color = Color.blue;
-
-            StartCoroutine(AgainRequest());
+            StartCoroutine(RequestCream(spawnTime));
         }
+    }
+
+    IEnumerator RequestCream(int spawnTime)
+    {
+        int tempIndex = Random.Range(0, WomanSpawnerManager.Instance.spawnedWomen.Count);
+
+        PlayerManager.Instance.reqCream = true;
+        yield return new WaitForSecondsRealtime(spawnTime);
+        WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform.GetChild(2).GetComponent<BoxCollider>().enabled = true;
+        WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform.GetChild(3).gameObject.SetActive(true);
+        Pointer.Instance.img.enabled = true;
+        Pointer.Instance.target = WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform;
+        Pointer.Instance.img.material.color = Color.blue;
+
+        StartCoroutine(AgainRequest());
     }
 
     public IEnumerator AgainRequest()
     {
-        Debug.Log("Again");
-        Debug.Log("reqDrown : " + PlayerManager.Instance.reqDrown + "--- reqCream : " + PlayerManager.Instance.reqCream);
         int rnd = Random.Range(0, 2);
 
         if (PlayerManager.Instance.reqDrown == false && PlayerManager.Instance.reqCream == false && rnd == 1)
         {
             Debug.Log(" > Drown");
-            StartCoroutine(RandomSpawnDrownedWoman(41));
+            RandomSpawnDrownedWoman(41);
         }
         else if (PlayerManager.Instance.reqDrown == false && PlayerManager.Instance.reqCream == false && rnd == 0 || rnd == 1)
         {
             Debug.Log(" > Cream");
-            StartCoroutine(ResponseToRequests(29));
+            ResponseToRequests(29);
         }
         else
         {

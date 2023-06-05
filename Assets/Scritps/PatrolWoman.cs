@@ -24,7 +24,6 @@ public class PatrolWoman : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("2");
         _navAgent = gameObject.GetComponent<NavMeshAgent>();
         _animator = gameObject.GetComponent<Animator>();
         _targetCol = WomanSpawnerManager.Instance.targetPos[targetIndex].GetComponent<Collider>();
@@ -37,11 +36,11 @@ public class PatrolWoman : MonoBehaviour
         {
             PlayerManager.Instance.reqCream = false;
             isSwim = false;
-            _animator.SetBool("sit", true);
             gameObject.transform.DOMoveY(-4.5f, .1f);
             gameObject.transform.DOMoveZ(WomanSpawnerManager.Instance.targetPos[targetIndex].transform.position.z - .8f, 0.5f).OnComplete((() =>
             {
-                _navAgent.isStopped = true;
+                _animator.SetBool("sit", true);
+                //_navAgent.isStopped = true;
                 gameObject.transform.DORotate(Vector3.zero, .1f);
                 gameObject.GetComponent<BoxCollider>().enabled = false;
                 other.GetComponent<BoxCollider>().enabled = false;
@@ -110,6 +109,7 @@ public class PatrolWoman : MonoBehaviour
             _animator.SetBool("swim", true);
             _navAgent.baseOffset = -34;
             _navAgent.speed = 1f;
+            StartCoroutine(ComeAgain());
         }
 
         if (other.CompareTag("Walk"))
@@ -118,5 +118,16 @@ public class PatrolWoman : MonoBehaviour
             _navAgent.baseOffset = 0;
             _navAgent.speed = 2.5f;
         }
+    }
+
+    IEnumerator ComeAgain()
+    {
+        Transform temp = WomanSpawnerManager.Instance.targetPos[gameObject.GetComponent<PatrolWoman>().targetIndex].transform;
+        Debug.LogError("Again-25");
+        yield return new WaitForSeconds(25);
+        Debug.LogError("Comeeeee");
+        _navAgent.SetDestination(temp.position);
+        WomanSpawnerManager.Instance.targetPos[targetIndex].GetComponent<BoxCollider>().enabled = true;
+        gameObject.GetComponent<BoxCollider>().enabled = true;
     }
 }

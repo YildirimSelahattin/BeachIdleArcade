@@ -82,7 +82,7 @@ public class PlayerManager : MonoBehaviour
                     isCarry = false;
                     Pointer.Instance.img.enabled = false;
                     Pointer.Instance.img.material.color = Color.red;
-                    LifeguardController.Instance.StartCoroutine(LifeguardController.Instance.RandomSpawnDrownedWoman(60));
+                    LifeguardController.Instance.RandomSpawnDrownedWoman(60);
                     CoinPickup.Instance.StartCoroutine(CoinPickup.Instance.UIMoneySpawner());
                 }
             }
@@ -134,7 +134,6 @@ public class PlayerManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         creamGirl.GetComponent<BoxCollider>().enabled = true;
         Debug.LogError("OpenCollider");
-        StartCoroutine(ComeAgain());
     }
 
     Vector3 GetRandomPositionInSpawnArea()
@@ -150,14 +149,5 @@ public class PlayerManager : MonoBehaviour
         return new Vector3(randomX, -6.85f, randomZ);
     }
 
-    IEnumerator ComeAgain()
-    {
-        Transform temp = WomanSpawnerManager.Instance.targetPos[creamGirl.GetComponent<PatrolWoman>().targetIndex].transform;
-        Debug.LogError("Again-25");
-        yield return new WaitForSeconds(25);
-        Debug.LogError("Comeeeee");
-        creamGirl.GetComponent<PatrolWoman>()._navAgent.SetDestination(temp.position);
-        WomanSpawnerManager.Instance.targetPos[creamGirl.GetComponent<PatrolWoman>().targetIndex].GetComponent<BoxCollider>().enabled = true;
-        creamGirl.GetComponent<PatrolWoman>().GetComponent<BoxCollider>().enabled = true;
-    }
+
 }
