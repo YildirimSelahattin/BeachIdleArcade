@@ -51,7 +51,6 @@ public class PlayerManager : MonoBehaviour
             {
                 UpBikini.GetComponent<MeshRenderer>().material.color = hit.collider.transform.parent.GetChild(0).GetComponent<SkinnedMeshRenderer>().materials[1].color;
                 DownBikini.GetComponent<MeshRenderer>().material.color = hit.collider.transform.parent.GetChild(0).GetComponent<SkinnedMeshRenderer>().materials[1].color;
-                Debug.Log("Cream");
                 hit.collider.GetComponent<BoxCollider>().enabled = false;
                 creamGirl = hit.collider.transform.parent.gameObject;
                 CreamSceneOpen();
@@ -75,7 +74,6 @@ public class PlayerManager : MonoBehaviour
                 if (isCarry == true)
                 {
                     reqDrown = false;
-                    Debug.LogError("ReqDrown: " + reqDrown);
                     Destroy(gameObject.transform.GetChild(2).transform.GetChild(0).gameObject);
                     heartParticle.Play();
                     PlayerController.Instance.playerAnimator.SetLayerWeight(1, 0);

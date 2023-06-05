@@ -49,8 +49,6 @@ public class LifeguardController : MonoBehaviour
 
     public void RandomSpawnDrownedWoman(int spawnTime)
     {
-        Debug.Log("Drown");
-
         if (PlayerManager.Instance.reqCream == true)
         {
             StartCoroutine(AgainRequest());
@@ -78,7 +76,6 @@ public class LifeguardController : MonoBehaviour
     public void ResponseToRequests(int spawnTime)
     {
 
-        Debug.Log("Cream " + WomanSpawnerManager.Instance.spawnedWomen.Count);
         int tempIndex = Random.Range(0, WomanSpawnerManager.Instance.spawnedWomen.Count);
 
         if (WomanSpawnerManager.Instance.spawnedWomen[tempIndex].gameObject.GetComponent<PatrolWoman>().isSwim == true)

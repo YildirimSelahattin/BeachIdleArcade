@@ -123,9 +123,7 @@ public class PatrolWoman : MonoBehaviour
     IEnumerator ComeAgain()
     {
         Transform temp = WomanSpawnerManager.Instance.targetPos[gameObject.GetComponent<PatrolWoman>().targetIndex].transform;
-        Debug.LogError("Again-25");
         yield return new WaitForSeconds(25);
-        Debug.LogError("Comeeeee");
         _navAgent.SetDestination(temp.position);
         WomanSpawnerManager.Instance.targetPos[targetIndex].GetComponent<BoxCollider>().enabled = true;
         gameObject.GetComponent<BoxCollider>().enabled = true;
