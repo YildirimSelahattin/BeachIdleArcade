@@ -37,7 +37,7 @@ public class BeverageServiceContoller : MonoBehaviour
             beverage.SetActive(true);
             beverage.transform.DOJump(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z + 2.5f), .5f, 1, 0.3f).SetEase(Ease.OutSine).OnComplete(() =>
             {
-                //gameObject.transform.GetChild(5).transform.GetChild(4).gameObject.SetActive(true);
+                gameObject.transform.parent.GetChild(5).transform.GetChild(4).gameObject.SetActive(true);
 
                 if (beverage != null)
                     beverage.transform.localPosition = Vector3.zero;
@@ -55,7 +55,7 @@ public class BeverageServiceContoller : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         fillAmount--;
-        gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", fillAmount);
+        gameObject.transform.parent.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", fillAmount);
 
         if(fillAmount > 0)
         {
