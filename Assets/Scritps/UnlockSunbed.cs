@@ -16,13 +16,12 @@ public class UnlockSunbed : MonoBehaviour
     [SerializeField] private float sunbedPrice, sunbedRemainPrice;
     [SerializeField] private float fillAmount;
     public NavMeshSurface buildNavMesh;
-    public GameObject dollarPrefab;
     public GameObject player;
     private IEnumerator CoinMaker;
     float tempSunbedPrice;
     public bool inside = false;
     public Camera BarCam;
-    public static bool isBarOpen = false;
+    public int isBarOpen = 0;
 
     void Awake()
     {
@@ -31,6 +30,7 @@ public class UnlockSunbed : MonoBehaviour
             Instance = this;
         }
         PlayerPrefs.SetInt("isUnlocked" + 0, 1);
+        isBarOpen = PlayerPrefs.GetInt("isBarOpen", 0);
     }
 
     void Start()
@@ -143,9 +143,11 @@ public class UnlockSunbed : MonoBehaviour
         {
             if(itemID == 1001)
             {
-                isBarOpen = true;
+                isBarOpen = 1;
+                PlayerPrefs.SetInt("isBarOpen", isBarOpen);
                 BarCam.gameObject.SetActive(true);
                 StartCoroutine(CamMove());
+                WomanSpawnerManager.Instance.BarIsOpen();
             }
 
             isUnlocked = 1;

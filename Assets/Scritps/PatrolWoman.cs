@@ -50,7 +50,7 @@ public class PatrolWoman : MonoBehaviour
                     case 0:
                         WomanSpawnerManager.Instance.umbrella[1].transform.GetChild(5).transform.GetChild(1).gameObject.SetActive(false);
                         WomanSpawnerManager.Instance.umbrella[1].transform.GetChild(5).transform.GetChild(2).gameObject.SetActive(true);
-                        if (UnlockSunbed.isBarOpen == true)
+                        if (UnlockSunbed.Instance.isBarOpen == 1)
                         {
                             WomanSpawnerManager.Instance.umbrella[1].transform.GetChild(6).gameObject.SetActive(true);
                         }
@@ -58,7 +58,7 @@ public class PatrolWoman : MonoBehaviour
                     case 1:
                         WomanSpawnerManager.Instance.umbrella[0].transform.GetChild(5).transform.GetChild(1).gameObject.SetActive(false);
                         WomanSpawnerManager.Instance.umbrella[0].transform.GetChild(5).transform.GetChild(2).gameObject.SetActive(true);
-                        if (UnlockSunbed.isBarOpen == true)
+                        if (UnlockSunbed.Instance.isBarOpen == 1)
                         {
                             WomanSpawnerManager.Instance.umbrella[0].transform.GetChild(6).gameObject.SetActive(true);
                         }
@@ -66,7 +66,7 @@ public class PatrolWoman : MonoBehaviour
                     case 3:
                         WomanSpawnerManager.Instance.umbrella[3].transform.GetChild(5).transform.GetChild(1).gameObject.SetActive(false);
                         WomanSpawnerManager.Instance.umbrella[3].transform.GetChild(5).transform.GetChild(2).gameObject.SetActive(true);
-                        if (UnlockSunbed.isBarOpen == true)
+                        if (UnlockSunbed.Instance.isBarOpen == 1)
                         {
                             WomanSpawnerManager.Instance.umbrella[3].transform.GetChild(6).gameObject.SetActive(true);
                         }
@@ -74,7 +74,7 @@ public class PatrolWoman : MonoBehaviour
                     case 4:
                         WomanSpawnerManager.Instance.umbrella[2].transform.GetChild(5).transform.GetChild(1).gameObject.SetActive(false);
                         WomanSpawnerManager.Instance.umbrella[2].transform.GetChild(5).transform.GetChild(2).gameObject.SetActive(true);
-                        if (UnlockSunbed.isBarOpen == true)
+                        if (UnlockSunbed.Instance.isBarOpen == 1)
                         {
                             WomanSpawnerManager.Instance.umbrella[2].transform.GetChild(6).gameObject.SetActive(true);
                         }
@@ -82,7 +82,7 @@ public class PatrolWoman : MonoBehaviour
                     case 5:
                         WomanSpawnerManager.Instance.umbrella[2].transform.GetChild(5).transform.GetChild(1).gameObject.SetActive(false);
                         WomanSpawnerManager.Instance.umbrella[2].transform.GetChild(5).transform.GetChild(2).gameObject.SetActive(true);
-                        if (UnlockSunbed.isBarOpen == true)
+                        if (UnlockSunbed.Instance.isBarOpen == 1)
                         {
                             WomanSpawnerManager.Instance.umbrella[2].transform.GetChild(6).gameObject.SetActive(true);
                         }
@@ -90,7 +90,7 @@ public class PatrolWoman : MonoBehaviour
                     case 7:
                         WomanSpawnerManager.Instance.umbrella[4].transform.GetChild(5).transform.GetChild(1).gameObject.SetActive(false);
                         WomanSpawnerManager.Instance.umbrella[4].transform.GetChild(5).transform.GetChild(2).gameObject.SetActive(true);
-                        if (UnlockSunbed.isBarOpen == true)
+                        if (UnlockSunbed.Instance.isBarOpen == 1)
                         {
                             WomanSpawnerManager.Instance.umbrella[4].transform.GetChild(6).gameObject.SetActive(true);
                         }
@@ -98,7 +98,7 @@ public class PatrolWoman : MonoBehaviour
                     case 8:
                         WomanSpawnerManager.Instance.umbrella[4].transform.GetChild(5).transform.GetChild(1).gameObject.SetActive(false);
                         WomanSpawnerManager.Instance.umbrella[4].transform.GetChild(5).transform.GetChild(2).gameObject.SetActive(true);
-                        if (UnlockSunbed.isBarOpen == true)
+                        if (UnlockSunbed.Instance.isBarOpen == 1)
                         {
                             WomanSpawnerManager.Instance.umbrella[4].transform.GetChild(6).gameObject.SetActive(true);
                         }
@@ -106,7 +106,7 @@ public class PatrolWoman : MonoBehaviour
                     case 9:
                         WomanSpawnerManager.Instance.umbrella[7].transform.GetChild(5).transform.GetChild(1).gameObject.SetActive(false);
                         WomanSpawnerManager.Instance.umbrella[7].transform.GetChild(5).transform.GetChild(2).gameObject.SetActive(true);
-                        if (UnlockSunbed.isBarOpen == true)
+                        if (UnlockSunbed.Instance.isBarOpen == 1)
                         {
                             WomanSpawnerManager.Instance.umbrella[7].transform.GetChild(6).gameObject.SetActive(true);
                         }
@@ -114,7 +114,7 @@ public class PatrolWoman : MonoBehaviour
                     case 10:
                         WomanSpawnerManager.Instance.umbrella[6].transform.GetChild(5).transform.GetChild(1).gameObject.SetActive(false);
                         WomanSpawnerManager.Instance.umbrella[6].transform.GetChild(5).transform.GetChild(2).gameObject.SetActive(true);
-                        if (UnlockSunbed.isBarOpen == true)
+                        if (UnlockSunbed.Instance.isBarOpen == 1)
                         {
                             WomanSpawnerManager.Instance.umbrella[6].transform.GetChild(6).gameObject.SetActive(true);
                         }
@@ -122,7 +122,7 @@ public class PatrolWoman : MonoBehaviour
                     case 12:
                         WomanSpawnerManager.Instance.umbrella[6].transform.GetChild(5).transform.GetChild(1).gameObject.SetActive(false);
                         WomanSpawnerManager.Instance.umbrella[6].transform.GetChild(5).transform.GetChild(2).gameObject.SetActive(true);
-                        if (UnlockSunbed.isBarOpen == true)
+                        if (UnlockSunbed.Instance.isBarOpen == 1)
                         {
                             WomanSpawnerManager.Instance.umbrella[6].transform.GetChild(6).gameObject.SetActive(true);
                         }
@@ -130,7 +130,7 @@ public class PatrolWoman : MonoBehaviour
                     case 13:
                         WomanSpawnerManager.Instance.umbrella[5].transform.GetChild(5).transform.GetChild(1).gameObject.SetActive(false);
                         WomanSpawnerManager.Instance.umbrella[5].transform.GetChild(5).transform.GetChild(2).gameObject.SetActive(true);
-                        if (UnlockSunbed.isBarOpen == true)
+                        if (UnlockSunbed.Instance.isBarOpen == 1)
                         {
                             WomanSpawnerManager.Instance.umbrella[5].transform.GetChild(6).gameObject.SetActive(true);
                         }
@@ -138,7 +138,7 @@ public class PatrolWoman : MonoBehaviour
                     case 14:
                         WomanSpawnerManager.Instance.umbrella[5].transform.GetChild(5).transform.GetChild(1).gameObject.SetActive(false);
                         WomanSpawnerManager.Instance.umbrella[5].transform.GetChild(5).transform.GetChild(2).gameObject.SetActive(true);
-                        if (UnlockSunbed.isBarOpen == true)
+                        if (UnlockSunbed.Instance.isBarOpen == 1)
                         {
                             WomanSpawnerManager.Instance.umbrella[5].transform.GetChild(6).gameObject.SetActive(true);
                         }

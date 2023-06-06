@@ -39,8 +39,8 @@ public class PlayerController : MonoBehaviour
         ETouch.Touch.onFingerUp -= HandleLoseFinger;
         ETouch.Touch.onFingerMove -= HandleFingerMove;
         EnhancedTouchSupport.Disable();
-
     }
+
     private void HandleFingerMove(Finger movedFinger)
     {
         if (movedFinger == MovementFinger)
@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
             Joystick.Knob.anchoredPosition = knobPosition;
             MovementAmount = knobPosition / maxMovement;
         }
-
     }
 
     private void HandleFingerDown(Finger touchedFinger)
@@ -81,7 +80,6 @@ public class PlayerController : MonoBehaviour
             Joystick.joyStickObj.anchoredPosition = ClampStartPosition(touchedFinger.screenPosition);
         }
     }
-
 
     private void HandleLoseFinger(Finger lostFinger)
     {
@@ -112,6 +110,7 @@ public class PlayerController : MonoBehaviour
 
         return startPosition;
     }
+
     void Update()
     {
         Vector3 scaledMovement = playerNavMeshAgent.speed * Time.deltaTime * new Vector3(MovementAmount.x, 0, MovementAmount.y);
@@ -119,9 +118,6 @@ public class PlayerController : MonoBehaviour
         playerNavMeshAgent.Move(scaledMovement);
 
         playerNavMeshAgent.transform.LookAt(playerNavMeshAgent.transform.position + scaledMovement, Vector3.up);
-
-        // print("MovementAmount.x: " + MovementAmount.x);
-        // print("MovementAmount.y: " + MovementAmount.y);
 
         playerAnimator.SetFloat("moveX", MovementAmount.x);
         playerAnimator.SetFloat("moveZ", MovementAmount.y);
@@ -151,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Serve"))
+        if(other.CompareTag("Bar"))
         {
             PlayerController.Instance.playerAnimator.SetLayerWeight(1, 1);
             tray.SetActive(true);

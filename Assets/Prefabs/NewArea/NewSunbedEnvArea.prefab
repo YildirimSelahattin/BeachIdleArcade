@@ -263,9 +263,10 @@ GameObject:
   - component: {fileID: 262563073114755255}
   - component: {fileID: 3819716736699984167}
   - component: {fileID: 538971278689304349}
+  - component: {fileID: 1973957964}
   m_Layer: 7
-  m_Name: ServeArea
-  m_TagString: Untagged
+  m_Name: ServingArea
+  m_TagString: ServingArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -317,6 +318,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1973957964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262563073114755254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceaaf73fadcb2c14db3a07b1e86070eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillAmount: 0
+  player: {fileID: 0}
+  beverages:
+  - {fileID: 0}
+  - {fileID: 0}
+  isServing: 0
 --- !u!1 &420041944479439659
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,13 +495,10 @@ MonoBehaviour:
   sunbedRemainPrice: 0
   fillAmount: 0
   buildNavMesh: {fileID: 0}
-  dollarPrefab: {fileID: 2549810110833014764, guid: b96c627dc85b719408dd7fce2d3faa6e,
-    type: 3}
   player: {fileID: 0}
-  willBuy: 0
-  timeFillAmount: 0
-  timer: 0
   inside: 0
+  BarCam: {fileID: 0}
+  isBarOpen: 0
 --- !u!1 &8813543595108465514
 GameObject:
   m_ObjectHideFlags: 0

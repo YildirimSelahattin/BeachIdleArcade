@@ -40,6 +40,17 @@ public class WomanSpawnerManager : MonoBehaviour
         }
     }
 
+    public void BarIsOpen()
+    {
+        for (int i = 0; i < umbrella.Length; i++)
+        {
+            if(WomanSpawnerManager.Instance.umbrella[i].transform.GetChild(5).transform.GetChild(2).gameObject.active == true)
+            {
+                WomanSpawnerManager.Instance.umbrella[i].transform.GetChild(6).gameObject.SetActive(true);
+            }
+        }
+    }
+
     Vector3 GetRandomPositionInSpawnArea()
     {
         float minX = spawnArea.position.x - spawnArea.localScale.x / 2f;

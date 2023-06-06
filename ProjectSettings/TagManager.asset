@@ -13,7 +13,8 @@ TagManager:
   - Emergency
   - Coin
   - PlayerInside
-  - Serve
+  - Bar
+  - ServingArea
   layers:
   - Default
   - TransparentFX
