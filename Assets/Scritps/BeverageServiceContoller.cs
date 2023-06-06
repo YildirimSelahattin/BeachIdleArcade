@@ -20,7 +20,7 @@ public class BeverageServiceContoller : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && PlayerController.Instance.tray.active)
         {
             StartCoroutine(ServingBeverage(player.transform));
             gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -55,7 +55,7 @@ public class BeverageServiceContoller : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         fillAmount--;
-        gameObject.transform.parent.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", fillAmount);
+        gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", fillAmount);
 
         if(fillAmount > 0)
         {

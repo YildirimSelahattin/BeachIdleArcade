@@ -141,6 +141,9 @@ public class UnlockSunbed : MonoBehaviour
 
         if (sunbedRemainPrice == 0)
         {
+            PlayerController.Instance.playerAnimator.SetLayerWeight(1, 0);
+            PlayerController.Instance.foam.SetActive(false);
+            
             if(itemID == 1001)
             {
                 isBarOpen = 1;

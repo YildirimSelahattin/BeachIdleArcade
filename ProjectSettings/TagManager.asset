@@ -15,6 +15,7 @@ TagManager:
   - PlayerInside
   - Bar
   - ServingArea
+  - OutBar
   layers:
   - Default
   - TransparentFX

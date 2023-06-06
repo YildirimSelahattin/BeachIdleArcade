@@ -3,6 +3,9 @@ using UnityEngine.AI;
 using UnityEngine.InputSystem.EnhancedTouch;
 using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 using DG.Tweening;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 
 public class PlayerController : MonoBehaviour
@@ -127,16 +130,16 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Water"))
         {
-            PlayerController.Instance.playerAnimator.SetLayerWeight(1, 0);
+            playerAnimator.SetLayerWeight(1, 0);
             foam.SetActive(true);
             playerAnimator.SetBool("IsSwim", true);
             gameObject.GetComponent<NavMeshAgent>().baseOffset = -22f;
             gameObject.GetComponent<NavMeshAgent>().speed = 3.5f;
             tray.SetActive(false);
         }
-        if(other.CompareTag("Walk"))
+        if (other.CompareTag("Walk"))
         {
-            PlayerController.Instance.playerAnimator.SetLayerWeight(1, 0);
+            playerAnimator.SetLayerWeight(1, 0);
             foam.SetActive(false);
             playerAnimator.SetBool("IsSwim", false);
             gameObject.GetComponent<NavMeshAgent>().baseOffset = 0f;
@@ -147,10 +150,25 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Bar"))
+        if (other.CompareTag("Bar"))
         {
-            PlayerController.Instance.playerAnimator.SetLayerWeight(1, 1);
+            playerAnimator.SetLayerWeight(1, 1);
             tray.SetActive(true);
+
+            StartCoroutine(CloseTray());
         }
+
+        if (other.CompareTag("OutBar"))
+        {
+            playerAnimator.SetLayerWeight(1, 0);
+            tray.SetActive(false);
+        }
+    }
+
+    IEnumerator CloseTray()
+    {
+        yield return new WaitForSeconds(20);
+        playerAnimator.SetLayerWeight(1, 0);
+        tray.SetActive(false);
     }
 }
