@@ -7436,6 +7436,21 @@ PrefabInstance:
       propertyPath: beverages.Array.data[1]
       value: 
       objectReference: {fileID: 236748937}
+    - target: {fileID: 262563073114755254, guid: c0fdb559642aa90419196572315cf022,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 262563073114755255, guid: c0fdb559642aa90419196572315cf022,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989605935996319114, guid: c0fdb559642aa90419196572315cf022,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8813543594624949250, guid: c0fdb559642aa90419196572315cf022,
         type: 3}
       propertyPath: itemID
@@ -10686,6 +10701,11 @@ PrefabInstance:
       propertyPath: beverages.Array.data[1]
       value: 
       objectReference: {fileID: 236748937}
+    - target: {fileID: 262563073114755255, guid: c0fdb559642aa90419196572315cf022,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8813543594624949250, guid: c0fdb559642aa90419196572315cf022,
         type: 3}
       propertyPath: player
@@ -19077,6 +19097,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 6276939500361553960, guid: 50a547ea2692a924f99d872c6659dfeb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6276939500361553960, guid: 50a547ea2692a924f99d872c6659dfeb,
+        type: 3}
+      propertyPath: m_ReceiveGI
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6276939500361553960, guid: 50a547ea2692a924f99d872c6659dfeb,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6276939500361553962, guid: 50a547ea2692a924f99d872c6659dfeb,
         type: 3}
