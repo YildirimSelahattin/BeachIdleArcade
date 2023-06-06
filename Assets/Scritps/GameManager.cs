@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     [SerializeField] private GameObject MoneyPrefab;
     public List<GameObject> MoneyList = new List<GameObject>();
-    public GameObject[] newSunbedArea;
     public GameObject moneyParent;
     public NavMeshSurface buildNavMesh;
 
@@ -23,15 +22,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        foreach (GameObject sunbed in newSunbedArea)
-        {
-            Material radialFillCloneMat = new Material(Shader.Find("Custom/RadialFill"));
-            radialFillCloneMat.SetFloat("_Angle", 270);
-            radialFillCloneMat.SetFloat("_Arc1", 0);
-            radialFillCloneMat.SetFloat("_Arc2", 360);
-            sunbed.transform.GetChild(1).GetComponent<SpriteRenderer>().material = radialFillCloneMat;
-        }
-
         StartCoroutine(BuildNav());
     }
 

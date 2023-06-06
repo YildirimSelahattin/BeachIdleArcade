@@ -19,12 +19,9 @@ public class UnlockSunbed : MonoBehaviour
     public GameObject dollarPrefab;
     public GameObject player;
     private IEnumerator CoinMaker;
-    private IEnumerator Timer;
-    public bool willBuy;
     float tempSunbedPrice;
-    public float timeFillAmount;
-    public float timer;
     public bool inside = false;
+    public Camera BarCam;
 
     void Awake()
     {
@@ -40,33 +37,27 @@ public class UnlockSunbed : MonoBehaviour
         dollarAmount.text = sunbedPrice.ToString();
         sunbedRemainPrice = sunbedPrice;
         isUnlocked = PlayerPrefs.GetInt("isUnlocked" + itemID, 0);
+
+        sunbedRemainPrice = PlayerPrefs.GetFloat("sunbedRemainPrice" + itemID, sunbedRemainPrice);
+        gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc2", fillAmount);
+        UIManager.Instance.totalMoneyText.text = GameDataManager.Instance.TotalMoney.ToString();
+        dollarAmount.text = sunbedRemainPrice.ToString();
+
+        fillAmount = CalculateFill();
         CoinMaker = CountCoins(GameManager.Instance.transform);
-        Timer = TimeCounter(20);
+
+        Material radialFillCloneMat = new Material(Shader.Find("Custom/RadialFill"));
+        radialFillCloneMat.SetFloat("_Angle", 270);
+        radialFillCloneMat.SetFloat("_Arc1", 0);
+        radialFillCloneMat.SetFloat("_Arc2", fillAmount);
+        gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().material = radialFillCloneMat;
 
         if (isUnlocked == 1)
         {
-            if (itemID < 100)
-            {
-                /*
-                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
-                    , Quaternion.Euler(-90f, 0f, 0f));
-                */
-                gameObject.transform.GetChild(5).gameObject.SetActive(true);
-            }
-            else
-            {
-                /*
-                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.7f, -8.8f, transform.position.z + 0.88f)
-                    , Quaternion.Euler(0f, 0f, 0f));
-                */
-                gameObject.transform.GetChild(5).gameObject.SetActive(true);
-            }
-
+            gameObject.transform.GetChild(5).gameObject.SetActive(true);
             StartCoroutine(CloseArea());
         }
     }
-
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -74,13 +65,9 @@ public class UnlockSunbed : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            //if (inside == false) inside = true;
-
-            //if (GameDataManager.Instance.TotalMoney > 0 && timer > 2)
             if (GameDataManager.Instance.TotalMoney > 0 && isUnlocked == 0)
             {
                 StartCoroutine(CoinMaker);
-                timer = 0;
             }
             else
             {
@@ -95,7 +82,6 @@ public class UnlockSunbed : MonoBehaviour
         {
             StopCoroutine(CoinMaker);
             inside = false;
-            timer = 0;
         }
     }
 
@@ -150,75 +136,58 @@ public class UnlockSunbed : MonoBehaviour
         UIManager.Instance.totalMoneyText.text = GameDataManager.Instance.TotalMoney.ToString();
         dollarAmount.text = sunbedRemainPrice.ToString();
 
+        PlayerPrefs.SetFloat("sunbedRemainPrice" + itemID, sunbedRemainPrice);
+
         if (sunbedRemainPrice == 0)
         {
+            if(itemID == 1001)
+            {
+                BarCam.gameObject.SetActive(true);
+                StartCoroutine(CamMove());
+            }
+
             isUnlocked = 1;
             PlayerPrefs.SetInt("isUnlocked" + itemID, isUnlocked);
 
             if (itemID < 100)
             {
                 StartCoroutine(WomanSpawnerManager.Instance.RandomSpawnWoman(itemID));
-                /*
-                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x, -4.8f, transform.position.z)
-                    , Quaternion.Euler(-90f, 0f, 0f));
 
-                desk.transform.localScale = Vector3.zero;
-                desk.transform.DOScale(10f, 1f).SetEase(Ease.OutElastic);
-                */
                 gameObject.transform.GetChild(5).gameObject.SetActive(true);
             }
             else
             {
-                /*
-                GameObject desk = Instantiate(newSunbed, new Vector3(transform.position.x - 1.7f, -8.8f, transform.position.z + 0.88f)
-                    , Quaternion.Euler(0f, 0f, 0f));
-                desk.transform.DOScale(0.5f, 0.01f);
-                desk.transform.DOScale(1f, 1f).SetEase(Ease.OutElastic);
-                */
                 gameObject.transform.GetChild(5).gameObject.SetActive(true);
             }
 
-            
             GameDataManager.Instance.SaveData();
-            //gameObject.SetActive(false);
             StartCoroutine(CloseArea());
-            buildNavMesh.BuildNavMesh();
         }
         GameDataManager.Instance.SaveData();
+    }
+
+    public IEnumerator CamMove()
+    {
+        yield return new WaitForSeconds(0.05f);
+        BarCam.gameObject.transform.DOMoveY(BarCam.gameObject.transform.position.y - 1, 2f).OnComplete(() =>
+        {
+            BarCam.gameObject.SetActive(false);
+        });
     }
 
     public IEnumerator CloseArea()
     {
         yield return new WaitForSeconds(0.2f);
-        //buildNavMesh.BuildNavMesh();
-        //gameObject.SetActive(false);
+
         for (int i = 0; i < 5; i++)
         {
             gameObject.transform.GetChild(i).gameObject.SetActive(false);
         }
+        buildNavMesh.BuildNavMesh();
     }
 
     private float CalculateFill()
     {
         return (360 * sunbedRemainPrice) / sunbedPrice;
-    }
-
-    IEnumerator TimeCounter(int cooldown)
-    {
-        gameObject.transform.GetChild(4).gameObject.SetActive(true);
-        for (int counter = 1; counter <= cooldown; counter++)
-        {
-            timeFillAmount += 18;
-            gameObject.transform.GetChild(4).GetComponent<SpriteRenderer>().sharedMaterial.SetFloat("_Arc1", timeFillAmount);
-            yield return new WaitForSecondsRealtime(0.05f);
-
-            if (counter == cooldown)
-            {
-                gameObject.transform.GetChild(4).gameObject.SetActive(false);
-                cooldown = 20;
-                StartCoroutine(CoinMaker);
-                break;
-            }
-        }
     }
 }
