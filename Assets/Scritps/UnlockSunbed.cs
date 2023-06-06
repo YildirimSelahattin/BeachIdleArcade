@@ -22,6 +22,7 @@ public class UnlockSunbed : MonoBehaviour
     float tempSunbedPrice;
     public bool inside = false;
     public Camera BarCam;
+    public static bool isBarOpen = false;
 
     void Awake()
     {
@@ -142,6 +143,7 @@ public class UnlockSunbed : MonoBehaviour
         {
             if(itemID == 1001)
             {
+                isBarOpen = true;
                 BarCam.gameObject.SetActive(true);
                 StartCoroutine(CamMove());
             }

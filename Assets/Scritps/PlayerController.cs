@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 MovementAmount;
     public Animator playerAnimator;
     public GameObject foam;
+    public GameObject tray;
 
     void Awake()
     {
@@ -130,17 +131,30 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Water"))
         {
+            PlayerController.Instance.playerAnimator.SetLayerWeight(1, 0);
             foam.SetActive(true);
             playerAnimator.SetBool("IsSwim", true);
             gameObject.GetComponent<NavMeshAgent>().baseOffset = -22f;
             gameObject.GetComponent<NavMeshAgent>().speed = 3.5f;
+            tray.SetActive(false);
         }
         if(other.CompareTag("Walk"))
         {
+            PlayerController.Instance.playerAnimator.SetLayerWeight(1, 0);
             foam.SetActive(false);
             playerAnimator.SetBool("IsSwim", false);
             gameObject.GetComponent<NavMeshAgent>().baseOffset = 0f;
             gameObject.GetComponent<NavMeshAgent>().speed = 6f;
+            tray.SetActive(false);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Serve"))
+        {
+            PlayerController.Instance.playerAnimator.SetLayerWeight(1, 1);
+            tray.SetActive(true);
         }
     }
 }

@@ -5402,6 +5402,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 262563073114755254, guid: c0fdb559642aa90419196572315cf022,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 420041944479439659, guid: c0fdb559642aa90419196572315cf022,
         type: 3}
       propertyPath: m_IsActive
@@ -6259,7 +6264,7 @@ GameObject:
   - component: {fileID: 1005998840}
   m_Layer: 7
   m_Name: ServeArea (1)
-  m_TagString: Untagged
+  m_TagString: Serve
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -29730,121 +29735,6 @@ PrefabInstance:
       propertyPath: buildNavMesh
       value: 
       objectReference: {fileID: 1131388171}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[0]
-      value: 
-      objectReference: {fileID: 1022533306}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[1]
-      value: 
-      objectReference: {fileID: 1420590663}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[2]
-      value: 
-      objectReference: {fileID: 755276741}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[3]
-      value: 
-      objectReference: {fileID: 1737691232}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[4]
-      value: 
-      objectReference: {fileID: 1127471308}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[5]
-      value: 
-      objectReference: {fileID: 1170574868}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[6]
-      value: 
-      objectReference: {fileID: 1529221857}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[7]
-      value: 
-      objectReference: {fileID: 2105250490}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[8]
-      value: 
-      objectReference: {fileID: 1114757008}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[9]
-      value: 
-      objectReference: {fileID: 534682808}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[10]
-      value: 
-      objectReference: {fileID: 1093732341}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[11]
-      value: 
-      objectReference: {fileID: 456353474}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[12]
-      value: 
-      objectReference: {fileID: 8813543596253545056}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[13]
-      value: 
-      objectReference: {fileID: 1279836274}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[14]
-      value: 
-      objectReference: {fileID: 38244984}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[15]
-      value: 
-      objectReference: {fileID: 1645196771}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[16]
-      value: 
-      objectReference: {fileID: 1317861564}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[17]
-      value: 
-      objectReference: {fileID: 498945755}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[18]
-      value: 
-      objectReference: {fileID: 1396670383}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[19]
-      value: 
-      objectReference: {fileID: 219341187}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[20]
-      value: 
-      objectReference: {fileID: 1970291826}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[21]
-      value: 
-      objectReference: {fileID: 1484197522}
-    - target: {fileID: 8422003226502200051, guid: 41864a57edf410243816639c1bae205d,
-        type: 3}
-      propertyPath: newSunbedArea.Array.data[22]
-      value: 
-      objectReference: {fileID: 601996118}
     - target: {fileID: 8422003226502200052, guid: 41864a57edf410243816639c1bae205d,
         type: 3}
       propertyPath: UpBikini
