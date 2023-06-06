@@ -49,7 +49,7 @@ public class CoinPickup : MonoBehaviour
         }
     }
 
-    public IEnumerator UIMoneySpawner()
+    public IEnumerator UIMoneySpawner(int Award)
     {
         Image image = Instantiate(imagePrefab, Canvas.transform.position, quaternion.identity, Canvas.transform.parent);
 
@@ -68,12 +68,9 @@ public class CoinPickup : MonoBehaviour
 
         counter++;
         yield return new WaitForSeconds(0.1f);
-        if (counter < 11)
+        if (counter < Award)
         {
-            StartCoroutine(UIMoneySpawner());
+            StartCoroutine(UIMoneySpawner(Award));
         }
     }
-
-
-
 }
