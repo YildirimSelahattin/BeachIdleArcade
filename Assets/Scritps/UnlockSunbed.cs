@@ -88,7 +88,7 @@ public class UnlockSunbed : MonoBehaviour
 
     IEnumerator CountCoins(Transform player)
     {
-        yield return new WaitForSeconds(1);
+        //yield return new WaitForSeconds(1);
 
         tempSunbedPrice = sunbedRemainPrice;
         for (int counter = 0; counter <= (int)tempSunbedPrice; counter++)
@@ -190,7 +190,7 @@ public class UnlockSunbed : MonoBehaviour
         {
             gameObject.transform.GetChild(i).gameObject.SetActive(false);
         }
-        buildNavMesh.BuildNavMesh();
+        //buildNavMesh.BuildNavMesh();
     }
 
     private float CalculateFill()

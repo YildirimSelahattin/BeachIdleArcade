@@ -130,7 +130,6 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Water"))
         {
-            playerAnimator.SetLayerWeight(1, 0);
             foam.SetActive(true);
             playerAnimator.SetBool("IsSwim", true);
             gameObject.GetComponent<NavMeshAgent>().baseOffset = -22f;
@@ -139,7 +138,6 @@ public class PlayerController : MonoBehaviour
         }
         if (other.CompareTag("Walk"))
         {
-            playerAnimator.SetLayerWeight(1, 0);
             foam.SetActive(false);
             playerAnimator.SetBool("IsSwim", false);
             gameObject.GetComponent<NavMeshAgent>().baseOffset = 0f;

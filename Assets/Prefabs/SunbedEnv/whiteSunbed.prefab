@@ -179,6 +179,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NAConfettiBlastRainbow
       objectReference: {fileID: 0}
+    - target: {fileID: 7102495447825360187, guid: c0e7f02b967bf4c4e99878b7956b0d14,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0e7f02b967bf4c4e99878b7956b0d14, type: 3}
 --- !u!4 &7221367922086136277 stripped
