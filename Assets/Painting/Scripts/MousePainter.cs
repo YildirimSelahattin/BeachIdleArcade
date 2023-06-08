@@ -7,6 +7,7 @@ public class MousePainter : MonoBehaviour
     [Space]
     public Color paintColor;
     public GameObject Hand;
+    public Animator handAnim;
 
     public float radius = 1;
     public float strength = 1;
@@ -21,6 +22,7 @@ public class MousePainter : MonoBehaviour
 
         if (click)
         {
+            handAnim.SetBool("isPour", true);
             Vector3 position;
             position = Input.GetTouch(0).position;
             RaycastHit hit;
@@ -40,6 +42,7 @@ public class MousePainter : MonoBehaviour
 
         if (ended)
         {
+            handAnim.SetBool("isPour", false);
             Paintable.Instance.OnClickDebug();
         }
     }
