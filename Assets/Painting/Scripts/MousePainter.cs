@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class MousePainter : MonoBehaviour
 {
-    public Camera cam;
     [Space]
     public bool mouseSingleClick;
     [Space]
     public Color paintColor;
+    public GameObject Hand;
 
     public float radius = 1;
     public float strength = 1;
@@ -23,14 +23,13 @@ public class MousePainter : MonoBehaviour
         {
             Vector3 position;
             position = Input.GetTouch(0).position;
-
-            Ray ray = cam.ScreenPointToRay(position);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 100.0f))
+            if (Physics.Raycast(Hand.transform.position, Hand.transform.TransformDirection(Vector3.forward),out hit, 100.0f))
             {
-                Debug.DrawRay(ray.origin, hit.point - ray.origin, Color.red);
-                transform.position = hit.point;
+                Debug.DrawRay(Hand.transform.position, Hand.transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
+    
+
                 Paintable p = hit.collider.GetComponent<Paintable>();
                 if (p != null)
                 {
