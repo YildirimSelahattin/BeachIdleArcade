@@ -8,11 +8,12 @@ public class FPSCounter : MonoBehaviour
     float count;
     private GUIStyle guiStyle = new GUIStyle();
 
-    IEnumerator Start()
+    void Start()
     {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 30;
 
+/*
         GUI.depth = 50;
         while (true)
         {
@@ -35,5 +36,6 @@ public class FPSCounter : MonoBehaviour
     {
         guiStyle.fontSize = 50;
         GUI.Label(new Rect(30, 500, 400, 200), label, guiStyle);
+*/
     }
 }
