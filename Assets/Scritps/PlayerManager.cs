@@ -25,6 +25,8 @@ public class PlayerManager : MonoBehaviour
     public bool reqDrown;
     public GameObject UpBikini;
     public GameObject DownBikini;
+    public GameObject Hand;
+    Vector3 handBasePos;
 
 
     void Awake()
@@ -37,6 +39,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
+        handBasePos = Hand.transform.position;
         paintManager.SetActive(false);
         playerNavMesh = gameObject.GetComponent<NavMeshAgent>();
     }
@@ -102,7 +105,13 @@ public class PlayerManager : MonoBehaviour
         playerNavMesh.speed = 0;
         paintManager.SetActive(true);
         //gameObject.GetComponent<PlayerController>().enabled = false;
-        paintManager.SetActive(true);
+        StartCoroutine(OpenHand());
+    }
+
+    IEnumerator OpenHand()
+    {
+        yield return new WaitForSeconds(3f);
+        Hand.SetActive(true);
     }
 
     public void CreamSceneClose()
@@ -115,9 +124,10 @@ public class PlayerManager : MonoBehaviour
         inGameCanvas.SetActive(true);
         creamingDoneButton.SetActive(false);
         paintManager.SetActive(false);
+        Hand.transform.position = handBasePos;
+        Hand.SetActive(false);
         //gameObject.GetComponent<PlayerController>().enabled = true;
         Paintable.Instance.AgainStart();
-
         creamGirl.transform.GetChild(3).gameObject.SetActive(false);
         creamGirl.GetComponent<PatrolWoman>()._animator.SetBool("sit", false);
         creamGirl.GetComponent<PatrolWoman>()._navAgent.isStopped = false;
@@ -145,6 +155,4 @@ public class PlayerManager : MonoBehaviour
 
         return new Vector3(randomX, -6.85f, randomZ);
     }
-
-
 }

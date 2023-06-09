@@ -118,7 +118,7 @@ public class Paintable : MonoBehaviour
 
         if (paintedPercentage >= 5)
         {
-            //PlayerManager.Instance.creamingDoneButton.SetActive(true);
+            PlayerManager.Instance.creamingDoneButton.SetActive(true);
         }
     }
 }

@@ -15,6 +15,7 @@ public class HandController : MonoBehaviour
     private Finger MovementFinger;
     public Vector2 MovementAmount;
     public float speed;
+    Rigidbody _rb;
 
     private void OnEnable()
     {
@@ -30,6 +31,11 @@ public class HandController : MonoBehaviour
         ETouch.Touch.onFingerUp -= HandleLoseFinger;
         ETouch.Touch.onFingerMove -= HandleFingerMove;
         EnhancedTouchSupport.Disable();
+    }
+
+    void Start()
+    {
+        _rb = gameObject.transform.GetComponent<Rigidbody>();
     }
 
     private void HandleFingerMove(Finger movedFinger)
@@ -98,14 +104,13 @@ public class HandController : MonoBehaviour
         {
             startPosition.y = Screen.height - JoystickSize.y / 2;
         }
-
         return startPosition;
     }
 
     void Update()
     {
         Vector3 scaledMovement = new Vector3(MovementAmount.x, 0, MovementAmount.y);
-        gameObject.transform.GetComponent<Rigidbody>().MovePosition(transform.position + scaledMovement * Time.deltaTime * speed);
-        //gameObject.transform.GetComponent<Rigidbody>().AddForce(scaledMovement * speed);
+
+        _rb.MovePosition(transform.position + scaledMovement * Time.deltaTime * -speed);
     }
 }
