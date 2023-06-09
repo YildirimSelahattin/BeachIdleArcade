@@ -122,15 +122,24 @@ public class PlayerManager : MonoBehaviour
         {
             spray.transform.DOMove(sprayTransform[sprayCounter -1].transform.position, 0.4f).OnComplete(()=> 
             {
-                creamSplash[sprayCounter - 1].SetActive(true);
+                StartCoroutine(SprayParticle());
             });
-            
         }
         else
         {
             splashButton.SetActive(false);
+            spray.SetActive(false);
             StartCoroutine(OpenHand());
         }
+    }
+
+    IEnumerator SprayParticle()
+    {
+        yield return new WaitForSeconds(0.3f);
+        spray.transform.GetChild(0).gameObject.SetActive(true);
+        creamSplash[sprayCounter - 1].SetActive(true);
+        yield return new WaitForSeconds(.4f);
+        spray.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     IEnumerator OpenHand()
