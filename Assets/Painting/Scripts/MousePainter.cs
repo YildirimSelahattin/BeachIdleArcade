@@ -28,28 +28,26 @@ public class MousePainter : MonoBehaviour
             Instance = this;
         }
     }
+    
+    /*
+    void OnEnable()
+    {
+        tempColorA.a = 1;
+        tempColorB.a = 1;
+        tempColorC.a = 1;
+        PlayerManager.Instance.creamSplash[0].GetComponent<MeshRenderer>().material.color = tempColorA;
+        PlayerManager.Instance.creamSplash[1].GetComponent<MeshRenderer>().material.color = tempColorB;
+        PlayerManager.Instance.creamSplash[2].GetComponent<MeshRenderer>().material.color = tempColorC;
+    }
+    */
 
     void Update()
     {
         bool began;
         bool click;
         bool ended;
-        began = Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began;
         click = Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved;
         ended = Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended;
-
-        if (began)
-        {
-            if (i < 1)
-            {
-                tempColorA.a = 1;
-                tempColorB.a = 1;
-                tempColorC.a = 1;
-                PlayerManager.Instance.creamSplash[0].GetComponent<MeshRenderer>().material.color = tempColorA;
-                PlayerManager.Instance.creamSplash[1].GetComponent<MeshRenderer>().material.color = tempColorB;
-                PlayerManager.Instance.creamSplash[2].GetComponent<MeshRenderer>().material.color = tempColorC;
-            }
-        }
 
         if (click)
         {

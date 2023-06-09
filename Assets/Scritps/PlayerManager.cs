@@ -29,7 +29,9 @@ public class PlayerManager : MonoBehaviour
     Vector3 handBasePos;
     int sprayCounter = 0;
     public GameObject[] creamSplash;
+    public GameObject[] sprayTransform;
     public GameObject splashButton;
+    public GameObject spray;
 
     void Awake()
     {
@@ -118,7 +120,11 @@ public class PlayerManager : MonoBehaviour
         sprayCounter++;
         if (sprayCounter < creamSplash.Length + 1)
         {
-            creamSplash[sprayCounter - 1].SetActive(true);
+            spray.transform.DOMove(sprayTransform[sprayCounter -1].transform.position, 0.4f).OnComplete(()=> 
+            {
+                creamSplash[sprayCounter - 1].SetActive(true);
+            });
+            
         }
         else
         {
@@ -146,11 +152,6 @@ public class PlayerManager : MonoBehaviour
         Hand.transform.position = handBasePos;
         Hand.SetActive(false);
         //gameObject.GetComponent<PlayerController>().enabled = true;
-        MousePainter.Instance.tempColorA.a = 1;
-        MousePainter.Instance.tempColorB.a = 1;
-        MousePainter.Instance.tempColorC.a = 1;
-        MousePainter.Instance.i = 0;
-
         paintManager.SetActive(false);
 
         Paintable.Instance.AgainStart();
