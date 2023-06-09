@@ -27,7 +27,9 @@ public class PlayerManager : MonoBehaviour
     public GameObject DownBikini;
     public GameObject Hand;
     Vector3 handBasePos;
-
+    int sprayCounter = 0;
+    public GameObject[] creamSplash;
+    public GameObject splashButton;
 
     void Awake()
     {
@@ -98,20 +100,38 @@ public class PlayerManager : MonoBehaviour
 
     public void CreamSceneOpen()
     {
+        splashButton.SetActive(true);
         Paintable.Instance.AgainStart();
         inGameCam.SetActive(false);
         creamCam.SetActive(true);
         inGameCanvas.SetActive(false);
         playerNavMesh.speed = 0;
-        paintManager.SetActive(true);
         //gameObject.GetComponent<PlayerController>().enabled = false;
-        StartCoroutine(OpenHand());
+    }
+
+    public void OnSprayCream()
+    {
+        MousePainter.Instance.tempColorA = creamSplash[0].GetComponent<MeshRenderer>().material.color;
+        MousePainter.Instance.tempColorB = creamSplash[1].GetComponent<MeshRenderer>().material.color;
+        MousePainter.Instance.tempColorC = creamSplash[2].GetComponent<MeshRenderer>().material.color;
+
+        sprayCounter++;
+        if (sprayCounter < creamSplash.Length + 1)
+        {
+            creamSplash[sprayCounter - 1].SetActive(true);
+        }
+        else
+        {
+            splashButton.SetActive(false);
+            StartCoroutine(OpenHand());
+        }
     }
 
     IEnumerator OpenHand()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(.1f);
         Hand.SetActive(true);
+        paintManager.SetActive(true);
     }
 
     public void CreamSceneClose()
@@ -123,10 +143,16 @@ public class PlayerManager : MonoBehaviour
         creamCam.SetActive(false);
         inGameCanvas.SetActive(true);
         creamingDoneButton.SetActive(false);
-        paintManager.SetActive(false);
         Hand.transform.position = handBasePos;
         Hand.SetActive(false);
         //gameObject.GetComponent<PlayerController>().enabled = true;
+        MousePainter.Instance.tempColorA.a = 1;
+        MousePainter.Instance.tempColorB.a = 1;
+        MousePainter.Instance.tempColorC.a = 1;
+        MousePainter.Instance.i = 0;
+
+        paintManager.SetActive(false);
+
         Paintable.Instance.AgainStart();
         creamGirl.transform.GetChild(3).gameObject.SetActive(false);
         creamGirl.GetComponent<PatrolWoman>()._animator.SetBool("sit", false);
@@ -141,6 +167,12 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         creamGirl.GetComponent<BoxCollider>().enabled = true;
+        sprayCounter = 0;
+
+        for (int i = 0; i < creamSplash.Length; i++)
+        {
+            creamSplash[i].SetActive(false);
+        }
     }
 
     Vector3 GetRandomPositionInSpawnArea()

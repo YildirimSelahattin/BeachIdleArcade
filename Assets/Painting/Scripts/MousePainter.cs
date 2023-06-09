@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MousePainter : MonoBehaviour
 {
+    public static MousePainter Instance;
     [Space]
     public bool mouseSingleClick;
     [Space]
@@ -12,25 +13,56 @@ public class MousePainter : MonoBehaviour
     public float radius = 1;
     public float strength = 1;
     public float hardness = 1;
+    float a = 1;
+    float b = 1;
+    float c = 1;
+    public Color tempColorA;
+    public Color tempColorB;
+    public Color tempColorC;
+    public int i = 0;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     void Update()
     {
+        bool began;
         bool click;
         bool ended;
+        began = Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began;
         click = Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved;
         ended = Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended;
 
+        if (began)
+        {
+            if (i < 1)
+            {
+                tempColorA.a = 1;
+                tempColorB.a = 1;
+                tempColorC.a = 1;
+                PlayerManager.Instance.creamSplash[0].GetComponent<MeshRenderer>().material.color = tempColorA;
+                PlayerManager.Instance.creamSplash[1].GetComponent<MeshRenderer>().material.color = tempColorB;
+                PlayerManager.Instance.creamSplash[2].GetComponent<MeshRenderer>().material.color = tempColorC;
+            }
+        }
+
         if (click)
         {
+            i++;
             handAnim.SetBool("isPour", true);
             Vector3 position;
             position = Input.GetTouch(0).position;
             RaycastHit hit;
 
-            if (Physics.Raycast(Hand.transform.position, Hand.transform.TransformDirection(Vector3.forward),out hit, 100.0f))
+            if (Physics.Raycast(Hand.transform.position, Hand.transform.TransformDirection(Vector3.forward), out hit, 100.0f))
             {
                 Debug.DrawRay(Hand.transform.position, Hand.transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
-    
+
 
                 Paintable p = hit.collider.GetComponent<Paintable>();
                 if (p != null)
@@ -38,6 +70,17 @@ public class MousePainter : MonoBehaviour
                     PaintManager.instance.paint(p, hit.point, radius, hardness, strength, paintColor);
                 }
             }
+
+            a -= 0.015f;
+            tempColorA.a = a;
+            b -= 0.005f;
+            tempColorB.a = b;
+            c -= 0.0005f;
+            tempColorC.a = c;
+
+            PlayerManager.Instance.creamSplash[0].GetComponent<MeshRenderer>().material.color = tempColorA;
+            PlayerManager.Instance.creamSplash[1].GetComponent<MeshRenderer>().material.color = tempColorB;
+            PlayerManager.Instance.creamSplash[2].GetComponent<MeshRenderer>().material.color = tempColorC;
         }
 
         if (ended)
