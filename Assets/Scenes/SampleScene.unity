@@ -28171,7 +28171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5994772350017314768
 Transform:
   m_ObjectHideFlags: 0
@@ -33165,6 +33165,11 @@ PrefabInstance:
       propertyPath: spray
       value: 
       objectReference: {fileID: 776620275}
+    - target: {fileID: 8422003226502200052, guid: 41864a57edf410243816639c1bae205d,
+        type: 3}
+      propertyPath: Bikini
+      value: 
+      objectReference: {fileID: 279642319}
     - target: {fileID: 8422003226502200052, guid: 41864a57edf410243816639c1bae205d,
         type: 3}
       propertyPath: UpBikini

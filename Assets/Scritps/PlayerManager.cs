@@ -23,8 +23,8 @@ public class PlayerManager : MonoBehaviour
     public Transform swimArea;
     public bool reqCream;
     public bool reqDrown;
-    public GameObject UpBikini;
-    public GameObject DownBikini;
+    public GameObject Bikini;
+    //public GameObject DownBikini;
     public GameObject Hand;
     Vector3 handBasePos;
     int sprayCounter = 0;
@@ -56,8 +56,8 @@ public class PlayerManager : MonoBehaviour
 
             if (hit.collider.CompareTag("LayingWomen"))
             {
-                UpBikini.GetComponent<MeshRenderer>().material.color = hit.collider.transform.parent.GetChild(0).GetComponent<SkinnedMeshRenderer>().materials[1].color;
-                DownBikini.GetComponent<MeshRenderer>().material.color = hit.collider.transform.parent.GetChild(0).GetComponent<SkinnedMeshRenderer>().materials[1].color;
+                Bikini.GetComponent<SkinnedMeshRenderer>().materials[1].color = hit.collider.transform.parent.GetChild(0).GetComponent<SkinnedMeshRenderer>().materials[1].color;
+                //DownBikini.GetComponent<MeshRenderer>().material.color = hit.collider.transform.parent.GetChild(0).GetComponent<SkinnedMeshRenderer>().materials[1].color;
                 hit.collider.GetComponent<BoxCollider>().enabled = false;
                 creamGirl = hit.collider.transform.parent.gameObject;
                 CreamSceneOpen();
