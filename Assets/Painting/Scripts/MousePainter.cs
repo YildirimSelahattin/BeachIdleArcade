@@ -76,15 +76,15 @@ public class MousePainter : MonoBehaviour
             c -= 0.004f;
             tempColorC.a = c;
 
-            PlayerManager.Instance.creamSplash[0].GetComponent<MeshRenderer>().material.color = tempColorA;
-            PlayerManager.Instance.creamSplash[1].GetComponent<MeshRenderer>().material.color = tempColorB;
-            PlayerManager.Instance.creamSplash[2].GetComponent<MeshRenderer>().material.color = tempColorC;
+            //PlayerManager.Instance.creamSplash[0].GetComponent<MeshRenderer>().material.color = tempColorA;
+            //PlayerManager.Instance.creamSplash[1].GetComponent<MeshRenderer>().material.color = tempColorB;
+            //PlayerManager.Instance.creamSplash[2].GetComponent<MeshRenderer>().material.color = tempColorC;
         }
 
         if (ended)
         {
             handAnim.SetBool("isPour", false);
-            Paintable.Instance.OnClickDebug();
+            //Paintable.Instance.OnClickDebug();
         }
     }
 

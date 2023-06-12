@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainPage.unity
     guid: 3802b37cb323a9947bd94dfc701530bd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8584d1a63fa27b148966672d3db1d9da
+  - enabled: 1
+    path: Assets/Painting/Scenes/Paint TNTC.unity
+    guid: df17bb02999771a45948c56ed8e85383
   m_configObjects: {}

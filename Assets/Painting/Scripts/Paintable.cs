@@ -10,7 +10,6 @@ public class Paintable : MonoBehaviour
     RenderTexture uvIslandsRenderTexture;
     RenderTexture maskRenderTexture;
     RenderTexture supportTexture;
-
     Renderer rend;
 
     int maskTextureID = Shader.PropertyToID("_MaskTexture");
@@ -78,6 +77,7 @@ public class Paintable : MonoBehaviour
         supportTexture.Release();
     }
 
+/*
     public Texture pTexture;
     int paintedPixelCount = 0;
     public Color32[] pixels;
@@ -121,4 +121,5 @@ public class Paintable : MonoBehaviour
             PlayerManager.Instance.creamingDoneButton.SetActive(true);
         }
     }
+    */
 }
