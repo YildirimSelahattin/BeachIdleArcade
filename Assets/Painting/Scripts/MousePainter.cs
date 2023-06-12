@@ -29,7 +29,6 @@ public class MousePainter : MonoBehaviour
         }
     }
     
-    /*
     void OnEnable()
     {
         tempColorA.a = 1;
@@ -39,7 +38,6 @@ public class MousePainter : MonoBehaviour
         PlayerManager.Instance.creamSplash[1].GetComponent<MeshRenderer>().material.color = tempColorB;
         PlayerManager.Instance.creamSplash[2].GetComponent<MeshRenderer>().material.color = tempColorC;
     }
-    */
 
     void Update()
     {

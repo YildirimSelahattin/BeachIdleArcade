@@ -32,6 +32,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject[] sprayTransform;
     public GameObject splashButton;
     public GameObject spray;
+    Vector3 sprayPos;
 
     void Awake()
     {
@@ -46,6 +47,7 @@ public class PlayerManager : MonoBehaviour
         handBasePos = Hand.transform.position;
         paintManager.SetActive(false);
         playerNavMesh = gameObject.GetComponent<NavMeshAgent>();
+        sprayPos = spray.transform.position;
     }
 
     void Update()
@@ -113,9 +115,6 @@ public class PlayerManager : MonoBehaviour
 
     public void OnSprayCream()
     {
-        MousePainter.Instance.tempColorA = creamSplash[0].GetComponent<MeshRenderer>().material.color;
-        MousePainter.Instance.tempColorB = creamSplash[1].GetComponent<MeshRenderer>().material.color;
-        MousePainter.Instance.tempColorC = creamSplash[2].GetComponent<MeshRenderer>().material.color;
 
         sprayCounter++;
         if (sprayCounter < creamSplash.Length + 1)
@@ -128,8 +127,9 @@ public class PlayerManager : MonoBehaviour
         else
         {
             splashButton.SetActive(false);
-            spray.SetActive(false);
+            spray.transform.DOMove(sprayPos,0.1f);
             StartCoroutine(OpenHand());
+            
         }
     }
 
