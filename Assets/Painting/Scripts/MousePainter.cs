@@ -59,10 +59,7 @@ public class MousePainter : MonoBehaviour
 
             if (Physics.Raycast(Hand.transform.position, Hand.transform.TransformDirection(Vector3.forward), out hit, 100.0f))
             {
-                Debug.DrawRay(Hand.transform.position, Hand.transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
-
-
-                Paintable p = hit.collider.GetComponent<Paintable>();
+                                Paintable p = hit.collider.GetComponent<Paintable>();
                 if (p != null)
                 {
                     PaintManager.instance.paint(p, hit.point, radius, hardness, strength, paintColor);
