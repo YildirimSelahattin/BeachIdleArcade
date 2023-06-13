@@ -28,11 +28,11 @@ public class PlayerManager : MonoBehaviour
     public GameObject Hand;
     Vector3 handBasePos;
     int sprayCounter = 0;
-    public GameObject[] creamSplash;
-    public GameObject[] sprayTransform;
+    public GameObject creamSplash;
+    public GameObject sprayTransform;
     public GameObject splashButton;
     public GameObject spray;
-    Vector3 sprayPos;
+    Vector3 sprayBasePos;
 
     void Awake()
     {
@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour
         handBasePos = Hand.transform.position;
         paintManager.SetActive(false);
         playerNavMesh = gameObject.GetComponent<NavMeshAgent>();
-        sprayPos = spray.transform.position;
+        sprayBasePos = spray.transform.position;
     }
 
     void Update()
@@ -115,31 +115,22 @@ public class PlayerManager : MonoBehaviour
 
     public void OnSprayCream()
     {
-
-        sprayCounter++;
-        if (sprayCounter < creamSplash.Length + 1)
+        spray.transform.DOMove(sprayTransform.transform.position, 0.4f).OnComplete(() =>
         {
-            spray.transform.DOMove(sprayTransform[sprayCounter -1].transform.position, 0.4f).OnComplete(()=> 
-            {
-                StartCoroutine(SprayParticle());
-            });
-        }
-        else
-        {
-            splashButton.SetActive(false);
-            spray.transform.DOMove(sprayPos,0.1f);
-            StartCoroutine(OpenHand());
-            
-        }
+            StartCoroutine(SprayParticle());
+        });
     }
 
     IEnumerator SprayParticle()
     {
         yield return new WaitForSeconds(0.3f);
         spray.transform.GetChild(0).gameObject.SetActive(true);
-        creamSplash[sprayCounter - 1].SetActive(true);
+        creamSplash.SetActive(true);
         yield return new WaitForSeconds(.4f);
         spray.transform.GetChild(0).gameObject.SetActive(false);
+        splashButton.SetActive(false);
+        spray.transform.DOMove(sprayBasePos, 0.1f);
+        StartCoroutine(OpenHand());
     }
 
     IEnumerator OpenHand()
@@ -178,11 +169,6 @@ public class PlayerManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         creamGirl.GetComponent<BoxCollider>().enabled = true;
         sprayCounter = 0;
-
-        for (int i = 0; i < creamSplash.Length; i++)
-        {
-            creamSplash[i].SetActive(false);
-        }
     }
 
     Vector3 GetRandomPositionInSpawnArea()
