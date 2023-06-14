@@ -11,6 +11,7 @@ public class HandController : MonoBehaviour
     public Vector2 MovementAmount;
     public float speed;
     Rigidbody _rb;
+    public ParticleSystem ripple;
 
     private void OnEnable()
     {
@@ -37,6 +38,7 @@ public class HandController : MonoBehaviour
     {
         if (movedFinger == MovementFinger)
         {
+            Debug.Log("Move");
             Vector2 knobPosition;
             float maxMovement = JoystickSize.x / 1f;
             ETouch.Touch currentTouch = movedFinger.currentTouch;
@@ -65,6 +67,7 @@ public class HandController : MonoBehaviour
     {
         if (MovementFinger == null && touchedFinger.screenPosition.x <= Screen.width)
         {
+            Debug.Log("Start");
             MovementFinger = touchedFinger;
             MovementAmount = Vector2.zero;
             Joystick.gameObject.SetActive(true);
@@ -77,6 +80,7 @@ public class HandController : MonoBehaviour
     {
         if (lostFinger == MovementFinger)
         {
+            Debug.Log("End");
             MovementFinger = null;
             Joystick.Knob.anchoredPosition = Vector2.zero;
             Joystick.gameObject.SetActive(false);
