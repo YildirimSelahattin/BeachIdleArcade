@@ -30921,7 +30921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSingleClick: 0
-  paintColor: {r: 0.12156861, g: 0.8477082, b: 0.9529412, a: 1}
+  paintColor: {r: 0.8820755, g: 0.9849813, b: 1, a: 1}
   Hand: {fileID: 5994772349287663545}
   handAnim: {fileID: 6913267739170790680}
   radius: 0.08
