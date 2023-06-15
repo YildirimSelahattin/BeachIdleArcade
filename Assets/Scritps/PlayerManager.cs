@@ -126,6 +126,7 @@ public class PlayerManager : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         spray.transform.GetChild(0).gameObject.SetActive(true);
         creamSplash.SetActive(true);
+        StartCoroutine(AppaerPuddle.Instance.FadeOut());
         yield return new WaitForSeconds(.4f);
         spray.transform.GetChild(0).gameObject.SetActive(false);
         splashButton.SetActive(false);

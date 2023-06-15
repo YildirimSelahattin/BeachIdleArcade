@@ -9,9 +9,18 @@ using UnityEngine.AI;
 
 public class AppaerPuddle : MonoBehaviour
 {
+    public static AppaerPuddle Instance;
     public float scale;
     public Color baseColor;
     public float alpha = 1;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     void Start()
     {
@@ -20,7 +29,7 @@ public class AppaerPuddle : MonoBehaviour
         StartCoroutine(FadeOut());
     }
 
-    IEnumerator FadeOut()
+    public IEnumerator FadeOut()
     {
         yield return new WaitForSeconds(0.3f);
         if (alpha > 0)
