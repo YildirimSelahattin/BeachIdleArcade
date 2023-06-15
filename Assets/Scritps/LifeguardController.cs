@@ -75,7 +75,6 @@ public class LifeguardController : MonoBehaviour
 
     public void ResponseToRequests(int spawnTime)
     {
-
         int tempIndex = Random.Range(0, WomanSpawnerManager.Instance.spawnedWomen.Count);
 
         if (WomanSpawnerManager.Instance.spawnedWomen[tempIndex].gameObject.GetComponent<PatrolWoman>().isSwim == true)
@@ -94,12 +93,18 @@ public class LifeguardController : MonoBehaviour
 
         PlayerManager.Instance.reqCream = true;
         yield return new WaitForSecondsRealtime(spawnTime);
-        WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform.GetChild(2).GetComponent<BoxCollider>().enabled = true;
-        WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform.GetChild(3).gameObject.SetActive(true);
-        Pointer.Instance.img.enabled = true;
-        Pointer.Instance.target = WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform;
-        Pointer.Instance.img.material.color = Color.blue;
-
+        if (WomanSpawnerManager.Instance.spawnedWomen[tempIndex].GetComponent<Animator>().GetBool("sit"))
+        {
+            WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform.GetChild(2).GetComponent<BoxCollider>().enabled = true;
+            WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform.GetChild(3).gameObject.SetActive(true);
+            Pointer.Instance.img.enabled = true;
+            Pointer.Instance.target = WomanSpawnerManager.Instance.spawnedWomen[tempIndex].transform;
+            Pointer.Instance.img.material.color = Color.blue;
+        }
+        else
+        {
+            StartCoroutine(AgainRequest());
+        }
         StartCoroutine(AgainRequest());
     }
 

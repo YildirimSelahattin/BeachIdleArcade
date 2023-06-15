@@ -59,6 +59,17 @@ public class PlayerManager : MonoBehaviour
             if (hit.collider.CompareTag("LayingWomen"))
             {
                 Bikini.GetComponent<SkinnedMeshRenderer>().materials[1].color = hit.collider.transform.parent.GetChild(0).GetComponent<SkinnedMeshRenderer>().materials[1].color;
+                Bikini.GetComponent<SkinnedMeshRenderer>().materials[0].SetColor("Color_863351f5ceea4c998ef51baab6dd758b", new Color(1f,1f,1f,1));
+                //DownBikini.GetComponent<MeshRenderer>().material.color = hit.collider.transform.parent.GetChild(0).GetComponent<SkinnedMeshRenderer>().materials[1].color;
+                hit.collider.GetComponent<BoxCollider>().enabled = false;
+                creamGirl = hit.collider.transform.parent.gameObject;
+                CreamSceneOpen();
+            }
+
+            if (hit.collider.CompareTag("LayingBlackWomen"))
+            {
+                Bikini.GetComponent<SkinnedMeshRenderer>().materials[1].color = hit.collider.transform.parent.GetChild(0).GetComponent<SkinnedMeshRenderer>().materials[1].color;
+                Bikini.GetComponent<SkinnedMeshRenderer>().materials[0].SetColor("Color_863351f5ceea4c998ef51baab6dd758b", new Color(173/255f,155/255f,96/255f,1));
                 //DownBikini.GetComponent<MeshRenderer>().material.color = hit.collider.transform.parent.GetChild(0).GetComponent<SkinnedMeshRenderer>().materials[1].color;
                 hit.collider.GetComponent<BoxCollider>().enabled = false;
                 creamGirl = hit.collider.transform.parent.gameObject;

@@ -10014,6 +10014,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: JoyStickCream
       objectReference: {fileID: 0}
+    - target: {fileID: 4664707532027081316, guid: 8b7971cd7ed100b49af39ff0fd2985ca,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664707533250828212, guid: 8b7971cd7ed100b49af39ff0fd2985ca,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7971cd7ed100b49af39ff0fd2985ca, type: 3}
 --- !u!1 &1445529583
@@ -24790,6 +24800,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717167524996164468, guid: 5a5630e802a9f2243a2958cb14029669,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717167524996164468, guid: 5a5630e802a9f2243a2958cb14029669,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717167524996164468, guid: 5a5630e802a9f2243a2958cb14029669,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717167524996164468, guid: 5a5630e802a9f2243a2958cb14029669,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717167525951344292, guid: 5a5630e802a9f2243a2958cb14029669,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a5630e802a9f2243a2958cb14029669, type: 3}
