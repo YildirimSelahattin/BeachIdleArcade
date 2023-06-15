@@ -90,7 +90,7 @@ public class PlayerManager : MonoBehaviour
                     Pointer.Instance.img.enabled = false;
                     Pointer.Instance.img.material.color = Color.red;
                     LifeguardController.Instance.RandomSpawnDrownedWoman(60);
-                    CoinPickup.Instance.StartCoroutine(CoinPickup.Instance.UIMoneySpawner(51));
+                    CoinPickup.Instance.StartCoroutine(CoinPickup.Instance.UIMoneySpawner(15));
                 }
             }
         }
@@ -99,7 +99,7 @@ public class PlayerManager : MonoBehaviour
     public void OnClickDoneCream()
     {
         CreamSceneClose();
-        CoinPickup.Instance.StartCoroutine(CoinPickup.Instance.UIMoneySpawner(21));
+        CoinPickup.Instance.StartCoroutine(CoinPickup.Instance.UIMoneySpawner(10));
     }
 
     public void CreamSceneOpen()

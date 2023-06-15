@@ -24,8 +24,11 @@ public class Pointer : MonoBehaviour
 
     void Update()
     {
-        Vector3 targetPos = target.transform.position;
-        targetPos.y = transform.position.y;
-        transform.LookAt(targetPos);
+        if (target != null)
+        {
+            Vector3 targetPos = target.transform.position;
+            targetPos.y = transform.position.y;
+            transform.LookAt(targetPos);
+        }
     }
 }

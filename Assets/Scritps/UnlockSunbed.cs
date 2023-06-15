@@ -111,7 +111,23 @@ public class UnlockSunbed : MonoBehaviour
             {
                 counter = 0;
             }
-            yield return new WaitForSecondsRealtime(0.1f);
+            
+            if (counter <= 50)
+            {
+                yield return new WaitForSecondsRealtime(0.1f);
+            }
+            else if (counter > 50 && counter <= 150)
+            {
+                yield return new WaitForSecondsRealtime(0.05f);
+            }
+            else if (counter > 150 && counter < 200)
+            {
+                yield return new WaitForSecondsRealtime(0.025f);
+            }
+            else
+            {
+                yield return new WaitForSecondsRealtime(0.0125f);
+            }
         }
         GameManager.Instance.MoneyList.Clear();
     }
@@ -143,8 +159,8 @@ public class UnlockSunbed : MonoBehaviour
         {
             PlayerController.Instance.playerAnimator.SetLayerWeight(1, 0);
             PlayerController.Instance.foam.SetActive(false);
-            
-            if(itemID == 1001)
+
+            if (itemID == 1001)
             {
                 isBarOpen = 1;
                 PlayerPrefs.SetInt("isBarOpen", isBarOpen);

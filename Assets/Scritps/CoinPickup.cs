@@ -72,5 +72,10 @@ public class CoinPickup : MonoBehaviour
         {
             StartCoroutine(UIMoneySpawner(Award));
         }
+        else
+        {
+            counter = 0;
+            StopCoroutine(UIMoneySpawner(Award));
+        }
     }
 }
