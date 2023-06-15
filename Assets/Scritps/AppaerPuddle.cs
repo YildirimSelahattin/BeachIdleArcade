@@ -37,12 +37,12 @@ public class AppaerPuddle : MonoBehaviour
             alpha -= 0.1f;
             baseColor.a = alpha;
             gameObject.GetComponent<MeshRenderer>().material.color = baseColor;
+            StartCoroutine(FadeOut());
         }
         else
         {
             alpha = 1;
             gameObject.SetActive(false);
         }
-        StartCoroutine(FadeOut());
     }
 }

@@ -24,7 +24,7 @@ public class BeverageServiceContoller : MonoBehaviour
         {
             StartCoroutine(ServingBeverage(player.transform));
             gameObject.GetComponent<BoxCollider>().enabled = false;
-            CoinPickup.Instance.StartCoroutine(CoinPickup.Instance.UIMoneySpawner(11));
+            CoinPickup.Instance.StartCoroutine(CoinPickup.Instance.UIMoneySpawner(16));
         }
     }
 
