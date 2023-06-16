@@ -19,8 +19,8 @@ public class LifeguardController : MonoBehaviour
 
     void Start()
     {
-        Pointer.Instance.img.enabled = false;
-        Pointer.Instance.img.material.color = Color.red;
+        DrownPointer.Instance.img.enabled = false;
+        DrownPointer.Instance.img.material.color = Color.red;
 
         StartCoroutine(Delay());
     }
@@ -66,9 +66,9 @@ public class LifeguardController : MonoBehaviour
         Vector3 randomPosition = GetRandomPositionInSpawnArea();
         DrownedWoman = Instantiate(objectPrefab, randomPosition, Quaternion.Euler(new Vector3(-70, 180, 0)));
 
-        Pointer.Instance.img.enabled = true;
-        Pointer.Instance.img.material.color = Color.red;
-        Pointer.Instance.target = DrownedWoman.transform;
+        DrownPointer.Instance.img.enabled = true;
+        DrownPointer.Instance.img.material.color = Color.red;
+        DrownPointer.Instance.target = DrownedWoman.transform;
 
         StartCoroutine(AgainRequest());
     }

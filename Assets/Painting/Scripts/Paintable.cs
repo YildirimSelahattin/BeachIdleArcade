@@ -5,7 +5,6 @@ public class Paintable : MonoBehaviour
     const int TEXTURE_SIZE = 100;
     public static Paintable Instance;
     public float extendsIslandOffset = 1;
-
     RenderTexture extendIslandsRenderTexture;
     RenderTexture uvIslandsRenderTexture;
     RenderTexture maskRenderTexture;

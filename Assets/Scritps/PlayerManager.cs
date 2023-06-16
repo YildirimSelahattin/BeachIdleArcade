@@ -81,12 +81,12 @@ public class PlayerManager : MonoBehaviour
                 PlayerController.Instance.playerAnimator.SetLayerWeight(1, 1);
                 hit.collider.gameObject.GetComponent<Animator>().SetBool("isCarry", true);
                 isCarry = true;
-                Pointer.Instance.target = emergency.transform;
+                DrownPointer.Instance.target = emergency.transform;
                 hit.collider.gameObject.transform.parent = carryParrent.transform;
                 //Destroy(hit.collider.gameObject);
                 hit.collider.gameObject.transform.DOLocalMove(Vector3.zero, 0.2f);
                 hit.collider.gameObject.transform.DOLocalRotate(Vector3.zero, 0.2f);
-                Pointer.Instance.img.material.color = Color.green;
+                DrownPointer.Instance.img.material.color = Color.green;
             }
 
             if (hit.collider.CompareTag("Emergency"))
@@ -98,8 +98,8 @@ public class PlayerManager : MonoBehaviour
                     heartParticle.Play();
                     PlayerController.Instance.playerAnimator.SetLayerWeight(1, 0);
                     isCarry = false;
-                    Pointer.Instance.img.enabled = false;
-                    Pointer.Instance.img.material.color = Color.red;
+                    DrownPointer.Instance.img.enabled = false;
+                    DrownPointer.Instance.img.material.color = Color.red;
                     LifeguardController.Instance.RandomSpawnDrownedWoman(60);
                     CoinPickup.Instance.StartCoroutine(CoinPickup.Instance.UIMoneySpawner(15));
                 }
