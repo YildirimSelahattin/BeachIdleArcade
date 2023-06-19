@@ -7,6 +7,6 @@ public class StartGame : MonoBehaviour
 {
     private void Start()
     {
-        LoadMainMenu.Instance.LoadSceneMenu(1);
+        LoadMainMenu.Instance.LoadSceneMenu(2);
     }
 }

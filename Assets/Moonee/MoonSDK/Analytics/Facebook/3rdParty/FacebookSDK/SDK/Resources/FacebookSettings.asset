@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedAppIndex: 0
   clientTokens:
-  - 
+  - c3a26e7e08745eb9fafe96c7eac7b215
   appIds:
-  - 123456
+  - 1350921415503883
   appLabels:
-  - 
+  - BeachCreamer3D
   cookie: 1
   logging: 1
   status: 1

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c151705efef5748b9a8ff640aafdf0, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  GameAnalytics: 0
+  GameAnalytics: 1
   gameAnalyticsIosGameKey: 
   gameAnalyticsIosSecretKey: 
-  gameAnalyticsAndroidGameKey: 
-  gameAnalyticsAndroidSecretKey: 
-  Facebook: 0
-  facebookAppId: 
-  facebookClientId: 
-  StudioLogo: 0
-  studioLogoSprite: {fileID: 0}
+  gameAnalyticsAndroidGameKey: 14a4c074d08176c96f7ab7b2c47904d1
+  gameAnalyticsAndroidSecretKey: 62c9e38bbe88b4d69cd6f912b2ae62b3f3b5ba68
+  Facebook: 1
+  facebookAppId: 1350921415503883
+  facebookClientId: c3a26e7e08745eb9fafe96c7eac7b215
+  StudioLogo: 1
+  studioLogoSprite: {fileID: 21300000, guid: a3fea8231c6ae83419e3300f5ef8b058, type: 3}
