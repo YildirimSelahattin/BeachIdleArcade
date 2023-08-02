@@ -162,7 +162,7 @@ public class UnlockSunbed : MonoBehaviour
 
             if (itemID == 1001)
             {
-                MoonSDK.TrackLevelEvents(MoonSDK.LevelEvents.Complete, 1);
+                //MoonSDK.TrackLevelEvents(MoonSDK.LevelEvents.Complete, 1);
                 isBarOpen = 1;
                 PlayerPrefs.SetInt("isBarOpen", isBarOpen);
                 BarCam.gameObject.SetActive(true);
